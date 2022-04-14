@@ -1,1 +1,2 @@
-$cmd = Get-History -Count 1 | Select -ExpandProperty "CommandLine"
+$cmd = $myinvocation.Line
+$cmd
