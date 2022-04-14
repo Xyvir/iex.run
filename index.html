@@ -1,2 +1,2 @@
-$cmd = $myinvocation.Line
-$cmd
+$cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders
+Write-Host $cmd
