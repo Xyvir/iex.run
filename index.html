@@ -1,1 +1,2 @@
-$myinvocation
+$cmd = $myinvocation | Select Line | Format-Table -hidetableheaders
+Write-Output $cmd
