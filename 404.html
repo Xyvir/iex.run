@@ -2,6 +2,8 @@
 ############## Powershell stuff goes below here #########################
 # To avoid errors, don't leave any newlines without leading comments.
 #
+#Options:
+$Autocomplete = True # Default is True
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders
 Write-Output $cmd
 Write-Output "iex.run Complete!"
