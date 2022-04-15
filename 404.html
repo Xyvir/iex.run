@@ -2,13 +2,13 @@
 ############## Powershell stuff goes below here #########################
 # To avoid errors, don't leave any newlines without leading comments.
 #
-$ErrorActionPreference = 'Continue'
+#$ErrorActionPreference = 'Continue'
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders
 Write-Output $cmd
 #
 #
-$ErrorActionPreference = 'SilentlyContinue'
-break
+#$ErrorActionPreference = 'SilentlyContinue'
+Continue
 #################### HTML stuff goes below here ######################### -->
 
 <html><head></head><body>
