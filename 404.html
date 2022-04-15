@@ -3,7 +3,7 @@
 # To avoid errors, don't leave any newlines without leading comments.
 #
 #Options:
-$Autocomplete = True # Default is True
+$Autocomplete = $true # Default is $true
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders
 Write-Output $cmd
 Write-Output "iex.run Complete!"
