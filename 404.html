@@ -2,8 +2,9 @@
 ############## Powershell stuff goes below here #########################
 # To avoid errors, don't leave any newlines without leading comments.
 #
-#Options:
-$Autocomplete = $true # Default is $true
+#Config:
+$github = "https://github.com/Xyvir/iex.run" # Required
+$autocomplete = $true # Default is $true
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders
 Write-Output $cmd
 Write-Output "iex.run Complete!"
