@@ -12,6 +12,7 @@ $autocomplete = $true # Default is $true
 #
 $old = $ProgressPreference
 $ProgressPreference = "SilentlyContinue"
+$github = ([uri]$githubURL).Segments | Select -Last 1
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $cmd = [string]::join("",($cmd.Split("`n")))
 $fileURLs = (wget -nv $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
