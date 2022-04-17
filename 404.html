@@ -1,4 +1,3 @@
-#& powershell &#
 ### iex.run ### <br> <br> <!-- & powershell
 ############## Powershell stuff goes below here #########################
 # 
@@ -16,9 +15,9 @@ $old = $ProgressPreference
 $ProgressPreference = "SilentlyContinue"
 $github = ([uri]$githubURL).Segments | Select -Last 1
 $cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-$cmd1 = [string]::join("",($cmd.Split("`n")))
-$cmd2 = $cmd1 -Split " " | Select -Index 1
-$cmduri = [uri]("https://" + $cmd2)
+$cmd = [string]::join("",($cmd.Split("`n")))
+$cmd = $cmd -Split " " | Select -Index 1
+$cmduri = [uri]("https://" + $cmd)
 $fileURLs = (wget $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 $downloadcmd = '$downloadlocation' + "= `"$predownloadLocation`""
 iex $downloadcmd
