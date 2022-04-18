@@ -21,6 +21,7 @@ $cmd = [string]::join("",($cmd.Split("`n")))
 $cmd = $cmd -Split " " | Select -Index 1
 $cmduri = [uri]("https://" + $cmd)
 $fileURLs = (wget $_githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
+$Filenames = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 $_DownloadFolder = '$_DownloadFolder' + "= `"$_DownloadFolder`""
 iex $_DownloadFolder
 #
@@ -30,7 +31,7 @@ $env:Path += ";$_DownloadFolder"
 if ($_DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 echo "@powershell -c `"curl.exe %~n0/%1 | iex`" || dir $_DownloadFolder" > $Env:localappdata\Microsoft\WindowsApps\$github.cmd
 Write-Output ""
-echo $fileURLs
+echo $Filenames
 # Downloaded Icon ↓
 Set-Clipboard $cmduri
 Write-Output ""
