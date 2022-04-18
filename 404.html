@@ -60,4 +60,6 @@ $ProgressPreference = $OldProgress
 #*/document.getElementById("myInput").value = /*
 #*/"powershell -noexit -c \"curl.exe " + window.location.hostname + window.location.pathname + " | iex\"";/*
 #*/</script><!--
-#--></body></html>
+#--></body></html><!--
+#
+# If you are seeing this message, you may have forgotten to add '| iex' to the end of your curl.exe command. -->
