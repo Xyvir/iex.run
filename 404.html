@@ -4,7 +4,7 @@
 # To avoid PS errors, don't leave any newlines without preceding ps comments (#).
 #
 ### Config:
-#
+# All config variables are denoted with an _
 $_githubURL = "https://github.com/Xyvir/iex.run" # Required
 $_DownloadFolder = '$Env:Public\$github\'
 $_Autocomplete = $true # Default is $true
@@ -25,7 +25,7 @@ iex $_DownloadFolder
 #
 ### Execute:
 #
-if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
+if ($_DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 Write-Output ""
 Write-Output "iex.run Complete!"
 Write-Output ""
