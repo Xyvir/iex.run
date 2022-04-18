@@ -21,7 +21,8 @@ $cmd = [string]::join("",($cmd.Split("`n")))
 $cmd = $cmd -Split " " | Select -Index 1
 $cmduri = [uri]("https://" + $cmd)
 $fileURLs = (wget $_githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
-$Filenames = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
+$Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
+$Filenames = $Filematch.lines
 $_DownloadFolder = '$_DownloadFolder' + "= `"$_DownloadFolder`""
 iex $_DownloadFolder
 #
