@@ -29,7 +29,7 @@ iex $_DownloadFolder
 if ($_DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 Set-Clipboard $cmduri
 Write-Output ""
-Write-Output "iex.run Complete!"
+Write-Output "iex.run Complete! Magic URL '$cmduri' has been copied to your clipboard."
 Write-Output ""
 #
 ### Cleanup:
