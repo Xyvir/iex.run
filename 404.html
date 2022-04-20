@@ -38,7 +38,7 @@ If (!$command) { foreach ($file in $Filematch) {Write-Host $file} }
 # Downloaded Icon ↓
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
-Write-Host "iex.run Complete!" -ForegroundColor Green
+if (!$error) {Write-Host "iex.run Complete!" -ForegroundColor Green} else {Write-Host "iex.run completed with errors `n $error" -ForegroundColor Red}
 if ($command) {Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 Write-Output ""
 #
