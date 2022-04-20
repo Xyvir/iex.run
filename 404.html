@@ -16,12 +16,13 @@ $_DebugVars = $true #show all vars created, default $false
 $OldProgress = $ProgressPreference
 $ProgressPreference = "SilentlyContinue"
 $github = ([uri]$_githubURL).Segments | Select -Last 1
-$cmd = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-$cmd = [string]::join("",($cmd.Split("`n")))
-$cmd = $cmd -Split " " | Select -Index 1
-$cmduri = [uri]("https://" + $cmd)
-$command = ($cmduri.Absolutepath).Trim("/")
-$arguments = ($cmduri.Query).Trim("?")
+$invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
+$invoc = $invoc.split("`"")
+$invoc = [string]::join("",($invoc.Split("`n")))
+$invoc = $invoc -Split " " | Select -Index 1
+$invocuri = [uri]("https://" + $invoc)
+$command = ($invocuri.Absolutepath).Trim("/")
+$arguments = ($invocuri.Query).Trim("?")
 $fileURLs = (wget $_githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 $Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 $_DownloadFolder = '$_DownloadFolder' + "= `"$_DownloadFolder`""
@@ -35,9 +36,9 @@ echo "@powershell -noexit -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $_DownloadF
 Write-Output ""
 If (!$command) { foreach ($file in $Filematch) {Write-Host $file} }
 # Downloaded Icon ↓
-Set-Clipboard $cmduri
+Set-Clipboard $invocuri
 Write-Output ""
-Write-Output "iex.run Complete! The corresponding 'Magic URL': `"$cmduri`" has been copied to your clipboard."
+Write-Output "iex.run Complete! The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."
 Write-Output ""
 #
 ### Cleanup:
