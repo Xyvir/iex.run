@@ -36,9 +36,10 @@ echo "@powershell -noexit -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFo
 Write-Output ""
 If (!$command) { foreach ($file in $Filematch) {Write-Host $file} }
 # Downloaded Icon ↓
-Set-Clipboard $invocuri
+if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
-Write-Output "iex.run Complete! The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."
+Write-Output "iex.run Complete!"
+if ($command) {Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 Write-Output ""
 #
 ### Cleanup:
