@@ -30,7 +30,7 @@ $fileURLs = (wget $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Se
 $Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
 $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
-$api = ConvertFrom-Json (wget $apiurl.content)
+$api = ConvertFrom-Json (wget $apiurl).content
 #
 ### Execute:
 #
