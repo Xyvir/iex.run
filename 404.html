@@ -24,7 +24,7 @@ $invoc = $invoc -Split " " | Select -Index 1
 $invocuri = [uri]("https://" + $invoc)
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
-foreach ($item in $arguments) {if ($item -like '`@*') {Set-Variable -Name "$item.strip("@")" -Value (!(Get-Variable -Name "$item.strip("@")").value) } }
+foreach ($item in $arguments) {if ($item -like '`@*') {Set-Variable -Name "$item.strip("`@")" -Value (!(Get-Variable -Name "$item.strip("`@")").value) } }
 $fileURLs = (wget $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 $Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
