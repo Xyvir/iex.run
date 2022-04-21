@@ -44,8 +44,7 @@ If (!$command) {Write-Host "Files available on $github :" -ForegroundColor Yello
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
 if (!$error) {Write-Host "iex.run Complete!" -ForegroundColor Green} else {Write-Host "iex.run completed with errors: `n`n $error" -ForegroundColor Red}
-Write-Output ""
-if ($command) {Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
+if ($command) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 Write-Output ""
 #
 ### Cleanup:
