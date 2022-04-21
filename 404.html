@@ -6,11 +6,12 @@
 ### Config:
 $githubURL = "https://github.com/Xyvir/iex.run" # Required
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
-# These configs can be modified via 'meta-parameters' in the URL query string.
-# $NoDownloadHelper = $true # Default $false
-$NoAutoComplete = $false # Default is $false
-$NoExecute = $false # Default is $false
-$DebugVars = $true #show all vars created, default $false
+#
+# These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
+$NoDownloadHelper = $false       # Default $false
+$NoAutoComplete = $false         # Default is $false
+$NoExecute = $false              # Default is $false
+$DebugVars = $false              # show all vars created, default $false
 #
 ### Init:
 #
