@@ -39,7 +39,7 @@ $env:Path += ";$DownloadFolder"
 if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 echo "@powershell -noexit -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 Write-Output ""
-If (!$command) {Write-Host "Files available on $github`:" -ForegroundColor Yellow; Write-Host $list | Format-Table -Autosize}
+If (!$command) {Write-Host "Files available on $github :" -ForegroundColor Yellow; Write-Host $list | Format-Table -Autosize}
 # Downloaded Icon ↓
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
