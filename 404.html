@@ -32,7 +32,7 @@ $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
 $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $api = ConvertFrom-Json (wget $apiurl).content
 $list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html') {$item | Select -Property name, size} }
-$symbol = [char]25 + [char]30 + "!"
+$symbol = [char]25 + [char]30 + [char]19
 $list | Add-Member -MemberType NoteProperty -Name 'status' -Value $symbol
 #
 ### Execute:
@@ -41,8 +41,8 @@ $env:Path += ";$DownloadFolder"
 if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 echo "@set PATH=%PATH%$DownloadFolder; `n @powershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 Write-Output ""
-If (!$command) {Write-Host "Files available on $github :" -ForegroundColor Yellow; Write-Output $list | Format-Table -Autosize}
-# Downloaded Icon • ◦ ^ !
+If (!$command) {Write-Host "Files available through $github :" -ForegroundColor Yellow; Write-Output $list | Format-Table -Autosize}
+# Status Icons [char]25 + [char]30 + [char]19
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
 if (!$error) {Write-Host "iex.run Complete!" -ForegroundColor Green} else {Write-Host "iex.run completed with errors: `n`n $error" -ForegroundColor Red}
