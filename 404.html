@@ -32,7 +32,7 @@ $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
 $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $api = ConvertFrom-Json (wget $apiurl).content
 $list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html') {$item | Select -Property name, size} }
-$list | Add-Member -MemberType NoteProperty -Name 'status' -Value '○'
+$list | Add-Member -MemberType NoteProperty -Name 'status' -Value '○ ● ▲ !'
 #
 ### Execute:
 #
