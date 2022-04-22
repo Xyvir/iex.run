@@ -33,7 +33,8 @@ $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/co
 $api = ConvertFrom-Json (wget $apiurl).content
 $list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html') {$item | Select -Property name, size} }
 $symbol = [char]25 + [char]30 + [char]19
-$list | Add-Member -MemberType NoteProperty -Name '?' -Value $symbol
+$list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
+# Status Icons [char]25 + [char]30 + [char]19
 #
 ### Execute:
 #
@@ -42,7 +43,6 @@ if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "Maxi
 echo "@set PATH=%PATH%$DownloadFolder; `n @powershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 Write-Output ""
 If (!$command) {Write-Host "Files available through $github :" -ForegroundColor Yellow; Write-Output $list | Format-Table -Autosize}
-# Status Icons [char]25 + [char]30 + [char]19
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
 if (!$error) {Write-Host "iex.run Complete!" -ForegroundColor Green} else {Write-Host "iex.run completed with errors: `n`n $error" -ForegroundColor Red}
