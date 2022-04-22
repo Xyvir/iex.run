@@ -33,7 +33,7 @@ $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/co
 $api = ConvertFrom-Json (wget $apiurl).content
 $list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html') {$item | Select -Property name, size} }
 $symbol = [char]25 + [char]30 + [char]19
-$list | Add-Member -MemberType NoteProperty -Name 'status' -Value $symbol
+$list | Add-Member -MemberType NoteProperty -Name '?' -Value $symbol
 #
 ### Execute:
 #
