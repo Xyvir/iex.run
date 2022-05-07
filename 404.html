@@ -5,7 +5,8 @@
 #
 ### Config:
 $error.clear()
-$githubURL = "https://github.com/Xyvir/iex.run" # Required
+##REQUIRED: Must change the following 3 to match your github:
+$githubURL = "https://github.com/Xyvir/iex.run" # R
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
@@ -16,13 +17,16 @@ $DebugVars = $false              # show all vars created, default $false
 #
 ### Init:
 #
-$OldProgress = $ProgressPreference
-$ProgressPreference = "SilentlyContinue"
+$OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 $github = ([uri]$githubURL).Segments | Select -Last 1
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
+Echo "22 invoc=$incov"
 $invoc = $invoc.split("`"")
+Echo "24 invoc=$incov"
 $invoc = [string]::join("",($invoc.Split("`n")))
+Echo "26 invoc=$incov"
 $invoc = $invoc -Split " " | Select -Index 1
+Echo "28 invoc=$incov"
 $invocuri = [uri]("https://" + $invoc)
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
