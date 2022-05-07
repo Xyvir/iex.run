@@ -22,7 +22,7 @@ $github = ([uri]$githubURL).Segments | Select -Last 1
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $invoc = $invoc.split("`"")
 $invoc = [string]::join("",($invoc.Split("`n")))
-$invoc.Replace(' | iex', '')
+$invoc = $invoc.Replace(' | iex', '')
 #$invoc = $invoc.Split(" ")
 $invocuri = [uri]("https://" + ($invoc | Select -Last 1))
 $command = ($invocuri.Absolutepath).Trim("/")
