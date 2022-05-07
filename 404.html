@@ -23,7 +23,8 @@ $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out
 $invoc = $invoc.split("`"")
 $invoc = [string]::join("",($invoc.Split("`n")))
 $invoc.Replace(' | iex', '')
-$invocuri = [uri]("https://" + ($invoc -Split " " | Select -Last 1))
+$invoc = $invoc.Split(" ")
+$invocuri = [uri]("https://" + ($invoc | Select -Last 1))
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
 foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) { Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value) } } }
