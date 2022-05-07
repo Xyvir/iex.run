@@ -25,10 +25,9 @@ $invoc = $invoc.split("`"")
 Echo "24 invoc=$invoc"
 $invoc = [string]::join("",($invoc.Split("`n")))
 Echo "26 invoc=$invoc"
-$invoc = $invoc.Trim(" | iex")
-$invoc = $invoc -Split " " | Select -Last
+$invoc.Replace(' | iex', '')
 Echo "28 invoc=$invoc"
-$invocuri = [uri]("https://" + $invoc)
+$invocuri = [uri]("https://" + ($invoc -Split " " | Select -Last 1))
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
 foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) { Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value) } } }
