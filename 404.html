@@ -20,13 +20,13 @@ $DebugVars = $false              # show all vars created, default $false
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 $github = ([uri]$githubURL).Segments | Select -Last 1
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-Echo "22 invoc=$incov"
+Echo "22 invoc=$invoc"
 $invoc = $invoc.split("`"")
-Echo "24 invoc=$incov"
+Echo "24 invoc=$invoc"
 $invoc = [string]::join("",($invoc.Split("`n")))
-Echo "26 invoc=$incov"
+Echo "26 invoc=$invoc"
 $invoc = $invoc -Split " " | Select -Index 1
-Echo "28 invoc=$incov"
+Echo "28 invoc=$invoc"
 $invocuri = [uri]("https://" + $invoc)
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
