@@ -49,7 +49,7 @@ Write-Output ""
 If (!$command) {Write-Host "Files available through $github :" -ForegroundColor Yellow; Write-Output $list | Format-Table -Autosize}
 $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
 pushd $DownloadFolder
-if ($command) curl.exe -O $DownloadUrl
+if ($command) {curl.exe -O $DownloadUrl}
 popd
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
