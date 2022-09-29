@@ -35,7 +35,7 @@ foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@
 $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
 $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
-$list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html') {$item | Select -Property name, size} }
+$list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html') {$item | Select -Property name, size, sha} }
 $symbol = [char]25 + [char]30 + [char]19
 $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # Status Icons [char]25 + [char]30 + [char]19
