@@ -48,7 +48,7 @@ echo "@set PATH=%PATH%;$DownloadFolder; `n @powershell -c `"curl.exe \`"%~n0/%1\
 Write-Output ""
 If (!$command) {Write-Host "Files available through $github :" -ForegroundColor Yellow; Write-Output $list | Format-Table -Autosize}
 $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
-$exe = $invoc.substring($invoc.LastIndexOf('/') + 1, $invoc.length - $invoc.LastIndexOf('/') - 1 )
+$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )
 pushd $DownloadFolder
 if ($command) {curl.exe -O $DownloadUrl}
 popd
