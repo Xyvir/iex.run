@@ -47,7 +47,10 @@ if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "Maxi
 echo "@set PATH=%PATH%;$DownloadFolder; `n @powershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 Write-Output ""
 If (!$command) {Write-Host "Files available through $github :" -ForegroundColor Yellow; Write-Output $list | Format-Table -Autosize}
-$download = ($api | Where-Object {$_.name -like "*$command*"}).download_url
+$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
+pushd $DownloadFolder
+if ($command) curl.exe -O $DownloadUrl
+popd
 if ($command) {Set-Clipboard $invocuri}
 Write-Output ""
 if (!$error) {Write-Host "iex.run Complete!" -ForegroundColor Green} else {Write-Host "iex.run completed with errors: `n`n $error" -ForegroundColor Red}
