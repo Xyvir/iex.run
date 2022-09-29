@@ -20,17 +20,12 @@ $DebugVars = $false              # show all vars created, default $false
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 $github = ([uri]$githubURL).Segments | Select -Last 1
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-echo 1 $invoc
 $invoc = $invoc.split("`"")
-echo 2 $invoc
 $invoc = [string]::join("",($invoc.Split("`n")))
-echo 3 $invoc
 $invoc = $invoc.Replace(' | iex', '')
-echo 4 $invoc
 $curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
-if ($invoc -like "* *") {$invocuri2 = $invoc.SubString( $invoc.LastIndexOf(' ')+1, $invoc.Length-$invoc.LastIndexOf(' ') )}
+$invocuri2 = $invoc.Replace($curl + " ","")
 $invoc = $invoc.Split(" ")
-echo 5 $invoc
 $invocuri = [uri]("https://" + ($invoc | Select -Last 1))
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
