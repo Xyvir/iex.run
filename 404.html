@@ -70,7 +70,7 @@ popd
 if ($command) {Set-Clipboard $invocuri}
 If (!$command) {$status = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -IncludeEqual}
 If (!$command) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name | Select name, @{E={$_.SideIndicator};L="orphan"}}
-If (!$command) {foreach ($thing in $status){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) -replace("<=","") -replace("=>","^"); if (($orphans | Where-Object {$_.name -eq $thing.name}).orphan -eq "=>") {$thing.SideIndicator = [char]19} }}
+If (!$command) {foreach ($thing in $status){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) -replace("<=","") -replace("=>",[char]18); if (($orphans | Where-Object {$_.name -eq $thing.name}).orphan -eq "=>") {$thing.SideIndicator = [char]19} }}
 If (!$command) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $status | Select  name, @{E={$_.SideIndicator}; L="?"} | Format-Table -Autosize}
 Write-Output ""
 if (!$error) {Write-Host "iex.run Complete!" -ForegroundColor Green} else {Write-Host "iex.run completed with errors: `n`n $error" -ForegroundColor Red}
