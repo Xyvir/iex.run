@@ -58,7 +58,7 @@ $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
 if ($command) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
 pushd $DownloadFolder
-if (!$command) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha}}
+if (!$command) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
 if ($command) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
 if ($command) {curl.exe -# -O $DownloadUrl; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
 if ($command) {Set-Content -Path $exe -Stream sha -value $sha}
