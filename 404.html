@@ -59,7 +59,7 @@ $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
 if ($command) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
 pushd $DownloadFolder
-if ($command) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow}
+if ($command) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
 if ($command) {curl.exe -O $DownloadUrl}; if ($?) {Set-Content -Path $exe -Stream sha -value $sha} 
 if ($command) {Set-Content -Path $exe -Stream sha -value $sha}
 popd
