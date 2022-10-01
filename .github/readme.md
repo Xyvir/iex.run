@@ -38,6 +38,7 @@ lightweight as possible.
 
 
 todo:
+-Add error message when no matching file found; trying built-in command instead
 -setup default.conf
 -setup .conf
 -use for-each to download all matches
@@ -45,5 +46,6 @@ todo:
 -create included uninstall script
 -refactor cumbersome string manipulation
 -polishing on HTML page
+-add a wiki for steps on setup
 -support for powershell core / posh?
 
