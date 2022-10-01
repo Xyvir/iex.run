@@ -66,6 +66,7 @@ if (!$command) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType Not
 if ($command) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
 if ($command) {curl.exe -# -O $DownloadUrl; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
 if ($command) {Set-Content -Path $exe -Stream sha -value $sha}
+if ($command) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; Write-Output ""}
 if ($command) {start-process powershell -ArgumentList "-noexit -command `"& $exe`" "}
 popd
 if ($command) {Set-Clipboard $invocuri}
