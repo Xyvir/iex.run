@@ -29,7 +29,8 @@ https://iex.run/1kbrl
 ### 1. Is this a good idea?
 
 Probably not, it teaches end users very bad security practices.
-But I find it very convienient so use it at your own risk : )
+
+But I find it very convienient in particular cases, so use it at your own risk : )
 
     
 ### 2. WHy not just use scoop, or winget, or chocolatey?
