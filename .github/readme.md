@@ -38,7 +38,9 @@ Those are all more suited to full applications and require install. iex.run is b
 lightweight as possible. 
 
 
-todo:
+
+
+## todo:
 
 -Add error message when no matching file found; trying built-in command instead
 
