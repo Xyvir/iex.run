@@ -16,6 +16,11 @@ https://iex.run/1kbrl
 5. Upload powershell scripts, batch files, or small binaries to the root of the github repo
 6. Launch those scripts from any Windows endpoint using the simple iex.run syntax, the stub script launcher, or Magic URLs.
 
+## How to use:
+### 1. Basic Invocation using curl.exe.
+### 2. Using the stub batch launcher (Only after step 1 has been run once previously on an endpoint)
+### 3. Providing Magic URLs to others.
+
 ## FAQ
 
 1. Is this a good idea?
