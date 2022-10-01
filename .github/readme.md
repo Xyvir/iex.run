@@ -19,10 +19,12 @@ https://iex.run/1kbrl
 ## FAQ
 
 1. Is this a good idea?
+
     Probably not, it teaches end users very bad security practices.
     But I find it very convienient so use it at your own risk : )
     
 2. WHy not just use scoop, or winget, or chocolatey?
+
    Those are all more suited to full applications and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and is as ultra-
    lightweight as possible. 
 
