@@ -34,10 +34,10 @@ Probably not, it teaches end users very bad security practices.
 But I find it very convienient in particular cases, so use it at your own risk : )
 
     
-### 2. WHy not just use scoop, or winget, or chocolatey?
+### 2. Why not just use scoop, or winget, or chocolatey?
 
-Those are all more suited to full applications and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and is as ultra-
-lightweight as possible. 
+Those are all more suited to full applications and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and runs in most Windows machines out of the box.
+It can also be used to setup/install those full-feature package managers in a super easy fashion.
 
 
 
