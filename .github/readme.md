@@ -22,6 +22,7 @@ https://iex.run/1kbrl
 ### 1. Basic Invocation using curl.exe.
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Providing Magic URLs to others.
+### 4. Optional: 'Uninstall' iex.run when you are done
 
 ## FAQ
 
