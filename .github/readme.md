@@ -5,7 +5,7 @@
 iex.run will turn a Github Pages repository into an online script toolbox that you can easily access from any unmanaged, online Windows endpoint with as few keystrokes as possible; and with Magic URLs you can easily give instructiosns for other end-users to do the same. 
 
 ## Test it now by playing a little game:
-https://iex.run/1kbrl
+    https://iex.run/1kbrl
 
 ## Getting started is easy:
 
@@ -25,13 +25,15 @@ https://iex.run/1kbrl
 
 ### 1. Is this a good idea?
 
-    Probably not, it teaches end users very bad security practices.
-    But I find it very convienient so use it at your own risk : )
+Probably not, it teaches end users very bad security practices.
+But I find it very convienient so use it at your own risk : )
+
     
 ### 2. WHy not just use scoop, or winget, or chocolatey?
 
-   Those are all more suited to full applications and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and is as ultra-
-   lightweight as possible. 
+Those are all more suited to full applications and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and is as ultra-
+lightweight as possible. 
+
 
 todo:
 -setup default.conf
