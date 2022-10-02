@@ -4,7 +4,7 @@
 
 iex.run will turn a Github Pages repository into an online script toolbox that you can easily access from any unmanaged, online Windows endpoint with as few keystrokes as possible; and with Magic URLs you can easily guide other end-users to do the same. 
 
-It works based on a polyglot 404.HTML page that also contains a Powershell script, along with an optional downloaded helper 'stub script launcher' to reduce keystrokes even further after first invocation on an endpoint.
+It works based on a polyglot 404.HTML page that also contains a Powershell script, along with an optionally downloaded helper 'stub script launcher' to reduce keystrokes even further after first invocation on an endpoint.
 
 ## Test it now by playing a little game:
 https://iex.run/1kbrl
