@@ -56,7 +56,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 set-executionpolicy -force -scope process bypass
 $env:Path += ";$DownloadFolder;"
 if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
-echo "@set PATH=%PATH%;$DownloadFolder; `n @powershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
+echo "@set PATH=%PATH%;$DownloadFolder; `n` @powershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || dir $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 Write-Output ""
 $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
