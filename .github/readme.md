@@ -14,7 +14,7 @@ https://iex.run/1kbrl
 iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
 
 > Example:  
-> curl.exe iex.run/alphabet?23-30?35-50 | iex
+> curl.exe iex.run/alphabet?23-30?35-50 | iex  
 > is the same as:  
 > alphabet.cmd 23-30 35-50  
 
