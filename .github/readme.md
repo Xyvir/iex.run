@@ -10,6 +10,8 @@ It works by way of a polyglot 404.HTML page / Powershell script, alongside an op
 https://iex.run/1kbrl
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.
 
+Arbitrary arguments are supported by using '?' as a delimiter, iex.run will replace all '?' with spaces when the command is launched.
+
 ## How to use:
 ### 1. Basic Invocation using curl.exe from powershell or cmd.exe.
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
