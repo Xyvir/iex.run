@@ -10,8 +10,13 @@ It works by way of a polyglot 404.HTML page / Powershell script, alongside an op
 https://iex.run/1kbrl
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.
 
-## Arbitrary arguments are supported by using '?' as a delimiter, iex.run will replace all '?' with spaces when the command is launched.
-> curl.exe iex.run/alphabet?23-30?35-50
+## Arbitrary arguments are supported by using '?' as a delimiter.
+iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
+
+> Example:  
+> curl.exe iex.run/alphabet?23-30?35-50 | iex
+> is the same as
+> alphabet.cmd 23-30 35-50
 
 ## How to use:
 ### 1. Basic Invocation using curl.exe from powershell or cmd.exe.
