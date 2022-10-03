@@ -1,29 +1,30 @@
 # iex.run
 
-## iex.run is an ultra-minamalist script bootstrapper.
+## iex.run is a powershell-based ultra-minamalist script bootstrapper.
 
-iex.run will turn a Github Pages repository into an online script toolbox that you can easily access from any unmanaged, online Windows endpoint with as few keystrokes as possible; and with Magic URLs you can easily guide other end-users to do the same. 
+iex.run can turn a Github Pages repository into an online script toolbox that you can easily access from any unmanaged, online Windows endpoint with as few keystrokes as possible; and using 'Magic URLs' you can easily guide other users to do the same. 
 
-It works based on a polyglot 404.HTML page that also contains a Powershell script, along with an optionally downloaded helper 'stub script launcher' to reduce keystrokes even further after first invocation on an endpoint.
+It works by way of a polyglot 404.HTML page / Powershell script, alongside an optionally-downloaded helper 'stub script launcher' to reduce keystrokes even further after first invocation on an endpoint.
 
-## Test it now by playing a little game:
+## Test it now by visiting the 'Magic URL' below, and following the instructions to play a little game. This demo launches the 1kbrl.exe in the repo above.
 https://iex.run/1kbrl
-
-## Getting started is easy:
-
-1. Fork this repo
-2. (Optional but recommended) purchase a short vanity URL like 'iex.run'
-3. Set up the forked repo as a Github Page using the vanity URL
-4. Update mandatory configs and preferences in .conf file.
-5. Upload powershell scripts, batch files, or small binaries to the root of the github repo
-6. Launch those scripts from any Windows endpoint using the simple iex.run syntax, the stub script launcher, or Magic URLs.
+>Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.
 
 ## How to use:
-### 1. Basic Invocation using curl.exe.
+### 1. Basic Invocation using curl.exe from powershell or cmd.exe.
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
-### 3. Use the stub script launcher in your own scripts.
-### 4. Providing Magic URLs to others.
+### 3. Using the stub script launcher in your own scripts or scripting engine.
+### 4. Providing Magic URLs to others via email, teams or other message services.
 ### 5. Optional: 'Uninstall' iex.run from the endpoint when you are done. (Deletes all previously downloaded files including the stub script launcher)
+
+## Setting up your own iex.run is easy!
+
+1. Fork this repo
+2. (Optional but recommended) purchase a short vanity URL like 'iex.run'. Get a .run domain if you wanna be cool like me.
+3. Set up the forked repo as a Github Page using the vanity URL purchased above.
+4. Update mandatory configs and preferences in the main.config file.
+5. Upload powershell scripts, batch files, or small binaries to the root of the github repo
+6. Launch those scripts from any Windows endpoint using the simple iex.run syntax, the stub script launcher, or Magic URLs.
 
 ## FAQ
 
