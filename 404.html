@@ -88,7 +88,18 @@ $ProgressPreference = $OldProgress
 #################### HTML stuff goes below here #########################
 # Let the insane cross-commenting begin.
 #--><!DOCTYPE html><!--
-#--><html style=background-color: black; color: mintcream;><body><!--
+#-->  <head><!--
+#-->    <style>/*
+#*/      html * {/*
+#*/        font-size: 16px;/*
+#*/        line-height: 1.625;/*
+#*/        background-color: dimgrey;/*
+#*/        color: mintcream;/*
+#*/        font-family: Nunito, sans-serif;/*
+#*/      }/*
+#*/    </style><!--
+#-->  </head><!--
+#--><html><body><!--
 #--><div style = "margin-left:25%"><!--
 #--><p>1. Click the 'Copy' button below.</p><!--
 #--><button onclick="myFunction()">Copy</button><!--
