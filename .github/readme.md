@@ -44,9 +44,10 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 ## Current Limitations:
 - Stub App cannot set the path variable when invoke from powershell;  
-   >Workarounds -    launch stub app from cmd.exe instead  
-                    >>type out the full invocation from powershell once to initialize (curl.exe iex.run | iex)  
-                    >>manually add iex.run download location to user $path (note; this entry will not be removed by uninstall script)  
+   >Workarounds  
+   Launch stub app from cmd.exe instead  
+   type out the full invocation from powershell once to initialize (curl.exe iex.run | iex)  
+   manually add iex.run download location to user $path (note; this entry will not be removed by uninstall script)  
 
 ## todo:
 
