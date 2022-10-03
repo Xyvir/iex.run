@@ -1,2 +1,4 @@
-@echo 0"%0" *"%*"
-@pause
+@ECHO OFF
+echo "%0"
+echo "%*"
+pause
