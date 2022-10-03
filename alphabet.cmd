@@ -14,3 +14,4 @@ set up=1 & if %%a GTR %%b set up=-1
 FOR /L %%i IN (%%a,!up!,%%b) DO (
 cmd /c exit %%i & set alp=!alp!!=exitcodeAscii! ))
 echo !alp!
+pause
