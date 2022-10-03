@@ -57,6 +57,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - use for-each to download all matches  
 - refactor 404.html to use config files  
 - create included uninstall script  
+- Add some additiona cmd.exe to make it psudeo 'triple polyglot' via alternate cmd invocation 'curl iex.run | cmd'
 - refactor cumbersome string manipulation  
 - polishing on HTML page  
 - add a wiki for steps on setup  
