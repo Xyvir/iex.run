@@ -77,7 +77,6 @@ If (!$command) {Write-Host "Available Files and Status :" -ForegroundColor Yello
 if (!$command) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
 if (!$error) {Write-Host "$github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
 if ($command) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
-Write-Output ""
 #
 ### Cleanup:
 #
