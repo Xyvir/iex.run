@@ -1,4 +1,4 @@
 @ECHO OFF
-echo "%0"
-echo "%*"
+echo "%~0"
+echo "%~*"
 pause
