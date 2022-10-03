@@ -51,7 +51,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # Status Icons [char]25 + [char]30 + [char]19
 #
 ### Execute:
-# & CLS
+#
 set-executionpolicy -force -scope process bypass
 $env:Path += ";$DownloadFolder;"
 if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
