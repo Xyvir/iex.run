@@ -34,10 +34,12 @@ Probably not, it teaches end users very bad security practices.
 But I find it very convienient in particular cases, so use it at your own risk : )
 
     
-### 2. Why not just use scoop, or winget, or chocolatey?
+### 2. Why not just use git, scoop, winget, or chocolatey?
 
-Those are all more suited to full applications and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and runs in most Windows machines out of the box.
-It can also be used to setup/install those full-feature package managers in a super easy fashion.
+Those are all more suited to full applications / development, each have their own pre-requesites and require install. iex.run is built on pure vanilla powerhell and HTML so requires no install and runs in most Windows machines out of the box.
+It can also be used to customize setup and install scripts for those full-feature package managers.
+
+If you are an MSP, iex.run is not meant to be a replacement for a script engine or RMM but a quick bootstrapper to help quickly get unmanaged PCs managed, or to otherwise allow end-users to easily run quick ad-hoc scripts themselves.
 
 
 
