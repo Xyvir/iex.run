@@ -42,7 +42,9 @@ It can also be used to customize setup and install scripts for those full-featur
 If you are an MSP, iex.run is not meant to be a replacement for a script engine or RMM but a quick bootstrapper to help quickly get unmanaged PCs managed, or to otherwise allow end-users to easily run quick ad-hoc scripts themselves.
 
 
-
+## Current Limitations:
+- Stub App cannot set the path variable when invoke from powershell; note to self: add to powershell profile to fix? 
+   Workarounds - type out the full invocation or launch from cmd.exe instead
 
 ## todo:
 
