@@ -1,6 +1,6 @@
 @ECHO OFF
 SETLOCAL EnableExtensions  EnableDelayedExpansion
-REM accepts 1 parameter, Type ascii numerical ranges with dash separated by spaces double-quoted.
+REM accepts ascii numerical ranges with dash separated by spaces, no need for quotes.
 REM All characters are between 33-126, numbers 49-57, lower 97-122, upper 65-90
 set "ipt=%* "
 if not defined ipt set ipt="97-122 65-90"
