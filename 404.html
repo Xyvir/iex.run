@@ -13,6 +13,7 @@
 #
 $error.clear()
 ##REQUIRED: Must change the following 3 to match your github:
+# & set "cmd=iex.run" || this is for the cmd hook at the very bottom.
 $githubURL = "https://github.com/Xyvir/iex.run" # R
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
@@ -130,5 +131,5 @@ $ProgressPreference = $OldProgress
 # If you are seeing this message, you may have forgotten to add '| iex' to the end of your curl.exe command. 
 #
 #
-# & cls & powershell -c "curl.exe iex.run | iex"
+# & cls & powershell -c "curl.exe %cmd% | iex"
 # -->
