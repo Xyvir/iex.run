@@ -48,6 +48,10 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
    -Launch stub app from cmd.exe instead  
    -type out the full invocation from powershell once to initialize (curl.exe iex.run | iex)  
    -manually add iex.run download location to user $path (note; this entry will not be removed by uninstall script)  
+   
+- cmd.exe invocation can only be used to install the stub script; 'curl iex.run/sciptname | cmd' will ignore scriptname  
+   >Workarounds:  
+    Use 'curl iex.run | cmd' to install the stub script first then 'iex.run sciptname' to download and run the script.
 
 ## todo:
 
