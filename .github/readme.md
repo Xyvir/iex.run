@@ -51,16 +51,15 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 ## todo:
 
--Add error message when no matching file found; trying built-in command instead
-
--setup default.conf  
--setup .conf  
--use for-each to download all matches  
--refactor 404.html to use config files  
--create included uninstall script  
--refactor cumbersome string manipulation  
--polishing on HTML page  
--add a wiki for steps on setup  
--support for powershell core / posh?  
+- Add error message when no matching file found; trying built-in command instead
+- setup default.conf  
+- setup .conf  
+- use for-each to download all matches  
+- refactor 404.html to use config files  
+- create included uninstall script  
+- refactor cumbersome string manipulation  
+- polishing on HTML page  
+- add a wiki for steps on setup  
+- support for powershell core / posh?  
 
 
