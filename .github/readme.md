@@ -1,6 +1,6 @@
 # iex.run
 
-## iex.run is a powershell-based ultra-minamalist script bootstrapper.
+## a powershell-based, ultra-minamalist script bootstrapper.
 
 iex.run can turn a Github Pages repository into an online script toolbox that you can easily access from any unmanaged, online Windows endpoint with as few keystrokes as possible; and using 'Magic URLs' you can easily guide other users to do the same. 
 
