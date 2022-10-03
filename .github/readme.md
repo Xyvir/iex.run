@@ -9,7 +9,8 @@ It works by way of a polyglot 404.HTML page / Powershell script, alongside an op
 ## Test it now by visiting the 'Magic URL' below, and following the instructions to play a little game. 
 This demo launches the 1kbrl.exe found in the iex.run repo above.  
 https://iex.run/1kbrl
->Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.
+>Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
+>credit to https://github.com/tapio/1kbrl
 
 ## Arbitrary arguments are supported by using '?' as a delimiter.
 iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
