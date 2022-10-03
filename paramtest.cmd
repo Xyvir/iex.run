@@ -1,2 +1,2 @@
-echo 0"%0" *"%*"
-pause
+@echo 0"%0" *"%*"
+@pause
