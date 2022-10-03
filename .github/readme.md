@@ -15,8 +15,8 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 
 > Example:  
 > curl.exe iex.run/alphabet?23-30?35-50 | iex
-> is the same as
-> alphabet.cmd 23-30 35-50
+> is the same as:  
+> alphabet.cmd 23-30 35-50  
 
 ## How to use:
 ### 1. Basic Invocation using curl.exe from powershell or cmd.exe.
