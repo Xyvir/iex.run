@@ -67,7 +67,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 ## todo:
 
 - Add error message when no matching file found; trying built-in command instead
-- use for-each to download all matches
+- Add error on multiple matches and list them out.
 - skip redownload if the sha alternate file stream matches
 - setup backup.config  
 - setup main.config  
