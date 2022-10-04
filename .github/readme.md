@@ -75,6 +75,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - setup main.config  
 - refactor 404.html to use external config files  
 - create included uninstall script  
+- Have stub script replace spaces with quesiton marks automatically for parameters.
 - refactor cumbersome string manipulation  
 - fill details on steps on setup  
 - support for powershell core / posh?  
