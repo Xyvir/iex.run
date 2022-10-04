@@ -68,7 +68,7 @@ if ($command) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundC
 if ($command) {curl.exe -# -O $DownloadUrl; Write-Output ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
 if ($command) {Set-Content -Path $exe -Stream sha -value $sha}
 if ($command) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; Write-Output ""}
-if ($command) {start-process -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if ($command) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 popd
 if ($command) {Set-Clipboard $invocuri}
 If (!$command) {$status = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -IncludeEqual}
