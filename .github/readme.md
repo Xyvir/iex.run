@@ -75,7 +75,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - setup backup.config  
 - setup main.config  
 - add URL decoding on parameters to allow for illegal URL chars
-- refactor 404.html to use external config files  
+- refactor 404.html to use external config files AND embedded HTML files w/ iframes
 - create included uninstall script  
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - refactor cumbersome string manipulation  
