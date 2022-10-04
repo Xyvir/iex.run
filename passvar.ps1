@@ -1,3 +1,3 @@
 #example of getting a variable from a parent script
-echo $testvar
+echo $Env:$testvar
 pause
