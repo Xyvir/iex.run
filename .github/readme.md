@@ -79,7 +79,9 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - create included uninstall script  
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - refactor cumbersome string manipulation  
-- fill details on steps on setup  
+- fill readme details on steps on setup  
+- break off 404 html using iframe and send parentl URL data to iframe child.
+ (https://htmldom.dev/communication-between-an-iframe-and-its-parent-window/)
 - support for powershell core / posh?  
 
 
