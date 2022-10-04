@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+  <head>
+    <style>
+      html * {
+        background-color: dimgrey;
+        color: mintcream;
+      }
+    </style>
+  </head>
+<html><body>
+<div style = "margin-left:16%">
+<p>1. Click the 'Copy' button below.</p>
+<button onclick="myFunction()">Copy</button>
+<input type="text" value="powershell -noexit -c curl.exe" id="myInput" size="50" readonly="">
+<p>2. Press Winkey and 'R' together. ( &#x229E  + R ) NOTE: Windows key is bottom-left between CTRL and ALT. </p>
+<p>3. Paste. (CTRL +V)</p>
+<p>4. Press Enter.</p>
+<p>5. If prompted, click 'Yes' on the 'Do you want to allow this app...' pop-up. </p>
+<p>6. Please wait until you see the green 'Complete!' message. </p> <br> 
+<p>NOTE: If anything goes wrong, or you are still having issues, please inform your IT department. </p>
+<p id="demo"></p>
+</div>
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+}
+document.getElementById("myInput").value = 
+"powershell -noexit -c \"curl.exe " + window.location.hostname + window.location.pathname + window.location.search + " | iex\"";
+</script>
+<footer style="position: fixed; bottom: 0; right: 0; text-align: right"><a href="https://github.com/Xyvir/iex.run">What is this?</a></footer>
+</body></html>
