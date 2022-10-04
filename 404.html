@@ -23,6 +23,8 @@ $NoWildcard = $false             # Do not match command on wildcard, not impleme
 $NoExecute = $false              # Download Script only, not implemented yet.
 $HiddenWindow = $false           # hide powershell window, not implemented yet.
 $DebugVars = $false              # show all vars created
+$cat = $false                    # prints script text only, does not download or execute
+$help = $false                   # same as cat except filters to line comments starting with #, : or REM
 $Uninstall = $false              # Run uninstall script after, not implemented yet.
 #
 ### Init:
@@ -83,7 +85,7 @@ if ($command) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$
 #
 $ProgressPreference = $OldProgress
 #
-### Optional Uninstall:
+### Optional: Uninstall:
 #
 #################### HTML stuff goes below here #########################
 # Let the insane cross-commenting begin.
