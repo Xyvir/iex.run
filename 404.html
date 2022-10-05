@@ -41,12 +41,11 @@ foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@
 #$fileURLs = (invoke-webrequest $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 #$Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
-$apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
+$apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/scripts/contents"
 $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
 $list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html'-and $item.name -ne '.gitattributes' -and $item.name -ne '.github' -and $item.name -ne '.gitignore') {$item | Select -Property name, size, sha} }
 $symbol = [char]25 + [char]30 + [char]19
 $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
-# Status Icons [char]25 + [char]30 + [char]19
 #
 ### Execute:
 #
