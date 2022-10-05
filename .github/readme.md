@@ -22,7 +22,13 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 > alphabet.cmd 23-30 35-50  
 
 ## How to use:
-### 1. Basic Invocation using curl.exe from powershell or cmd.exe.
+### 1. Basic Invocation using curl.exe from powershell or cmd.exe.  
+>powershell syntax:  
+>curl.exe iex.run/alphabet | iex  
+  
+>cmd.exe synatx:  
+>curl iex.run | cmd alphabet  
+  
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
 ### 4. Providing Magic URLs to others via email, teams or other message services.
@@ -60,10 +66,6 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
    -Launch stub app from cmd.exe instead  
    -type out the full invocation from powershell once to initialize (curl.exe iex.run | iex)  
    -manually add iex.run download location to user $path (note; this entry will not be removed by uninstall script)  
-   
-- cmd.exe invocation can only be used to install the stub script; 'curl iex.run/sciptname | cmd' will ignore scriptname  
-   >Workarounds:  
-    Use 'curl iex.run | cmd' to install the stub script first then 'iex.run sciptname' to download and run the script.
     
 - stub helper script can only be used programatically inside .ps1 files and not batch files.  
 - iex.run assumes HTTPS is not enforced in Github Pages to require fewer keystrokes; it will not work if Github Pages works.
