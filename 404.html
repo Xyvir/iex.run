@@ -58,21 +58,21 @@ $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
 if ($command) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
 pushd $DownloadFolder
-if (!$command) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
-if ($command) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
-if ($command) {curl.exe -# -O $DownloadUrl; Write-Output ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
-if ($command) {Set-Content -Path $exe -Stream sha -value $sha}
-if ($command) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; Write-Output ""}
-if ($command) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if (!$DownloadUrl) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
+if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
+if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; Write-Output ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
+if ($DownloadUrl) {Set-Content -Path $exe -Stream sha -value $sha}
+if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; Write-Output ""}
+if ($DownloadUrl) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 popd
-if ($command) {Set-Clipboard $invocuri}
-If (!$command) {$status = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -IncludeEqual}
-If (!$command) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name | Select name, @{E={$_.SideIndicator};L="orphan"}}
-If (!$command) {foreach ($thing in $status){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) -replace("<=","") -replace("=>",[char]18); if (($orphans | Where-Object {$_.name -eq $thing.name}).orphan -eq "=>") {$thing.SideIndicator = [char]19} }}
-If (!$command) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $status | Select  name, @{E={$_.SideIndicator}; L="?"} | Format-Table -Autosize; Write-Output ""}
-if (!$command) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
-if (!$error) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
-if ($command) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
+if ($DownloadUrl) {Set-Clipboard $invocuri}
+If (!$DownloadUrl) {$status = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -IncludeEqual}
+If (!$DownloadUrl) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name | Select name, @{E={$_.SideIndicator};L="orphan"}}
+If (!$DownloadUrl) {foreach ($thing in $status){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) -replace("<=","") -replace("=>",[char]18); if (($orphans | Where-Object {$_.name -eq $thing.name}).orphan -eq "=>") {$thing.SideIndicator = [char]19} }}
+If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $status | Select  name, @{E={$_.SideIndicator}; L="?"} | Format-Table -Autosize; Write-Output ""}
+if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
+if (!$DownloadUrl) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
+if ($DownloadUrl) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 #
 ### Cleanup:
 #
