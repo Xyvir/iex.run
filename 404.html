@@ -109,6 +109,6 @@ $ProgressPreference = $OldProgress
 # & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar:cmd =%"
 # & echo %myvar%
 # & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar: =?%"
-# & echo %myvar%
+# & echo powershell -c "curl.exe %cmd%/%myvar% | iex"
 # & powershell -c "curl.exe %cmd%/%myvar% | iex"
 # --> 
