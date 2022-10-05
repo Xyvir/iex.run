@@ -66,6 +66,7 @@ if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; Wr
 if ($DownloadUrl) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 popd
 if ($DownloadUrl) {Set-Clipboard $invocuri}
+If (!$DownloadUrl) {$names = ($list.name + $files.name) | Select-Object -unique}
 If (!$DownloadUrl) {$status = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -IncludeEqual}
 If (!$DownloadUrl) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name | Select name, @{E={$_.SideIndicator};L="orphan"}}
 If (!$DownloadUrl) {foreach ($thing in $status){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) -replace("<=","[char]18") -replace("=>","."); if (($orphans | Where-Object {$_.name -eq $thing.name}).orphan -eq "=>") {$thing.SideIndicator = [char]19} }}
