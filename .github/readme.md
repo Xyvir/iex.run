@@ -39,8 +39,8 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 1. Fork this repo
 2. (Optional but recommended) purchase a short vanity URL like 'iex.run'. Get a .run domain if you wanna be cool like me.
 3. Set up the forked repo as a Github Page using the vanity URL purchased above.
-4. Update mandatory configs and preferences in the main.config file.
-5. Upload powershell scripts, batch files, or small binaries to the root of the github repo
+4. Update mandatory configs and preferences in the /etc/+main.config file.
+5. Upload powershell scripts, batch files, or small binaries to the /scripts folder
 6. Launch those scripts from any Windows endpoint using the simple iex.run syntax, the stub script launcher, or Magic URLs.
 
 ## FAQ
