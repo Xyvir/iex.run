@@ -106,5 +106,6 @@ $ProgressPreference = $OldProgress
 #
 # & for /f "TOKENS=2*" %A in ('echo %cmdcmdline%') do set "myvar=%A"
 # & IF [%myvar%] NEQ [] SET "myvar=%myvar: =?%"
-# & cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
+# & powershell -c "curl.exe %cmd%/%myvar% | iex"
+# & echo %myvar%
 # --> 
