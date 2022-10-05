@@ -56,7 +56,7 @@ echo "@ECHO OFF`nset PATH=%PATH%;$DownloadFolder; `npowershell -c `"curl.exe \`"
 Write-Output ""
 $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
-if ($command) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
+if ($DownloadUrl) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
 pushd $DownloadFolder
 if (!$DownloadUrl) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
 if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
