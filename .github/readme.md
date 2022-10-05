@@ -26,7 +26,7 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 >powershell syntax:  
 >curl.exe iex.run/alphabet | iex  
   
->cmd.exe synatx:  
+>cmd.exe synatx (works in powershell as well):  
 >curl iex.run | cmd alphabet  
   
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
