@@ -103,6 +103,6 @@ $ProgressPreference = $OldProgress
 #--></body></html><!--
 #
 # If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
-#
-# & cls & powershell -c "curl.exe %cmd% | iex"
+# & for /f "TOKENS=2" %A in ('echo %cmdcmdline%') do set "myvar=%A"
+# & cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
 # --> 
