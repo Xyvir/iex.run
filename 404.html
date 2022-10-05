@@ -54,7 +54,7 @@ $env:Path += ";$DownloadFolder;"
 if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 echo "@ECHO OFF`nset PATH=%PATH%;$DownloadFolder; `npowershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || powershell -c `"& %1`" || dir /b $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 Write-Output ""
-$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
+if ($command) {$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url}
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
 if ($DownloadUrl) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
 pushd $DownloadFolder
