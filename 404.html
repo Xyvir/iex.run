@@ -69,7 +69,7 @@ if ($DownloadUrl) {Set-Clipboard $invocuri}
 If (!$DownloadUrl) {$status = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -IncludeEqual}
 If (!$DownloadUrl) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name | Select name, @{E={$_.SideIndicator};L="orphan"}}
 If (!$DownloadUrl) {foreach ($thing in $status){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) -replace("<=","") -replace("=>",[char]18); if (($orphans | Where-Object {$_.name -eq $thing.name}).orphan -eq "=>") {$thing.SideIndicator = [char]19} }}
-IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching $command found in $github, please double check your spelling." -ForegroundColor Red}
+IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
 If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $status | Select  name, @{E={$_.SideIndicator}; L="?"} | Format-Table -Autosize; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
