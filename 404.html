@@ -105,7 +105,10 @@ $ProgressPreference = $OldProgress
 # If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
 # 
 # & IF ["%cmdcmdline%"] NEQ [""] SET "myvar=%cmdcmdline%"
+# & echo %myvar%
 # & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar:cmd =%"
+# & echo %myvar%
 # & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar: =?%"
-# & cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
+# & echo %myvar%
+# & powershell -c "curl.exe %cmd%/%myvar% | iex"
 # --> 
