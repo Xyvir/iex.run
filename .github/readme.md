@@ -68,7 +68,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
    -manually add iex.run download location to user $path (note; this entry will not be removed by uninstall script)  
     
 - stub helper script can only be used programatically inside .ps1 files and not batch files.  
-- iex.run assumes HTTPS is not enforced in Github Pages to require fewer keystrokes; it will not work if Github Pages works.
+- iex.run assumes HTTPS is not enforced in Github Pages to require fewer keystrokes; it will not work if Github Pages enforces HTTPS.
 
 ## todo:
 
