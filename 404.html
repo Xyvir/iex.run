@@ -1,13 +1,13 @@
 #<!-- NOTE: Leave this first # uncommented, will be hidden by HTML body style below.
 ############## Powershell stuff goes below here #########################
 # 
-# NOTE: To avoid PS outtputting errors, don't leave any newlines here without a PS comments (#).
+# NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
 #
 ### Config:
 #
 $error.clear()
 ##REQUIRED: Must change the following 3 to match your github:
-
+#
 $githubURL = "https://github.com/Xyvir/iex.run" # Do not leave trailing / for now.
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 # & set "cmd=iex.run" || this is for the cmd hook at the very bottom.
