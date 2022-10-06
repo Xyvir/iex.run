@@ -75,7 +75,7 @@ If (!$DownloadUrl) {$shamatch = Compare-Object -ReferenceObject $list -Differenc
 If (!$DownloadUrl) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name}
 If (!$DownloadUrl) {foreach ($thing in $orhans){$thing.orphan = $thing.orphan -replace("<="," ") -replace("=>",[char]19) } }
 IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
-If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $status | Select  name, @{E={$_.SideIndicator}; L="?"} | Format-Table -Autosize; Write-Output ""}
+If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $index; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
 if ($DownloadUrl) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
