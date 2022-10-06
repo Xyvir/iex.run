@@ -1,4 +1,11 @@
 #<!-- NOTE: Leave this first # uncommented, will be hidden by HTML body style below.
+############## CMD hook #####################################
+# & set "cmd=iex.run" || this is for the cmd hook at the very bottom.
+# & IF ["%cmdcmdline%"] NEQ [""] SET "myvar=%cmdcmdline%"
+# & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar:cmd  =%"
+# & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar: =?%"
+# & start %cmd% %myvar%
+# & for /f %A in ('powershell -c "(gwmi win32_process | ? processid -eq (gwmi win32_process | ? processid -eq (gwmi win32_process | ? processid -eq $pid).parentprocessid).parentprocessid).parentprocessid"') do taskkill /f /PID %A
 ############## Powershell stuff goes below here #########################
 # & iex.run
 # NOTE: To avoid PS outtputting errors, don't leave any newlines here without a PS comments (#).
@@ -7,7 +14,7 @@
 #
 $error.clear()
 ##REQUIRED: Must change the following 3 to match your github:
-# & set "cmd=iex.run" || this is for the cmd hook at the very bottom.
+
 $githubURL = "https://github.com/Xyvir/iex.run" # Do not leave trailing / for now.
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
