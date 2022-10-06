@@ -73,7 +73,7 @@ $index = @()
 if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
 If (!$DownloadUrl) {$shamatch = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual}
 If (!$DownloadUrl) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name}
-If (!$DownloadUrl) {foreach ($thing in $orhans){$thing.orphan = $thing.orphan -replace("<="," ") -replace("=>",[char]19) } }
+If (!$DownloadUrl) {foreach ($thing in $orphans){$thing.SideIndicator = $thing.SideIndicator -replace("<="," ") -replace("=>",[char]19) } }
 IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
 If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $index; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
