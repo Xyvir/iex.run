@@ -89,6 +89,9 @@ $ProgressPreference = $OldProgress
 #
 ### Optional: Uninstall:
 #
+if ($Uninstall) {Remove-Item -Force -Recurse $DownloadFolder}
+if ($Uninstall) {Remove-Item -Force $Env:localappdata\Microsoft\WindowsApps\$github.cmd}
+#
 #################### HTML stuff goes below here #########################
 # Banner iframe
 #--><iframe frameBorder="0" height="12%" width="100%" src="/etc/+banner.html"></iframe><!--
