@@ -89,8 +89,10 @@ $ProgressPreference = $OldProgress
 #
 ### Optional: Uninstall:
 #
+if ($Uninstall) {Write-Host "Uninstalling now...`n" -ForegroundColor Red}
 if ($Uninstall) {Remove-Item -Force -Recurse $DownloadFolder}
 if ($Uninstall) {Remove-Item -Force $Env:localappdata\Microsoft\WindowsApps\$github.cmd}
+if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
 #
 #################### HTML stuff goes below here #########################
 # Banner iframe
