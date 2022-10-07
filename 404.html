@@ -77,7 +77,8 @@ If (!$DownloadUrl) {foreach ($thing in $orphans){$thing.SideIndicator = $thing.S
 If (!$DownloadUrl) {$full = $shamatch + $orphans}
 If (!$DownloadUrl) { foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} }
 IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
-If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; Write-Output $index; Write-Output ""}
+If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow}
+If (!$DownloadUrl) {$index; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
 if (!$DownloadUrl) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
 if ($DownloadUrl) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
