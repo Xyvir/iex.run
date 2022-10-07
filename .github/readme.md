@@ -72,19 +72,16 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 ## todo:
 
-- Add error message when no matching file found; trying built-in command instead
-- Add error on multiple matches and list them out.
-- skip redownload if the sha alternate file stream matches
+- Add error message when no matching file found; trying built-in command instead  
+- Add error on multiple matches and list them out.  
+- skip redownload if the sha alternate file stream matches  
 - setup backup.config  
 - setup main.config  
-- add URL decoding on parameters to allow for illegal URL chars
-- refactor 404.html to use external config files AND embedded HTML files w/ iframes
-- create included uninstall script  
-- Have stub script replace spaces with quesiton marks automatically for parameters.
+- refactor 404.html to use external backup.config and main.config  
+- add URL decoding on parameters to allow for illegal URL chars 
+- Have stub script replace spaces with quesiton marks automatically for parameters.  
 - refactor cumbersome string manipulation  
-- fill readme details on steps on setup  
-- break off 404 html using iframe and send parentl URL data to iframe child.
- (https://htmldom.dev/communication-between-an-iframe-and-its-parent-window/)
+- fill in readme details on steps on setup  
 - support for powershell core / posh?  
 
 
