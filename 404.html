@@ -55,16 +55,16 @@ set-executionpolicy -force -scope process bypass
 $env:Path += ";$DownloadFolder;"
 if ($DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 echo "@ECHO OFF`nset PATH=%PATH%;$DownloadFolder; `npowershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || powershell -c `"& %1`" || dir /b $DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
-Write-Output ""
+write-host ""
 if ($command) {$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url}
 $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
 if ($DownloadUrl) {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
 pushd $DownloadFolder
 if (!$DownloadUrl) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
-if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; Write-Output ""}
-if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; Write-Output ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
+if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$DownloadFolder'" -ForegroundColor Yellow; write-host ""}
+if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
 if ($DownloadUrl) {Set-Content -Path $exe -Stream sha -value $sha}
-if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; Write-Output ""}
+if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
 if ($DownloadUrl) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 popd
 if ($DownloadUrl) {Set-Clipboard $invocuri}
@@ -78,10 +78,10 @@ If (!$DownloadUrl) {$full = $shamatch + $orphans}
 If (!$DownloadUrl) { foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} }
 IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
 If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow}
-If (!$DownloadUrl) {$index; Write-Output ""; timeout 1 > $null}
-if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; Write-Output ""}
+If (!$DownloadUrl) {$index; write-host ""; timeout 1 > $null}
+if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""}
 if (!$DownloadUrl) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
-if ($DownloadUrl) {Write-Output ""; Write-Output "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
+if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 #
 ### Cleanup:
 #
