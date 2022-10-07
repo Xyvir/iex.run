@@ -73,7 +73,7 @@ $index = @()
 if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
 If (!$DownloadUrl) {$shamatch = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual}
 If (!$DownloadUrl) {$orphans = Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name}
-If (!$DownloadUrl) {foreach ($thing in $shamatch){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25)) } }
+If (!$DownloadUrl) {foreach ($thing in $shamatch){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } }
 If (!$DownloadUrl) {foreach ($thing in $orphans){$thing.SideIndicator = $thing.SideIndicator -replace("<="," ") -replace("=>",[char]19) } }
 If (!$DownloadUrl) {$full = $shamatch + $orphans}
 If (!$DownloadUrl) { foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} }
