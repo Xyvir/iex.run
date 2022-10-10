@@ -1,4 +1,4 @@
-#<!-- NOTE: Leave this first # uncommented, will be hidden by HTML body style below.
+#<!-- & set "cmd=iex.run" || this is the only line you need to edit in this file, replace iex.run with your own vanity URL. This is only used for cmd invocations.
 ############## Powershell stuff goes below here #########################
 # 
 # NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
@@ -10,6 +10,7 @@ $error.clear()
 #
 # $githubURL = "https://github.com/Xyvir/iex.run" # Do not leave trailing / for now.
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
+# 
 #
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
 $NoStub = $false                 # Do not download stub script; not implemented yet. 
@@ -123,10 +124,14 @@ if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
 #-->  </head><!--
 #
 #--><html><body style="font-size:0px";><!--
-#--><br>.<br>Reminder: If you are seeing this text in red, you likely forgot to add '.exe' to your 'curl.exe' command. <br>.<br><!--
+#--><br>.<br>If you are seeing this text in red, you likely forgot to add '.exe' to your 'curl.exe' command. <br>.<br><!--
 #--></body></html><!--
 #
-# Reminder If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
+# If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
 # 
-# & @cls & @echo Reminder: If you are seeing this message in cmd.exe, you didn't form the cmd command properly. curl <githubURL>/cmd | cmd <command> 
-#--> 
+# & set "myvar=?"
+# & IF ["%cmdcmdline%"] NEQ ["cmd"] SET "myvar=%cmdcmdline%"
+# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar:cmd  =%"
+# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar: =?%" 
+# & cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
+# --> 
