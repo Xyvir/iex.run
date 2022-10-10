@@ -130,10 +130,10 @@ if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
 # If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
 # 
 # & echo "%cmdcmdline%"
-# & set "myvar= "
+# & set "myvar=?"
 # & IF ["%cmdcmdline%"] NEQ ["cmd"] SET "myvar=%cmdcmdline%"
-# & IF ["%myvar%"] NEQ [" "] SET "myvar=%myvar:cmd  =%"
-# & IF ["%myvar%"] NEQ [" "] SET "myvar=%myvar: =?%"
+# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar:cmd  =%"
+# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar: =?%"
 # & echo "%cmd%/%myvar%" 
 # & powershell -c "curl.exe %cmd%/%myvar% | iex"
 # --> 
