@@ -13,14 +13,14 @@ $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 # 
 #
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
-$NoStub = $false                 # Do not download stub script; not implemented yet. 
-$NoWildcard = $false             # Do not match command on wildcard, not implemented yet.
-$NoExecute = $false              # Download Script only, not implemented yet.
-$HiddenWindow = $false           # hide powershell window, not implemented yet.
-$DebugVars = $false              # show all vars created
-$cat = $false                    # prints script text only, does not download or execute
-$help = $false                   # same as cat except filters to line comments starting with #, : or REM
-$Uninstall = $false              # Run uninstall script after, not implemented yet.
+# $NoStub = $false                 # Do not download stub script; not implemented yet. 
+# $NoWildcard = $false             # Do not match command on wildcard, not implemented yet.
+# $NoExecute = $false              # Download Script only, not implemented yet.
+# $HiddenWindow = $false           # hide powershell window, not implemented yet.
+# $DebugVars = $false              # show all vars created
+# $cat = $false                    # prints script text only, does not download or execute
+# $help = $false                   # same as cat except filters to line comments starting with #, : or REM
+# $Uninstall = $false              # Run uninstall script after, not implemented yet.
 #
 ### Init:
 #
@@ -46,7 +46,7 @@ $github = $invocuri.host
 $githubURL = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
-foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) { Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value) } } }
+foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) { if (!(Test-Path variable:$trimitem)) {Set-Variable -Name $trimitem -Value $true} else {Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value)} } } }
 #$fileURLs = (invoke-webrequest $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 #$Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 # Expand DownloadFolder
