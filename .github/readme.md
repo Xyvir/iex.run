@@ -24,12 +24,12 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 > alphabet.cmd 23-30 35-50  
 
 ## How to use:
-### 1. Basic Invocation using curl.exe from powershell or cmd.exe.  
+### 1. Basic Invocation using curl.exe from powershell:  
 >powershell syntax:  
 >curl.exe iex.run/alphabet | iex  
   
->cmd.exe synatx (works in powershell as well):  
->curl iex.run | cmd alphabet  
+>special cmd.exe synatx (works in powershell as well):  
+>curl iex.run/cmd | cmd alphabet  
   
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
