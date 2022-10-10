@@ -8,7 +8,7 @@
 $error.clear()
 ##REQUIRED: Must change the following 3 to match your github:
 #
-# $githubURL = "https://github.com/Xyvir/iex.run" # Do not leave trailing / for now.
+$githubURL = "https://github.com/Xyvir/iex.run" # Do not leave trailing / for now.
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 # & set "cmd=iex.run" || this is for the cmd hook at the very bottom.
 #
@@ -26,7 +26,7 @@ $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 $github = ([uri]$githubURL).Segments | Select -Last 1
-$githubURL = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
+$githubURL2 = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $invoc1 = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $invoc2 = $myinvocation | Select -ExpandProperty MyCommand  
