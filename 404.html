@@ -46,7 +46,7 @@ $github = $invocuri.host
 $githubURL = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
-foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) { if (!(Test-Path variable:$trimitem)) {Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value) } else {Set-Variable -Name $trimitem -Value $true} } } }
+foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) {Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value) } else {Set-Variable -Name $trimitem -Value $true} } } 
 #$fileURLs = (invoke-webrequest $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 #$Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 # Expand DownloadFolder
