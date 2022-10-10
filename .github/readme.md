@@ -36,8 +36,8 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 
 ## Setting up your own iex.run is easy!
 
-1. Fork this repo
-2. (Optional but recommended) purchase a short vanity URL like 'iex.run'. Get a .run domain if you wanna be cool like me.
+1. Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing.)  
+2. Fork this repository and name it identically to the unique URL you purchased above.
 3. Set up the forked repo as a Github Page using the vanity URL purchased above.
 4. Update mandatory configs and preferences in the /etc/+main.config file.
 5. Upload powershell scripts, batch files, or small binaries to the /scripts folder
