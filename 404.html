@@ -132,5 +132,6 @@ if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
 # & IF ["%cmdcmdline%"] NEQ [""] SET "myvar=%cmdcmdline%"
 # & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar:cmd  =%"
 # & IF ["%myvar%"] NEQ [""] SET "myvar=%myvar: =?%"
+# & echo "%cmd%/%myvar%" 
 # & powershell -c "curl.exe %cmd%/%myvar% | iex"
 # --> 
