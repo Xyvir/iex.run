@@ -24,9 +24,14 @@ $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
 ### Init:
 #
+# Get OldProgress
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
-$github = ([uri]$githubURL).Segments | Select -Last 1
-$githubURL2 = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
+#
+#$github = ([uri]$githubURL).Segments | Select -Last 1
+# $githubURL2 = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
+#
+# Get Invocation and manipulate out parts we careabout.
+#
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $invoc1 = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $invoc2 = $myinvocation | Select -ExpandProperty MyCommand  
@@ -37,6 +42,11 @@ $curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
 $invocuri2 = $invoc.Replace($curl + " ","")
 $invoc = $invoc.Split(" ")
 $invocuri = [uri]("https://" + ($invoc | Select -Last 1))
+#
+# Get full github URLs
+#
+$github = $invocuri.host
+$githubURL = ((irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname).items).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
 foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = $item.trim('@'); if (test-Path variable:$trimitem) { Set-Variable -Name $trimitem -Value (!(Get-Variable -Name $trimitem).value) } } }
@@ -47,7 +57,7 @@ $apiurl = "https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/co
 # $api = invoke-restmethod $apiurl
 $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
 $list = foreach ($item in $api) {if ($item.name -ne 'CNAME' -and $item.name -ne '404.html'-and $item.name -ne '.gitattributes' -and $item.name -ne '.github' -and $item.name -ne '.gitignore') {$item | Select -Property name, size, sha} }
-$symbol = [char]25 + [char]30 + [char]19
+# $symbol = [char]25 + [char]30 + [char]19
 $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 #
 ### Execute:
