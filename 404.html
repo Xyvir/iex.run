@@ -124,14 +124,9 @@ if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
 #-->  </head><!--
 #
 #--><html><body style="font-size:0px";><!--
-#--><br>.<br>If you are seeing this text in red, you likely forgot to add '.exe' to your 'curl.exe' command. <br>.<br><!--
+#--><br>.<br>Reminder: If you are seeing this text in red, you likely forgot to add '.exe' to your 'curl.exe' command. <br>.<br><!--
 #--></body></html><!--
 #
-# If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
+# Reminder If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
 # 
-# & set "myvar=?"
-# & IF ["%cmdcmdline%"] NEQ ["cmd"] SET "myvar=%cmdcmdline%"
-# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar:cmd  =%"
-# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar: =?%" 
-# & cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
-# --> 
+# & @cls & @echo Reminder: If you are seeing this message in cmd.exe, you didn't form the cmd command properly. curl <githubURL>/cmd | cmd <command> --> 
