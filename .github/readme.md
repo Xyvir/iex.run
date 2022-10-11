@@ -41,7 +41,7 @@ cmd.exe syntax
 1. Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing.)  
 2. Fork this repository and name it identically to the unique URL you purchased above.
 3. Set up the forked repo as a Github Page using the vanity URL purchased above.
-4. Update mandatory configs and preferences in the /etc/+main.config file.
+4. Optional : Set Custom iex.run Options and webpage banner within /customization folder.
 5. Upload powershell scripts, batch files, or small binaries to the /scripts folder
 6. Launch those scripts from any Windows endpoint using the simple iex.run syntax, the stub script launcher, or Magic URLs.
 
@@ -77,14 +77,15 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 - Add error message when no matching file found; trying built-in command instead  
 - Add error on multiple matches and list them out.  
-- skip redownload if the sha alternate file stream matches  
-- setup backup.config  
-- setup main.config  
-- refactor 404.html to use external backup.config and main.config  
+- skip redownload if the sha alternate file stream matches
+- add support for forcing admin prompt if scriptname contains a '!'.  
 - add URL decoding on parameters to allow for illegal URL chars 
-- Have stub script replace spaces with quesiton marks automatically for parameters.  
-- refactor cumbersome string manipulation  
-- fill in readme details on steps on setup  
+- Have stub script replace spaces with quesiton marks automatically for parameters.
+- finish remaining planned metaparameneters
+- review / refactor cumbersome string manipulation  
+- fill in readme details more steps on setup
+- add metaparameter instructions to readme.
+- test parameters that contain quotes (fixed with encoding?)
 - support for powershell core / posh?  
 
 
