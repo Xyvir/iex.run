@@ -3,7 +3,7 @@
 # & del %TMP%\golf.tmp
 # & SETLOCAL EnableDelayedExpansion
 # & set "testvar=A" & echo [!testvar!]
-# & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do echo %I > %TMP%\golf.tmp & exit)
+# & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do echo %I > %TMP%\golf.tmp & exit /b)
 #
 ############## Powershell stuff goes below here #########################
 # 
