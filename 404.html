@@ -92,7 +92,7 @@ If (!$DownloadUrl) { foreach ($item in $full) {($index | Where-Object {$_.Name -
 IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
 If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; $index | ft} # ft needed to output to console in right order.
 if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""}
-if (!$DownloadUrl) {Write-Host "$exe $github Complete!" -ForegroundColor Green} else {Write-Host "$github completed with errors: `n`n $error" -ForegroundColor Red}
+if (!$DownloadUrl) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 #
 ### Cleanup:
