@@ -59,7 +59,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $Uninstall = $false              # Run uninstall script after, not implemented yet.
 #
 #
-$ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url}
+$ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
 #
 # Get Config from customizations folder and setup as variables:
 $customconfig = ((curl $ConfigURL).content).split("`n")
