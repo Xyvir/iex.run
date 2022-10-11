@@ -15,13 +15,6 @@ https://iex.run/1kbrl
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
 >credit to https://github.com/tapio/1kbrl
 
-## Arbitrary arguments are supported by using '?' as a delimiter.
-iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
-
-> Example:  
-> curl.exe iex.run/alphabet?23-30?35-50 | iex  
-> is the same as:  
-> alphabet.cmd 23-30 35-50  
 
 ## How to use:
 ### 1. Basic Invocation using curl.exe from powershell:  
@@ -36,7 +29,15 @@ cmd.exe syntax
 ### 4. Providing Magic URLs to others via email, teams or other message services.
 ### 5. Optional: 'Uninstall' iex.run from the endpoint when you are done. (Deletes all previously downloaded files including the stub script launcher)
 
-## Setting up your own iex.run is easy!
+## Arbitrary arguments are supported by using '?' as a delimiter.
+iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
+
+> Example:  
+> curl.exe iex.run/alphabet?23-30?35-50 | iex  
+> is the same as:  
+> alphabet.cmd 23-30 35-50 
+
+## Setting up your own iex.run instance is easy!
 
 1. Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing.)  
 2. Fork this repository and name it identically to the unique URL you purchased above.
