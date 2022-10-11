@@ -73,7 +73,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - stub helper script can only be used programatically inside .ps1 files and not batch files  
 - iex.run assumes HTTPS is not enforced in Github Pages to require fewer keystrokes; it will not work if Github Pages enforces HTTPS.  
 - cmd invocations seems to block user input (due to how far down the matrix it goes)  
- >Workaround: Use powershell invocation instead for user input scripts  
+   >Workaround: Use powershell invocation instead for user input scripts  
   
 ## todo:
   
