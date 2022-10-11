@@ -1,9 +1,13 @@
-#<!-- & set "cmd=iex.run" || this is the only line you need to edit in this file, replace iex.run with your own vanity URL. This is only used for cmd invocations.
+#<!-- 2>NUL & set "cmd=iex.run" || this is the only line you need to edit in this file, replace iex.run with your own vanity URL. This is only used for cmd invocations.
+############## CMD hook goes here ########## #############################
 #
-# & del %TMP%\golf.tmp
-# & SETLOCAL EnableDelayedExpansion
-# & set "testvar=A" & echo [!testvar!]
-# & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do echo %I > %TMP%\golf.tmp & exit /b)
+# 2>NUL & set "myvar=?"
+# 2>NUL & IF ["%cmdcmdline%"] NEQ ["cmd"] SET "myvar=%cmdcmdline%"
+# 2>NUL & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar:cmd  =%"
+# 2>NUL & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar: =?%" 
+# 2>NUL & del %TMP%\golf.tmp 
+# 2>NUL & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do echo %I > %TMP%\golf.tmp & exit /b)
+# 2>NUL & powershell -c "curl.exe %cmd%/%myvar% | iex"
 #
 ############## Powershell stuff goes below here #########################
 # 
@@ -133,11 +137,4 @@ if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
 #--><br>.<br>If you are seeing this text in red, you likely forgot to add '.exe' to your 'curl.exe' command. <br>.<br><!--
 #--></body></html><!--
 #
-# If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. 
-# 
-# & set "myvar=?"
-# & IF ["%cmdcmdline%"] NEQ ["cmd"] SET "myvar=%cmdcmdline%"
-# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar:cmd  =%"
-# & IF ["%myvar%"] NEQ ["?"] SET "myvar=%myvar: =?%" 
-# & cls & powershell -c "curl.exe %cmd%/%myvar% | iex"
-# --> 
+# If you are seeing this message, you likely forgot to add '| iex' to the end of your curl.exe command. --> 
