@@ -1,4 +1,4 @@
-#<!-- 2>NUL & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do powershell -c "curl.exe %I | iex" & exit)
+#^<!-- 2>NUL & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do powershell -c "curl.exe %I | iex" & exit)
 ############## above line is a CMD hook that passes the command off to powershell ########################################
 #
 ############## Powershell stuff goes below here #########################
