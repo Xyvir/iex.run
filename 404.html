@@ -35,9 +35,9 @@ $invoc = $invoc.split("`"")
 $invoc = [string]::join("",($invoc.Split("`n")))
 $invoc = $invoc.Replace(' | iex', '')
 $curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
-$invocuri2 = $invoc.Replace($curl + " ","")
+$invoc2 = $invoc.Replace($curl + " ","")
 $invoc = $invoc.Split(" ")
-$invocuri = [uri]("https://" + ($invoc | Select -Last 1))
+$invocuri = [uri]("https://" + $invoc2
 #
 # Get full github URLs
 #
