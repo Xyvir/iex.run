@@ -1,7 +1,5 @@
-#<!-- 2>NUL & set "cmd=iex.run" || this is the only line you need to edit in this file, replace iex.run with your own vanity URL. This is only used for cmd invocations.
-############## CMD hook goes here ########## #############################
-#
-# 2>NUL & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do powershell -c "curl.exe %I | iex" & exit)
+#<!-- 2>NUL & 2>NUL & @for /l %J in  (0) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do powershell -c "curl.exe %I | iex" & exit)
+############## above line is a CMD hook that passes the command off to powershell ########################################
 #
 ############## Powershell stuff goes below here #########################
 # 
