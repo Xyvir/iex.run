@@ -35,6 +35,14 @@ foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = "_" + $item.t
 #$fileURLs = (invoke-webrequest $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
 #$Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
 #
+# Make API calls and format.
+$rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
+$apiurl = $rootapiurl + "/scripts"
+$api = invoke-restmethod $apiurl
+# $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
+$list = foreach ($item in $api) {$item | Select -Property name, size, sha}
+$list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
+#
 ### Config Examples:
 # 
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
@@ -57,13 +65,6 @@ foreach ($item in $customconfig) {$thing = $item.split("="); Set-Variable -Name 
 #
 # Expand DownloadFolder
 $DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($DownloadFolder)
-# Make API calls and format.
-$rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
-$apiurl = $rootapiurl + "/scripts"
-$api = invoke-restmethod $apiurl
-# $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
-$list = foreach ($item in $api) {$item | Select -Property name, size, sha}
-$list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 #
 ### Execute:
 #
