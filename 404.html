@@ -5,12 +5,10 @@
 # 
 # NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
 #
-### Config:
+### Config Examples:
 #
 $error.clear()
-##REQUIRED: Must change the following 3 to match your github:
 #
-# $githubURL = "https://github.com/Xyvir/iex.run" # Do not leave trailing / for now.
 $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 # 
 #
@@ -26,7 +24,7 @@ $DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
 ### Init:
 #
-# Get OldProgress
+# Get OldProgress: 
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 #
 # Get Invocation and manipulate out parts we careabout.
