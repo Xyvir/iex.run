@@ -38,7 +38,9 @@ foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = "_" + $item.t
 # Make API calls and format.
 $rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $apiurl = $rootapiurl + "/scripts"
+$configapiurl = $rootapiurl +"/customizations"
 $api = invoke-restmethod $apiurl
+$configapi = invoke-restmethod $configapiurl
 # $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
 $list = foreach ($item in $api) {$item | Select -Property name, size, sha}
 $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
@@ -56,8 +58,11 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $help = $false                   # same as cat except filters to line comments starting with #, : or REM
 # $Uninstall = $false              # Run uninstall script after, not implemented yet.
 #
+#
+$ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url}
+#
 # Get Config from customizations folder and setup as variables:
-$customconfig = ((curl https://raw.githubusercontent.com/Xyvir/iex.run/main/customizations/config.html).content).split("`n")
+$customconfig = ((curl $ConfigURL).content).split("`n")
 #
 $customconfig = $customconfig | Where {$_ -like "*=*" }  
 #
