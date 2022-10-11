@@ -27,8 +27,6 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 ### 1. Basic Invocation using curl.exe from powershell:  
 powershell syntax:  
 >curl.exe iex.run/alphabet | iex  
->OR  
->curl.exe iex.run/alphabet | cmd  
   
 cmd.exe syntax  
 >curl iex.run/alphabet | cmd 
