@@ -51,6 +51,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # 
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
 #
+# $_Admin = $false                 # Run script elevetated.
 # $NoStub = $false                 # Do not download stub script; not implemented yet. 
 # $NoWildcard = $false             # Do not match command on wildcard, not implemented yet.
 # $NoExecute = $false              # Download Script only, not implemented yet.
@@ -92,7 +93,8 @@ if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$_DownloadFolder'" -Foregr
 if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
 if ($DownloadUrl) {Set-Content -Path $exe -Stream sha -value $sha}
 if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
-if ($DownloadUrl) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if ($DownloadUrl -and (!($_Admin)) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if ($DownloadUrl -and $_Admin) {start-process -Verb RunAs -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 popd
 if ($DownloadUrl) {Set-Clipboard $invocuri}
 If (!$DownloadUrl) {$names = ($list.name + $files.name) | Select-Object -unique}
