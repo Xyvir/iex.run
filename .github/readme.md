@@ -1,6 +1,6 @@
 # iex.run
 
-## Run Windows scripts anywhere!
+## Quickly run Windows scripts anywhere!
 
 iex.run is a vanilla-powershell-based, ultra-minimalist script bootstrapper.  
   
