@@ -79,12 +79,10 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 ## todo:
   
 - Add error message when no matching file found; trying built-in command instead  
-- Add error on multiple matches and list them out.  
-- skip redownload if the sha alternate file stream matches
-- add support for forcing admin prompt if scriptname contains a '!'.  
+- skip re-download if the sha alternate file stream matches
 - add URL decoding on parameters to allow for illegal URL chars 
 - Have stub script replace spaces with quesiton marks automatically for parameters.
-- finish remaining planned metaparameneters
+- finish remaining planned meta-parameters
 - review / refactor cumbersome string manipulation  
 - fill in readme details more steps on setup
 - add metaparameter instructions to readme.
