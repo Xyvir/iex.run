@@ -93,7 +93,7 @@ if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$_DownloadFolder'" -Foregr
 if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
 if ($DownloadUrl) {Set-Content -Path $exe -Stream sha -value $sha}
 if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
-if ($DownloadUrl -and (!($_Admin)) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if ($DownloadUrl -and (!($_Admin)) ) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 if ($DownloadUrl -and $_Admin) {start-process -Verb RunAs -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
 popd
 if ($DownloadUrl) {Set-Clipboard $invocuri}
