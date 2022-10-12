@@ -87,8 +87,8 @@ echo "@ECHO OFF`nset PATH=%PATH%;$_DownloadFolder; `npowershell -c `"curl.exe \`
 write-host ""
 if ($command) {$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url}
 if ($command) {$sha = ($api | Where-Object {$_.name -like "*$command*"}).sha}
-if ($DownloadUrl.gettype().Name -eq "String") {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )}
-if ($DownloadUrl.gettype().Name -eq "Array") {Write-host "Multiple matches found! $DownloadUrl"}
+if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "String") {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) }}
+if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "Array") {Write-host "Multiple matches found! $DownloadUrl"}}
 if ($exe -like "*!*") {$_Admin = $true}
 pushd $_DownloadFolder
 if (!$DownloadUrl) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
