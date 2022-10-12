@@ -10,7 +10,10 @@ $error.clear()
 # Get OldProgress: 
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 #
-# Set Download Folder Default location
+# Get Existing Variables
+# $existingVariables = Get-Variable
+#
+# Set Default Download Folder Default location (Will be overwritten later if config exists)
 $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
 #
@@ -112,6 +115,7 @@ if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$
 ### Cleanup:
 #
 $ProgressPreference = $OldProgress
+Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable
 #
 ### Optional: Uninstall:
 #
