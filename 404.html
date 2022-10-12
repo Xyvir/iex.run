@@ -94,7 +94,7 @@ if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Pa
 if ($DownloadUrl) {Set-Content -Path $exe -Stream sha -value $sha}
 if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
 if ($DownloadUrl -and (!($_Admin)) ) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
-if ($DownloadUrl -and $_Admin) {start-process -noexit -Verb RunAs -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if ($DownloadUrl -and $_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-noexit -command `"& $exe $arguments`" "}
 popd
 if ($DownloadUrl) {Set-Clipboard $invocuri}
 If (!$DownloadUrl) {$names = ($list.name + $files.name) | Select-Object -unique}
