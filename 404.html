@@ -11,7 +11,7 @@ $error.clear()
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 #
 # Get Existing Variables
-# $existingVariables = Get-Variable
+$existingVariables = Get-Variable
 #
 # Set Default Download Folder Default location (Will be overwritten later if config exists)
 $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
