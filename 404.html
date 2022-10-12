@@ -88,16 +88,16 @@ write-host ""
 if ($command) {$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url}
 if ($command) {$sha = ($api | Where-Object {$_.name -like "*$command*"}).sha}
 if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "String") {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) }}
-if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "Array") {Write-host "Multiple matches found! $DownloadUrl"}}
+if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "Object[]") {Write-host "Multiple matches found! $DownloadUrl"}}
 if ($exe -like "*!*") {$_Admin = $true}
 pushd $_DownloadFolder
 if (!$DownloadUrl) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
-if ($DownloadUrl) {Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""}
-if ($DownloadUrl) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
-if ($DownloadUrl) {Set-Content -Path $exe -Stream sha -value $sha}
-if ($DownloadUrl) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
-if ($DownloadUrl -and (!($_Admin)) ) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
-if ($DownloadUrl -and $_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "}
+if ($exe) {Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""}
+if ($exe) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
+if ($exe) {Set-Content -Path $exe -Stream sha -value $sha}
+if ($exe) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
+if ($exe -and (!($_Admin)) ) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+if ($exe -and $_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "}
 popd
 if ($DownloadUrl) {Set-Clipboard $invocuri}
 If (!$DownloadUrl) {$names = ($list.name + $files.name) | Select-Object -unique}
