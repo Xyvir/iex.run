@@ -120,7 +120,7 @@ if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$
 ### Cleanup:
 #
 $ProgressPreference = $OldProgress
-Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable
+if (!($_KeepVars)) Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable
 #
 ### Optional: Uninstall:
 #
