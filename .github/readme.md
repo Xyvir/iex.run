@@ -21,7 +21,7 @@ https://iex.run/1kbrl
 powershell syntax:  
 >curl.exe iex.run/alphabet | iex  
   
-cmd.exe syntax  
+cmd.exe syntax:cmd  
 >curl iex.run/alphabet | cmd 
   
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
@@ -77,7 +77,8 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
    >Workaround: Use powershell invocation instead for user input scripts  
   
 ## todo:
-  
+
+- Cleanup iex.ps1 for readability
 - Add error message when no matching file found; trying built-in command instead  
 - skip re-download if the sha alternate file stream matches
 - add URL decoding on parameters to allow for illegal URL chars 
