@@ -97,10 +97,7 @@ if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github 
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 
-### Cleanup:
 
-$ProgressPreference = $OldProgress
-if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
 
 ### Optional: Uninstall:
 
@@ -110,3 +107,8 @@ if ($_Uninstall) {
   Remove-Item -Force $Env:localappdata\Microsoft\WindowsApps\$github.cmd
   Write-Host "Uninstall Complete. $error" -ForegroundColor Red
   }
+
+### Cleanup:
+
+$ProgressPreference = $OldProgress
+if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
