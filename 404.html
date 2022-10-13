@@ -197,5 +197,6 @@ irm $github/iex.ps1 | iex
 ########################################################################################################################
 ########################################################################################################################
 # If you are seeing this message, you likely forgot to add a trailing '| iex' (for powershell) or '| cmd' (for cmd.exe) OR you accidentally used '| cmd' in powershell. 
-# & powershell -c "write-host ($myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String)" --> 
+# 2>NUL & powershell -c "write-host ($myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String)" 
+--> 
 
