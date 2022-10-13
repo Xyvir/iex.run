@@ -40,4 +40,5 @@ irm $github/iex.ps1 | iex
 #--></body></html><!--
 #
 # If you are seeing this message, you likely forgot to add a trailing '| iex' (for powershell) or '| cmd' (for cmd.exe) OR you accidentally used '| cmd' in powershell.   
-# 2>NUL & @for /l %J in  (0,1,20) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do powershell -c "curl.exe %I | iex" & exit)--> 
+# 2>NUL & @for /l %J in  (0,1,20) do (@for /f "USEBACKQ TOKENS=2" %I in (`WMIC path win32_process where 'caption like "curl.exe"' get Commandline 2^>NUL ^| findstr /v "^$" ^| findstr /v "CommandLine"`) do powershell -c "curl.exe %I | iex" & exit)
+--> 
