@@ -1,30 +1,14 @@
-############## Powershell stuff goes below here #########################
-# 
-# NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
-#
 ### Init:
 $error.clear()
-#
+
 # Get OldProgress: 
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
-#
+
 # Get Existing Variables
 $existingVariables = Get-Variable
-#
+
 # Set Default Download Folder Default location (Will be overwritten later if config exists)
 $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
-#
-#
-# Get poweershell Invocation and manipulate out parts we care about.
-# 
-# $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-# $invoc = $invoc.split("`"")
-# $invoc = [string]::join("",($invoc.Split("`n")))
-# $invoc = $invoc.Replace(' | iex', '')
-# $ curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
-# $invoc2 = $invoc.Replace($curl + " ","")
-# $invoc = $invoc.Split(" ")
-# $invocuri = [uri]("https://" + $invoc2)
 
 # Get full github URLs
 
@@ -33,50 +17,47 @@ $search = irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3
 $githubURL = ($search.items | where {$_.name -like "$github"}).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = ($invocuri.Query).Split("?")
-#$fileURLs = (invoke-webrequest $githubURL).Links | Where-Object {$_.href -like "*blob*"} | Select -ExpandProperty href
-#$Filematch = Foreach ($url in $fileURLs) { $url -split "/" | Select -Last 1 | Select-String -Pattern '(CNAME)|(404.html)' -NotMatch }
-#
+
 # Make API calls and format.
 $rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $apiurl = $rootapiurl + "/scripts"
 $configapiurl = $rootapiurl +"/customizations"
 $api = invoke-restmethod $apiurl
 $configapi = invoke-restmethod $configapiurl
-# $api = ConvertFrom-Json (invoke-webrequest $apiurl).content
 $list = foreach ($item in $api) {$item | Select -Property name, size, sha}
 $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
-#
+
 ### Config Examples:
-# 
+ 
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
-#
-# $_Admin = $false                 # Run script elevetated.
-# $NoStub = $false                 # Do not download stub script; not implemented yet. 
-# $NoWildcard = $false             # Do not match command on wildcard, not implemented yet.
-# $NoExecute = $false              # Download Script only, not implemented yet.
-# $HiddenWindow = $false           # hide powershell window, not implemented yet.
-# $DebugVars = $false              # show all vars created
-# $cat = $false                    # prints script text only, does not download or execute
-# $help = $false                   # same as cat except filters to line comments starting with #, : or REM
-# $Uninstall = $false              # Run uninstall script after, not implemented yet.
-#
-#
+
+# $_Admin = $false                 Run script elevetated.
+# $NoStub = $false                 Do not download stub script; not implemented yet. 
+# $NoWildcard = $false             Do not match command on wildcard, not implemented yet.
+# $NoExecute = $false              Download Script only, not implemented yet.
+# $HiddenWindow = $false           hide powershell window, not implemented yet.
+# $DebugVars = $false              show all vars created
+# $cat = $false                    prints script text only, does not download or execute
+# $help = $false                   same as cat except filters to line comments starting with #, : or REM
+# $Uninstall = $false              Run uninstall script after, not implemented yet.
+
+
 $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
-#
+
 # Get Config from customizations folder and setup as variables:
 $customconfig = ((curl $ConfigURL).content).split("`n")
-#
+
 $customconfig = $customconfig | Where {$_ -like "*=*" }  
-#
+
 foreach ($item in $customconfig) {$thing = $item.split("=");  $thing1 = ($thing[1]).trim(" "); if ($thing1 -match "^\d+$") {$thing1 = $thing1 -as [int]; Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1} else {Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1} }
-#
+
 foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = "_" + $item.trim('@'); if (test-Path variable:$trimitem) {Set-Variable -Name ($trimitem) -Value (!(Get-Variable -Name $trimitem).value) } else {Set-Variable -Name $trimitem -Value $true} } } 
-#
+
 # Expand DownloadFolder
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
-#
+
 ### Execute:
-#
+
 set-executionpolicy -force -scope process bypass
 if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory}
 $env:Path += ";$_DownloadFolder;"
@@ -115,16 +96,17 @@ If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Y
 if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""}
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
-#
+
 ### Cleanup:
-#
+
 $ProgressPreference = $OldProgress
 if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
-#
+
 ### Optional: Uninstall:
-#
-if ($Uninstall) {Write-Host "Uninstalling now...`n" -ForegroundColor Red}
-if ($Uninstall) {Remove-Item -Force -Recurse $_DownloadFolder}
-if ($Uninstall) {Remove-Item -Force $Env:localappdata\Microsoft\WindowsApps\$github.cmd}
-if ($Uninstall) {Write-Host "Uninstall Complete. $error" -ForegroundColor Red}
-#
+
+if ($Uninstall) {
+  Write-Host "Uninstalling now...`n" -ForegroundColor Red
+  Remove-Item -Force -Recurse $_DownloadFolder
+  Remove-Item -Force $Env:localappdata\Microsoft\WindowsApps\$github.cmd
+  Write-Host "Uninstall Complete. $error" -ForegroundColor Red
+  }
