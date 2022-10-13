@@ -17,18 +17,18 @@ $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 #
 # Get poweershell Invocation and manipulate out parts we care about.
 # 
-$invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-$invoc = $invoc.split("`"")
-$invoc = [string]::join("",($invoc.Split("`n")))
-$invoc = $invoc.Replace(' | iex', '')
-$curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
-$invoc2 = $invoc.Replace($curl + " ","")
-$invoc = $invoc.Split(" ")
-$invocuri = [uri]("https://" + $invoc2)
-#
+# $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
+# $invoc = $invoc.split("`"")
+# $invoc = [string]::join("",($invoc.Split("`n")))
+# $invoc = $invoc.Replace(' | iex', '')
+# $ curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
+# $invoc2 = $invoc.Replace($curl + " ","")
+# $invoc = $invoc.Split(" ")
+# $invocuri = [uri]("https://" + $invoc2)
+
 # Get full github URLs
-#
-$github = $invocuri.host
+
+# $github = $invocuri.host
 $search = irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname%20fork%3Atrue
 $githubURL = ($search.items | where {$_.name -like "$github"}).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
