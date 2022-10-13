@@ -49,9 +49,31 @@ $customconfig = ((curl $ConfigURL).content).split("`n")
 
 $customconfig = $customconfig | Where {$_ -like "*=*" }  
 
-foreach ($item in $customconfig) {$thing = $item.split("=");  $thing1 = ($thing[1]).trim(" "); if ($thing1 -match "^\d+$") {$thing1 = $thing1 -as [int]; Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1} else {Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1} }
+#Process $Customconfig variables from config.html
+foreach ($item in $customconfig) {
+ $thing = $item.split("=")  
+ $thing1 = ($thing[1]).trim(" ")
+ if ($thing1 -match "^\d+$") {
+   $thing1 = $thing1 -as [int] 
+   Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1
+  } 
+ else {
+   Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1
+  } 
+ }
 
-foreach ($item in $arguments) {if ($item -like '`@*') {$trimitem = "_" + $item.trim('@'); if (test-Path variable:$trimitem) {Set-Variable -Name ($trimitem) -Value (!(Get-Variable -Name $trimitem).value) } else {Set-Variable -Name $trimitem -Value $true} } } 
+#Process any Meta-paramenters
+foreach ($item in $arguments) {
+  if ($item -like '`@*') {
+    $trimitem = "_" + $item.trim('@') 
+      if (test-Path variable:$trimitem) {
+        Set-Variable -Name ($trimitem) -Value (!(Get-Variable -Name $trimitem).value) 
+        } 
+      else {
+        Set-Variable -Name $trimitem -Value $true
+       } 
+      } 
+     } 
 
 # Expand DownloadFolder
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
