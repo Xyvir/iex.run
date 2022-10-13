@@ -7,18 +7,14 @@
 #
 # Get poweershell Invocation and manipulate out parts we care about.
 # 
+$test $myinvocation | Select MyCommand
+$test > test.txt
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-$invoc > test.txt
 $invoc = $invoc.split("`"")
-$invoc >> test.txt
 $invoc = [string]::join("",($invoc.Split("`n")))
-$invoc >> test.txt
 $invoc = $invoc.Replace(' | iex', '')
-$invoc >> test.txt
 $curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
-$invoc >> test.txt
 $invoc = $invoc.Replace($curl + " ","")
-$invoc >> test.txt
 $invocuri = [uri]("https://" + $invoc)
 $github = $invocuri.host
 #
