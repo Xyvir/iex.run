@@ -87,6 +87,8 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - review / refactor cumbersome string manipulation  
 - fill in readme details more steps on setup
 - add metaparameter instructions to readme.
+- Cleanup respository search API to be more strict
+- andd support and test for non-vanity urls (repo.github.io) 
 - test parameters that contain quotes (fixed with encoding?)
 - support for powershell core / posh?  
 
