@@ -104,7 +104,7 @@ if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.N
 
 ### Optional: Uninstall:
 
-if ($Uninstall) {
+if ($_Uninstall) {
   Write-Host "Uninstalling now...`n" -ForegroundColor Red
   Remove-Item -Force -Recurse $_DownloadFolder
   Remove-Item -Force $Env:localappdata\Microsoft\WindowsApps\$github.cmd
