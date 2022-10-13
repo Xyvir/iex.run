@@ -1,4 +1,3 @@
-$MyInvocation.MyCommand
 ############## Powershell stuff goes below here #########################
 # 
 # NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
