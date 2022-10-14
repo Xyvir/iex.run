@@ -142,10 +142,10 @@ If (!($DownloadUrl)) {
   Write-Host "No scripts matching '$command' found in $github, trying a built-in command`n" -ForegroundColor Yellow
   try {
     if (!($_Admin)) {
-     start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $command $arguments`" "
+     start-process -nonewwindow -wait powershell -ArgumentList "-command `"$command $arguments`" "
     }
     else {
-     start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$command $arguments`" "
+     start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"$command $arguments`" "
     }
    }
   catch { Write-Host "No built-in matches found, please double-check your spelling" -ForegroundColor Red }
