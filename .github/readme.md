@@ -78,8 +78,6 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
   
 ## todo:
 
-- Cleanup iex.ps1 for readability
-- Add error message when no matching file found; trying built-in command instead  
 - skip re-download if the sha alternate file stream matches
 - add URL decoding on parameters to allow for illegal URL chars 
 - Have stub script replace spaces with quesiton marks automatically for parameters.
