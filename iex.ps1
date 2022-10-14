@@ -138,7 +138,7 @@ If (!($DownloadUrl)) {
   Write-Host "No scripts matching '$command' found in $github, trying a built-in command`n" -ForegroundColor Yellow
   try {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $command $arguments`" "}
   catch { Write-Host "No built-in matches found, please double-check your spelling" -ForegroundColor Red }
-  finally {$internal = $true}
+  finally {$internal = $true; write-host ""}
   }
  if (!($internal)) { 
    Write-Host "Available Files and Status :" -ForegroundColor Yellow 
