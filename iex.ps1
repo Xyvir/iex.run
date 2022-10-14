@@ -85,30 +85,46 @@ if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Di
 $env:Path += ";$_DownloadFolder;"
 if ($_DebugVars) {get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 echo "@ECHO OFF`nset PATH=%PATH%;$_DownloadFolder; `npowershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || powershell -c `"& %1`" || dir /b $_DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
+
 write-host ""
-if ($command) {$DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url}
-if ($command) {$DownloadUrlName = ($api | Where-Object {$_.name -like "*$command*"}).name}
-if ($command) {$sha = ($api | Where-Object {$_.name -like "*$command*"}).sha}
-if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "String") {$exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) }}
-if ($DownloadUrl) {if ($DownloadUrl.gettype().Name -eq "Object[]") {Write-host "Multiple matches found! Cancelling execution. Please use a more specfic search and try again. `n`n $DownloadUrlName `n" -ForegroundColor Red}}
+
+if ($command) {
+ $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
+ $DownloadUrlName = ($api | Where-Object {$_.name -like "*$command*"}).name
+ $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
+ }
+
+if ($DownloadUrl) {
+  if ($DownloadUrl.gettype().Name -eq "String") {
+    $exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) 
+  }
+  else {
+   Write-host "Multiple matches found! Cancelling execution. Please use a more specfic search and try again. `n`n $DownloadUrlName `n" -ForegroundColor Red}
+  }
+}
+
 if ($exe -like "*!*") {$_Admin = $true}
+
 pushd $_DownloadFolder
-if (!$DownloadUrl) {$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}}
-if ($exe) {Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""}
-if ($exe) {curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} }
-if ($exe) {Set-Content -Path $exe -Stream sha -value $sha}
-if ($exe) {Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""}
-if ($exe -and (!($_Admin)) ) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
-if ($exe -and $_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "}
-popd
-if ($DownloadUrl) {Set-Clipboard $invocuri}
-If (!$DownloadUrl) {$names = ($list.name + $files.name) | Select-Object -unique}
-$index = @()
-$orphans = @()
-$shamatch = @()
-if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
+$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}
+
+if ($exe) {
+ Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
+ curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
+ Set-Content -Path $exe -Stream sha -value $sha
+ Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""
+ if (!($_Admin)) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
+ if ($_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "}
+ Set-Clipboard $invocuri
+}
+
 
 If (!$DownloadUrl) {
+ $names = ($list.name + $files.name) | Select-Object -unique
+ $index = @()
+ $orphans = @()
+ $shamatch = @()
+ if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } 
  $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
  $orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name
  foreach ($thing in $shamatch) {$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } 
@@ -116,9 +132,11 @@ If (!$DownloadUrl) {
  $full = $shamatch + $orphans
  foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} 
  IF ($command) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
- Write-Host "Available Files and Status :" -ForegroundColor Yellow; $index | ft} # ft needed to output to console in right order.
+ Write-Host "Available Files and Status :" -ForegroundColor Yellow; $index | ft # ft needed to output to console in right order.
  Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""
  }
+
+popd
 
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
