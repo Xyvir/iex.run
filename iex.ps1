@@ -110,9 +110,12 @@ $files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 
 
 if ($exe) {
  Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
- curl.exe -# -O $DownloadUrl; write-host ""; if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
+ curl.exe -# -O $DownloadUrl
+ write-host "" 
+ if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
  Set-Content -Path $exe -Stream sha -value $sha
- Write-Host "Launching '$exe' ..." -ForegroundColor Yellow; write-host ""
+ Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
+ write-host ""
  if (!($_Admin)) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
  if ($_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "}
  Set-Clipboard $invocuri
@@ -120,11 +123,6 @@ if ($exe) {
 
 
 If (!$DownloadUrl) {
- $names = ($list.name + $files.name) | Select-Object -unique
- $index = @()
- $orphans = @()
- $shamatch = @()
- if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } 
  $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
  $orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name
  foreach ($thing in $shamatch) {$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } 
@@ -132,8 +130,10 @@ If (!$DownloadUrl) {
  $full = $shamatch + $orphans
  foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} 
  IF ($command) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
- Write-Host "Available Files and Status :" -ForegroundColor Yellow; $index | ft # ft needed to output to console in right order.
- Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""
+ Write-Host "Available Files and Status :" -ForegroundColor Yellow 
+ $index | ft # ft needed to output to console in right order.
+ Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow
+ write-host ""
  }
 
 popd
