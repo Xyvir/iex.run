@@ -123,7 +123,9 @@ if ($exe) {
 # If no command build and display index
 
 If (!($DownloadUrl)) {
- $shamatch = $orphans = $full = @()
+ $shamatch = $orphans = $index = @()
+ $names = ($list.name + $files.name) | Select-Object -unique}
+ if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
  $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
  $orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name
  foreach ($thing in $shamatch) {$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } 
