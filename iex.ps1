@@ -99,7 +99,7 @@ if ($DownloadUrl) {
     $exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) 
   }
   else {
-   Write-host "Multiple matches found! Cancelling execution. Please use a more specfic search and try again. `n`n $DownloadUrlName `n" -ForegroundColor Red}
+   Write-host "Multiple matches found! Cancelling execution. Please use a more specfic search and try again. `n`n $DownloadUrlName `n" -ForegroundColor Red
   }
 }
 
