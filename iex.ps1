@@ -107,16 +107,21 @@ $index = @()
 $orphans = @()
 $shamatch = @()
 if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
-If (!$DownloadUrl) {$shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual}
-If (!$DownloadUrl) {$orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name}
-If (!$DownloadUrl) {foreach ($thing in $shamatch){$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } }
-If (!$DownloadUrl) {foreach ($thing in $orphans){$thing.SideIndicator = $thing.SideIndicator -replace("<="," ") -replace("=>",[char]19) } }
-If (!$DownloadUrl) {$full = $shamatch + $orphans}
-If (!$DownloadUrl) { foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} }
-IF ($command -AND !$DownloadUrl) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
-If (!$DownloadUrl) {Write-Host "Available Files and Status :" -ForegroundColor Yellow; $index | ft} # ft needed to output to console in right order.
-if (!$DownloadUrl) {Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""}
+
+If (!$DownloadUrl) {
+ $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
+ $orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name
+ foreach ($thing in $shamatch) {$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } 
+ foreach ($thing in $orphans) {$thing.SideIndicator = $thing.SideIndicator -replace("<="," ") -replace("=>",[char]19) } 
+ $full = $shamatch + $orphans
+ foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} 
+ IF ($command) {Write-Host "No scripts matching '$command' found in $github, please double check your spelling.`n" -ForegroundColor Red}
+ Write-Host "Available Files and Status :" -ForegroundColor Yellow; $index | ft} # ft needed to output to console in right order.
+ Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow; write-host ""
+ }
+
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
+
 if ($DownloadUrl) {write-host ""; write-host "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."}
 
 
