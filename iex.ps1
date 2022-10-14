@@ -99,11 +99,8 @@ if ($DownloadUrl) {
   }
   else {
    Write-host "Multiple matches found! Cancelling execution. Please use a more specfic search and try again. `n`n" -ForegroundColor Red
-   $t = $host.ui.RawUI.ForegroundColor
-   $host.ui.RawUI.ForegroundColor = “Red”
-   $DownloadURLName
+   $DownloadURlname | Write-Output | Write-host -ForegroundColor Red
    Write-host ""
-   $host.ui.RawUI.ForegroundColor = $t
   }
 }
 
