@@ -29,17 +29,18 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 
 ### Config Examples:
  
-# These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $
+# These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $. Defaults are always false.
 
-# $_Admin = $false                 Run script elevetated.
-# $NoStub = $false                 Do not download stub script; not implemented yet. 
-# $NoWildcard = $false             Do not match command on wildcard, not implemented yet.
-# $NoExecute = $false              Download Script only, not implemented yet.
-# $HiddenWindow = $false           hide powershell window, not implemented yet.
-# $DebugVars = $false              show all vars created
-# $cat = $false                    prints script text only, does not download or execute
-# $help = $false                   same as cat except filters to line comments starting with #, : or REM
-# $Uninstall = $false              Run uninstall script after, not implemented yet.
+# $_Admin                  Run script elevetated.
+# $_NoStub                 Do not download stub script; not implemented yet. 
+# $_NoWildcard              Do not match command on wildcard, not implemented yet.
+# $_NoExecute               Download Script only, not implemented yet.
+# $_HiddenWindow            hide powershell window, not implemented yet.
+# $_DebugVars             show all vars created
+# $_KeepVars 
+# $_cat                    prints script text only, does not download or execute
+# $_help                  same as cat except filters to line comments starting with #, : or REM
+# $_Uninstall              Run uninstall script after, not implemented yet.
 
 
 $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
