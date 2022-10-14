@@ -150,7 +150,7 @@ If (!($DownloadUrl)) {
 
 popd
 
-if (!($error)) {Write-Host ("$exe $github Complete!" `n).trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
+if (!($error)) {Write-Host ("$exe $github Complete!`n").trim(" ") -ForegroundColor Green} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
 if ($exe -or $internal) {
  Set-Clipboard $invocuri
