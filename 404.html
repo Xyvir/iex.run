@@ -7,11 +7,13 @@
 # Get poweershell Invocation and manipulate out parts we care about.
 # 
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
-$invoc = $invoc.split("`"")
-$invoc = [string]::join("",($invoc.Split("`n")))
-$invoc = $invoc.Replace(' | iex', '')
-$curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))
+$invoc = $invoc.split("`"")                           # These two lines
+$invoc = [string]::join("",($invoc.Split("`n")))      # seem uneecesary, can't remember what I put them there for.
+$invoc = $invoc.Replace(' | iex', '')                 #
+$curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))  # Assuming the URL will be the last thing after the last space, as the URL can't contain a space : )
 $invoc = $invoc.Replace($curl + " ","")
+$invoc = $invoc.Replace("https://","")
+$invoc = $invoc.Replace("http://","")
 $invocuri = [uri]("https://" + $invoc)
 $github = $invocuri.host
 #
