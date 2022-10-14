@@ -118,8 +118,12 @@ if ($exe) {
  Set-Content -Path $exe -Stream sha -value $sha
  Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
  write-host ""
- if (!($_Admin)) {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "}
- if ($_Admin) {start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "}
+ if (!($_Admin)) {
+  start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+ }
+ else {
+  start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
+ }
 }
 
 # If no command build and display index
@@ -136,7 +140,14 @@ If (!($DownloadUrl)) {
  foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} 
  IF ($command) {
   Write-Host "No scripts matching '$command' found in $github, trying a built-in command`n" -ForegroundColor Yellow
-  try {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $command $arguments`" "}
+  try {
+    if (!($_Admin)) {
+     start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $command $arguments`" "
+    }
+    else {
+     start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$command $arguments`" "
+    }
+   }
   catch { Write-Host "No built-in matches found, please double-check your spelling" -ForegroundColor Red }
   finally {$internal = $true; write-host ""}
   }
