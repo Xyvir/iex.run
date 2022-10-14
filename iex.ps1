@@ -123,6 +123,7 @@ if ($exe) {
 
 
 If (!($DownloadUrl)) {
+ $shamatch = $orphans = $full = @()
  $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
  $orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name
  foreach ($thing in $shamatch) {$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } 
