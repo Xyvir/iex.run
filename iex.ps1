@@ -124,7 +124,7 @@ if ($exe) {
 
 If (!($DownloadUrl)) {
  $shamatch = $orphans = $index = @()
- $names = ($list.name + $files.name) | Select-Object -unique}
+ $names = ($list.name + $files.name) | Select-Object -unique
  if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
  $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
  $orphans += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name
