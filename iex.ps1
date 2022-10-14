@@ -138,12 +138,14 @@ If (!($DownloadUrl)) {
   Write-Host "No scripts matching '$command' found in $github, trying a built-in command`n" -ForegroundColor Red
   try {start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $command $arguments`" "}
   catch { Write-Host "No built-in matches found, please double-check your spelling" -ForegroundColor Red }
+  finally {$internal = $true}
   }
-  
- Write-Host "Available Files and Status :" -ForegroundColor Yellow 
- $index | ft # ft needed to output to console in right order.
- Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow
- write-host ""
+ if (!($internal)) { 
+   Write-Host "Available Files and Status :" -ForegroundColor Yellow 
+   $index | ft # ft needed to output to console in right order.
+   Write-Host "Launch one of the files above by typing $github <file name>. Partial matches are supported." -ForegroundColor Yellow
+   write-host ""
+  }
  }
 
 popd
