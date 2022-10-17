@@ -80,6 +80,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 - skip re-download if the sha alternate file stream matches
 - add URL decoding on parameters to allow for illegal URL chars 
+- add external download and run option via metaparemeter OR other scripts
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - finish remaining planned meta-parameters
 - review / refactor cumbersome string manipulation  
