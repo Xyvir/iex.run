@@ -1,3 +1,5 @@
+<!--- readme.md MUST be located in sub folder .github or else 404.html will be super-ceded by readme.md which defeats the purpose of magic URLs --->
+
 # iex.run
 
 ## Quickly run Windows scripts anywhere!
