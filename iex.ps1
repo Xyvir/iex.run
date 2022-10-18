@@ -1,6 +1,9 @@
 ### Init:
 $error.clear()
 
+# required For Url-encoded Decode
+Add-Type -AssemblyName System.Web
+
 # Get OldProgress: 
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 
@@ -16,7 +19,8 @@ $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 $search = irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname%20fork%3Atrue
 $githubURL = ($search.items | where {$_.name -like "$github"}).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
-$arguments = ($invocuri.Query).Split("?")
+$arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
+$arguments = $arguments.Split("?")
 
 # Make API calls and format.
 $rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
