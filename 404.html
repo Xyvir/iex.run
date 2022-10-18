@@ -4,7 +4,7 @@
 # 
 # NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
 #
-# Get poweershell Invocation and manipulate out parts we care about.
+### Get powershell Invocation and string manipulates out parts we care about.
 # 
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
 $invoc = $invoc.split("`"")                               # Remove double quotes so you can include semicolons and such in the URL
@@ -17,6 +17,8 @@ $invoc = $invoc -ireplace [regex]::Escape("https://"), "" # gets rid of http:// 
 $invocuri = [uri]("https://" + $invoc)                    # Adds back in https:// and casts to uri so we can manipulate out the queries (?) easily
 $github = $invocuri.host                                  # get the main part
 #
+### Gets and executes main powershell script.
+#
 irm $github/iex.ps1 | iex                             
 #
 #################### HTML stuff goes below here #########################
@@ -26,7 +28,7 @@ irm $github/iex.ps1 | iex
 # iframe for magic URL
 #--><iframe frameBorder="0" height="80%" width="100%" src="/magicurl.html"></iframe><!--
 #
-# 1. Set HTML Style. 2.Reminder Text errors 
+# 1. Set HTML Style. 2.Reminder Text errors 3. cmd hook padding 4. final cmd hook
 #
 #-->  <head><!--
 #-->    <style>/*
@@ -41,7 +43,7 @@ irm $github/iex.ps1 | iex
 #--><br>.<br>If you are seeing this text in red, you likely forgot to add '.exe' to your 'curl.exe' command in Powershell. <br>.<br><!--
 #--></body></html><!--
 #
-# The below padding is to make 404.html big enough to slow down curl.exe so it can be picked up by the cmd.exe hook.
+# The below padding is to make 404.html big enough to slow down curl.exe so it can be picked up by the cmd.exe hook on the top line.
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
@@ -201,5 +203,5 @@ irm $github/iex.ps1 | iex
 # 
 #  If you are seeing this message, you likely forgot to add a trailing '| iex' (for powershell) or '| cmd' (for cmd.exe). 
 #
-# 2>nul & cls & powershell -c "((cmd /c where *.*.cmd) | Select -first 1) | cmd"
+# 2>nul & cls & powershell -c "((cmd /c where *.*.cmd) | Select -first 1) | cmd" || final cmd fallback if CMD accidentally called in powershell.
 #--> 
