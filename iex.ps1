@@ -169,7 +169,7 @@ popd
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green; Write-Host ""} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
 if ($exe -or $internal) {
- Set-Clipboard "https://" + $invoc
+ Set-Clipboard ("https://" + $invoc)
  write-host "The corresponding 'Magic URL': `"https://$invoc`" has been copied to your clipboard."
  }
 
