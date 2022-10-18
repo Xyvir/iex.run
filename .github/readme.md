@@ -79,14 +79,12 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 ## todo:
 
 - skip re-download if the sha alternate file stream matches
-- add URL decoding on parameters to allow for illegal URL chars 
 - add external download and run option via metaparemeter OR other scripts
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - finish remaining planned meta-parameters
 - review / refactor cumbersome string manipulation  
 - fill in readme details more steps on setup
 - add metaparameter instructions to readme.
-- Cleanup respository search API to be more strict
 - andd support and test for non-vanity urls (repo.github.io) 
 - test parameters that contain quotes (fixed with encoding?)
 - support for powershell core / posh?  
