@@ -20,7 +20,7 @@ $search = irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3
 $githubURL = ($search.items | where {$_.name -like "$github"}).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = $invocuri.Query
-#$arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
+$arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
 $arguments = $arguments.Split("?")
 
 # Make API calls and format.
@@ -169,8 +169,8 @@ popd
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green; Write-Host ""} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
 if ($exe -or $internal) {
- Set-Clipboard $invocuri
- write-host "The corresponding 'Magic URL': `"$invocuri`" has been copied to your clipboard."
+ Set-Clipboard "https://" + $invoc
+ write-host "The corresponding 'Magic URL': `"https://$invoc`" has been copied to your clipboard."
  }
 
 if ($_DebugVars) {write-host ""; get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
