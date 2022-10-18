@@ -87,6 +87,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - add metaparameter instructions to readme.
 - andd support and test for non-vanity urls (repo.github.io) 
 - test parameters that contain quotes (fixed with encoding?)
+- have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
 - support for powershell core / posh?  
 
 
