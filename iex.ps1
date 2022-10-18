@@ -57,10 +57,12 @@ $customconfig = $customconfig | Where {$_ -like "*=*" }
 
 #Process $Customconfig variables from config.html
 foreach ($item in $customconfig) {
- $thing = $item.split("=")  
- $thing1 = ($thing[1]).trim(" ")
- # Below allows for in-line comments in config file
+ $thing = $item.split("=") 
+ $thing1 = $thing[1]
  if ($thing1 -like "*#*") {$thing1 = $thing1.substring(0, $thing1.LastIndexOf("#"))}
+ $thing1 = $thing1.trim(" ")
+ # Below allows for in-line comments in config file
+ 
  if ($thing1 -match "^\d+$") {
    $thing1 = $thing1 -as [int] 
    Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1
