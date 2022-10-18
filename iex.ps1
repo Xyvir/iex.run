@@ -170,7 +170,7 @@ if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor
 
 if ($exe -or $internal) {
  Set-Clipboard ("https://" + $invoc)
- write-host "The corresponding 'Magic URL': `"https://$invoc`" has been copied to your clipboard."
+ write-host "The following 'Magic URL' has been copied to your keyboard: https://" + $invoc 
  }
 
 if ($_DebugVars) {write-host ""; get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
