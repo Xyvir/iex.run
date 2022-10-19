@@ -4,6 +4,10 @@
 # 
 # NOTE: To avoid outtputting "CANNOT BIND COMMAND" errors, don't leave any newlines anywhere without a PS comments (#).
 #
+### Get all Existing Variables
+#
+$existingVariables = Get-Variable
+#
 ### Get powershell Invocation and string manipulates out parts we care about.
 # 
 $invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
