@@ -84,9 +84,9 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - finish remaining planned meta-parameters
 - review / refactor cumbersome string manipulation  
-- fill in readme details more steps on setup
 - add metaparameter instructions to readme.
-- andd support and test for non-vanity urls (repo.github.io) 
+- test / add support for non-vanity urls; updated readme with info (repo.github.io) 
+- fill in readme details more steps on setup
 - test parameters that contain quotes (fixed with encoding?)
 - have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
 - support for powershell core / posh?  
