@@ -23,7 +23,7 @@ $arguments = $arguments.Split("?")
 # Make API calls and format.
 $rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $apiurl = $rootapiurl + "/scripts"
-$configapiurl = $rootapiurl +"/customizations"
+$configapiurl = $rootapiurl + "/customizations"
 $api = invoke-restmethod $apiurl
 $configapi = invoke-restmethod $configapiurl
 $list = foreach ($item in $api) {$item | Select -Property name, size, sha}
@@ -56,10 +56,9 @@ $customconfig = $customconfig | Where {$_ -like "*=*" }
 foreach ($item in $customconfig) {
  $thing = $item.split("=") 
  $thing1 = $thing[1]
+  # Below allows for in-line comments in config file
  if ($thing1 -like "*#*") {$thing1 = $thing1.substring(0, $thing1.LastIndexOf("#"))}
  $thing1 = $thing1.trim(" ")
- # Below allows for in-line comments in config file
- 
  if ($thing1 -match "^\d+$") {
    $thing1 = $thing1 -as [int] 
    Set-Variable -Name  ( "_" + ($thing[0]).trim(" ")) -Value $thing1
@@ -69,7 +68,7 @@ foreach ($item in $customconfig) {
   } 
  }
 
-#Process any Meta-paramenters
+#Process any Meta-paramenters (Prepend Underscore, Remove @, toggle if the variable exists or else create a new variable.)
 foreach ($item in $arguments) {
   if ($item -like '`@*') {
     $trimitem = "_" + $item.trim('@') 
@@ -88,7 +87,8 @@ $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder
 ### Execute:
 
 set-executionpolicy -force -scope process bypass
-if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory}
+
+if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory > $null} # redirect to $null is needed as New-Item -Directory outputs dir aftewards for some reason.
 $env:Path += ";$_DownloadFolder;"
 echo "@ECHO OFF`nset PATH=%PATH%;$_DownloadFolder; `npowershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || powershell -c `"& %1`" || dir /b $_DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 
