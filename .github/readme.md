@@ -56,12 +56,13 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing, ie: 'foo.run')  
 2. Fork this repository and name it accordingly:
  - If you purchased a vanity domain, name the forked repo the same as the apex vanity name.
- - OTHERWISE, name the forked repo <your-github-username>.github.io
+ - OTHERWISE, name the forked repo '<your-github-username>.github.io' ie: 'xgumby.github.io'
 3. Set up the forked repo as a Github Page, deploy from a branch, main / root
 4. Optional: Verify your vanity domain with Github, then configure within Github pages, then disable 'enforce HTTPS'.
-4. Optional : Set Custom iex.run Options and webpage banner within /customization folder.
-5. Upload powershell scripts, batch files, or small binaries to the /scripts folder
-6. Launch those scripts uploaded in step 5 from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
+5. Optional: Set Custom iex.run runtime options and webpage banner within /customization folder.
+6. Optional: If using a non-vanity github.io domain, delete the CNAME file. 
+7. Upload powershell scripts, batch files, or small binaries to the /scripts folder
+8. Launch those scripts uploaded in step 5 from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
 
 ## FAQ
 
