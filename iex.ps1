@@ -91,7 +91,7 @@ set-executionpolicy -force -scope process bypass
 
 if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory > $null} # redirect to $null is needed as New-Item -Directory outputs dir aftewards for some reason.
 $env:Path += ";$_DownloadFolder;"
-echo "@ECHO OFF`nset PATH=%PATH%;$_DownloadFolder; `npowershell -c `"curl.exe \`"%~n0/%1\`" | iex`" || powershell -c `"& %1`" || dir /b $_DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
+echo "@ECHO OFF`nset PATH=%PATH%;$_DownloadFolder; `npowershell -c `"curl.exe -L \`"%~n0/%1\`" | iex`" || powershell -c `"& %1`" || dir /b $_DownloadFolder" | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 
 write-host ""
 
