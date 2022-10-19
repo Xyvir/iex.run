@@ -33,13 +33,13 @@ cmd.exe syntax:
 **Non-Vanity Domain Basic Invocation: ('https://' mandatory)**  
 powershell syntax:  
 >curl.exe -L xgumby.github.io/alphabet | iex  
->or
->curl.exe -L xgumby.github.io/alphabet | iex 
-  
+>or  
+>curl.exe -L xgumby.github.io/alphabet | iex  
+   
 cmd.exe syntax:  
 >curl https://xgumby.github.io/alphabet | cmd 
->or
->curl.exe https://xgumby.github.io/alphabet | iex 
+>or  
+>curl.exe https://xgumby.github.io/alphabet | iex  
      
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
