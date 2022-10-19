@@ -49,6 +49,7 @@ $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).downloa
 
 # Get Config from customizations folder and setup as variables:
 $customconfig = ((curl -UseBasicParsing $ConfigURL).content).split("`n")
+# -useBasicParsing is deprecated but can allow for additional compatability on versions of powershell.
 
 $customconfig = $customconfig | Where {$_ -like "*=*" }  
 
