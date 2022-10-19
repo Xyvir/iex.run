@@ -103,8 +103,4 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - add metaparameter instructions to readme.
 - add 'external download' and run option via metaparemeter OR other recursive scripts
 - review / refactor cumbersome string manipulation  
-- test parameters that require? quotes (fixed with encoding?)
 - have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
-
-
-
