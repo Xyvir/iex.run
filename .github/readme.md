@@ -24,22 +24,22 @@ https://iex.run/1kbrl
  
 **Vanity Domain Basic Invocation:**  
 powershell syntax:  
->curl.exe iex.run/alphabet | iex  
+``curl.exe iex.run/alphabet | iex``
   
-cmd.exe syntax:
->curl iex.run/alphabet | cmd 
+cmd.exe syntax:  
+``curl iex.run/alphabet | cmd ``  
 
   
 **Non-Vanity Domain Basic Invocation: ('https://' mandatory)**  
 powershell syntax:  
->curl.exe -L xgumby.github.io/alphabet | iex  
->or  
->curl.exe https://xgumby.github.io/alphabet | iex  
+``curl.exe -L xgumby.github.io/alphabet | iex ``  
+or  
+``curl.exe https://xgumby.github.io/alphabet | iex ``  
    
 cmd.exe syntax:  
->curl -L xgumby.github.io/alphabet | cmd  
->or  
->curl https://xgumby.github.io/alphabet | iex  
+``curl -L xgumby.github.io/alphabet | cmd ``  
+or  
+``curl https://xgumby&#46github&#46io/alphabet | iex``  
      
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
