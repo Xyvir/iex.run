@@ -19,7 +19,7 @@ https://iex.run/1kbrl
 
 
 ## How to use:  
-### 1. Interactively from Powershell or CMD:  
+### 1. Interactively from Powershell or cmd.exe:  
   
  
 **Vanity Domain Basic Invocation:**  
