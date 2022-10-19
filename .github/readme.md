@@ -37,7 +37,7 @@ powershell syntax:
 >curl.exe -L xgumby.github.io/alphabet | iex  
    
 cmd.exe syntax:  
->curl https://xgumby.github.io/alphabet | cmd 
+>curl https://xgumby.github.io/alphabet | cmd  
 >or  
 >curl.exe https://xgumby.github.io/alphabet | iex  
      
