@@ -14,7 +14,7 @@ $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 
 # $github = $invocuri.host
 $search = irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname%20fork%3Atrue
-$githubURL = ($search.items | where {$_.name -like "$github"}).html_url
+$githubURL = ($search.items | where {$_.name -like "$github"} | Select -First 1).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = $invocuri.Query
 $arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
