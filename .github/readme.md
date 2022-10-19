@@ -39,7 +39,7 @@ or
 cmd.exe syntax:  
 ``curl -L xgumby.github.io/alphabet | cmd ``  
 or  
-``curl https://xgumby&#46github&#46io/alphabet | iex``  
+``curl https://xgumby.github.io/alphabet | iex``  
      
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
