@@ -48,7 +48,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
 
 # Get Config from customizations folder and setup as variables:
-$customconfig = ((curl $ConfigURL).content).split("`n")
+$customconfig = ((curl -UseBasicParsing $ConfigURL).content).split("`n")
 
 $customconfig = $customconfig | Where {$_ -like "*=*" }  
 
