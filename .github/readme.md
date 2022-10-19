@@ -53,14 +53,15 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 
 ## Setting up your own iex.run instance is easy!
 
-1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing, foo.bar.)  
+1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing, ie: 'foo.run')  
 2. Fork this repository and name it accordingly:
  - If you purchased a vanity domain, name the forked repo the same as the apex vanity name.
- - If you didn't purchase a domain, name the forked repo <your-github-username>.github.io
-3. Set up the forked repo as a Github Page using the vanity URL purchased above.
+ - OTHERWISE, name the forked repo <your-github-username>.github.io
+3. Set up the forked repo as a Github Page, deploy from a branch, main / root
+4. Optional: Verify your vanity domain with Github, then configure within Github pages, then disable 'enforce HTTPS'.
 4. Optional : Set Custom iex.run Options and webpage banner within /customization folder.
 5. Upload powershell scripts, batch files, or small binaries to the /scripts folder
-6. Launch those scripts from any Windows endpoint using the simple iex.run syntax, the stub script launcher, or Magic URLs.
+6. Launch those scripts uploaded in step 5 from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
 
 ## FAQ
 
@@ -99,8 +100,6 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - finish remaining planned meta-parameters
 - add metaparameter instructions to readme.
-- test / add support for non-vanity urls; updated readme with info (repo.github.io) 
-- fill in readme details more steps on setup
 - add 'external download' and run option via metaparemeter OR other recursive scripts
 - review / refactor cumbersome string manipulation  
 - test parameters that require? quotes (fixed with encoding?)
