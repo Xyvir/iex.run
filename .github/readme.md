@@ -20,6 +20,7 @@ https://iex.run/1kbrl
 
 ## How to use:  
 ### 1. Interactively from Powershell or CMD:  
+  
  
 **Vanity Domain Basic Invocation:**  
 powershell syntax:  
@@ -28,13 +29,15 @@ powershell syntax:
 cmd.exe syntax:cmd  
 >curl iex.run/alphabet | cmd 
 
+  
 **Non-Vanity Domain Basic Invocation: ('https://' mandatory)**  
 powershell syntax:  
 >curl.exe https://xgumby.github.io/alphabet | iex  
   
 cmd.exe syntax:cmd  
 >curl https://xgumby.github.io/alphabet | cmd 
-  
+   
+     
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
 ### 4. Providing Magic URLs to others via email, teams or other message services.
