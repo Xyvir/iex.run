@@ -41,7 +41,7 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 
 ## Setting up your own iex.run instance is easy!
 
-1. Optional: Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing.)  
+1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing, foo.bar.)  
 2. Fork this repository and name it accordingly:
  - If you purchased a vanity domain, name the forked repo the same as the apex vanity name.
  - If you didn't purchase a domain, name the forked repo <your-github-username>.github.io
@@ -68,6 +68,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 
 ## Current Limitations:
+- HTTPS is enforced on non-vanity domains, so https:// must be supplied to those curl invocations
 - Relies on github unauthenticated API which is rate-limited (PLEASE Use it sparingly per unique public IP!) 
 - Stub App cannot set the path variable when invoked from powershell;  
    >Workarounds:  
