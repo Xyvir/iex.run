@@ -41,8 +41,10 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 
 ## Setting up your own iex.run instance is easy!
 
-1. Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing.)  
-2. Fork this repository and name it identically to the unique URL you purchased above.
+1. Optional: Purchase a short, pithy, vanity domain name like 'iex.run'. Get a .run ending if you wanna be cool like me. (3 letter names are about as short as you can go w/o paying ridiculous pricing.)  
+2. Fork this repository and name it accordingly:
+ - If you purchased a vanity domain, name the forked repo the same as the apex vanity name.
+ - If you didn't purchase a domain, name the forked repo the same as your github username.
 3. Set up the forked repo as a Github Page using the vanity URL purchased above.
 4. Optional : Set Custom iex.run Options and webpage banner within /customization folder.
 5. Upload powershell scripts, batch files, or small binaries to the /scripts folder
