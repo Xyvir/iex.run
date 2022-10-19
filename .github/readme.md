@@ -26,7 +26,7 @@ https://iex.run/1kbrl
 powershell syntax:  
 >curl.exe iex.run/alphabet | iex  
   
-cmd.exe syntax:cmd  
+cmd.exe syntax:
 >curl iex.run/alphabet | cmd 
 
   
@@ -34,7 +34,7 @@ cmd.exe syntax:cmd
 powershell syntax:  
 >curl.exe https://xgumby.github.io/alphabet | iex  
   
-cmd.exe syntax:cmd  
+cmd.exe syntax:  
 >curl https://xgumby.github.io/alphabet | cmd 
    
      
