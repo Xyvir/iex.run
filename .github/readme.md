@@ -85,7 +85,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 
 ## Current Limitations:
-- HTTPS is enforced on non-vanity domains, so https:// must be supplied to those curl invocations
+- HTTPS is enforced on non-vanity domains, so https:// or -L must be supplied to those curl invocations
 - Relies on github unauthenticated API which is rate-limited (PLEASE Use it sparingly per unique public IP!) 
 - Stub App cannot set the path variable when invoked from powershell;  
    >Workarounds:  
@@ -100,7 +100,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
   
 ## todo:
 
-
+- fix CMD stub to allow for either -L or https:// invocations from cmd.exe
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - finish remaining planned meta-parameters
 - add metaparameter instructions to readme.
