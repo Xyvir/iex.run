@@ -29,7 +29,7 @@ function myFunction() {
   document.execCommand("copy");
 }
 document.getElementById("myInput").value = 
-"powershell -noexit -c \"curl.exe https://" + window.parent.location.hostname + window.parent.location.pathname + window.parent.location.search + " | iex\"";
+"powershell -noexit -c \"curl.exe -L " + window.parent.location.hostname + window.parent.location.pathname + window.parent.location.search + " | iex\"";
 </script>
 <footer style="position: fixed; bottom: 0; right: 0; text-align: right"><a target="_parent" href="https://github.com/Xyvir/iex.run">What is this?</a></footer>
 </body></html>
