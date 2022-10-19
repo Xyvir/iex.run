@@ -114,7 +114,11 @@ if ($DownloadUrl) {
 if ($exe -like "*!*") {$_Admin = $true}
 
 pushd $_DownloadFolder
-$files = @(Get-ChildItem *); $files | Add-Member -MemberType NoteProperty -Name 'sha' -value ''; foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}
+
+# Take inventory of previously downloaded files and their original github SHA
+$files = @(Get-ChildItem *) 
+$files | Add-Member -MemberType NoteProperty -Name 'sha' -value '' 
+foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}
 
 if ($exe) {
   if ($sha -in $files.sha) {
