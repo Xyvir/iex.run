@@ -18,17 +18,17 @@ https://iex.run/1kbrl
 >credit to https://github.com/tapio/1kbrl
 
 
-## How to use:
-### 1. Interactively from Powershell or CMD:
-
-**Vanity Domain Basic Invocation:  **
+## How to use:  
+### 1. Interactively from Powershell or CMD:  
+ 
+**Vanity Domain Basic Invocation:**  
 powershell syntax:  
 >curl.exe iex.run/alphabet | iex  
   
 cmd.exe syntax:cmd  
 >curl iex.run/alphabet | cmd 
 
-**Non-Vanity Domain Basic Invocation: ('https://' mandatory) **
+**Non-Vanity Domain Basic Invocation: ('https://' mandatory)**  
 powershell syntax:  
 >curl.exe https://xgumby.github.io/alphabet | iex  
   
