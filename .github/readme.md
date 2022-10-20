@@ -14,8 +14,8 @@ It works by way of a polyglot 404.HTML page / Powershell script, alongside an op
 https://iex.run/1kbrl  
   
 ### You can also launch it interactively in cmd.exe or powershell; try the following in a fresh cmd.exe terminal:  
-``curl iex.run | cmd  
-iex.run 1kbrl``  
+``curl iex.run | cmd``   
+``iex.run 1kbrl``  
    
 >This demo launches the 1kbrl.exe found in the iex.run repo above.  
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
