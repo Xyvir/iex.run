@@ -114,4 +114,4 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - write sha to stub script AFS and skip download if current.
 - review / refactor cumbersome string manipulation  
 - have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
-- Add 'UninstallAll' parameter since iex.runs can live side-by-side (look up stubs by *.*.cmd, look up folders by *.*)
+- Add 'UninstallAll' parameter since iex.runs can live side-by-side (look up stubs by \*.\*.cmd, look up folders by \*.\*)
