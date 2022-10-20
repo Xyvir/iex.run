@@ -101,6 +101,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 ## todo:
 
 - fix CMD stub to allow for either -L or https:// invocations from cmd.exe (re-write as powershell?)
+- extra trailing spaces after domain name breaks things for some reason
 - Have stub script replace spaces with quesiton marks automatically for parameters.
 - finish remaining planned meta-parameters
 - add metaparameter instructions to readme.
