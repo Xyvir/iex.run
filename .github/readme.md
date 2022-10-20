@@ -17,7 +17,7 @@ https://iex.run/1kbrl
 ``curl iex.run | cmd``   
 ``iex.run 1kbrl``  
    
->This demo launches the 1kbrl.exe found in the iex.run repo above.  
+>Both methods download and launch the 1kbrl.exe found in the /scripts folder above.   
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
 >credit to https://github.com/tapio/1kbrl
 
