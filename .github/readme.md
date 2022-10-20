@@ -13,7 +13,7 @@ It works by way of a polyglot 404.HTML page / Powershell script, alongside an op
 ## Test it now by visiting the 'Magic URL' below, and then follow the instructions to play a little game.  
 https://iex.run/1kbrl  
   
-# You can also launch it interactively in cmd.exe or powershell; try the following in a fresh cmd terminal:  
+### You can also launch it interactively in cmd.exe or powershell; try the following in a fresh cmd.exe terminal:  
 ``curl iex.run | cmd  
 iex.run 1kbrl``  
    
