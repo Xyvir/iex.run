@@ -85,7 +85,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 
 
 ## Current Limitations:
-- HTTPS is enforced on non-vanity domains, so https:// or -L must be supplied to those curl invocations
+
 - Relies on github unauthenticated API which is rate-limited (PLEASE Use it sparingly per unique public IP!) 
 - Stub App cannot set the path variable when invoked from powershell;  
    >Workarounds:  
@@ -94,7 +94,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
    -manually add iex.run download location to user $path (note; this entry will not be removed by uninstall script)  
     
 - stub helper script can only be used programatically inside .ps1 files and not batch files  
-- iex.run assumes HTTPS is not enforced in Github Pages to require fewer keystrokes; it will not work if Github Pages enforces HTTPS.  
+- HTTPS is enforced on non-vanity domains, so https:// or -L must be supplied to those curl invocations
 - cmd invocations seems to block user input (due to how far down the matrix it goes)  
    >Workaround: Use powershell invocation instead for user input scripts  
   
