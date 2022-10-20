@@ -57,7 +57,8 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 ## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.  
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
 
-``curl.exe iex.run/alphabet?23-30?35-50?@Debugvars | iex`` 
+``curl.exe iex.run/alphabet?23-30?35-50?@Debugvars | iex``  
+> (For a full list of metaparameters reference the comments in the middle of iex.ps1)
 
 ## Setting up your own iex.run instance is easy!
 
