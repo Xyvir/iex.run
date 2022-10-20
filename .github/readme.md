@@ -13,6 +13,10 @@ It works by way of a polyglot 404.HTML page / Powershell script, alongside an op
 ## Test it now by visiting the 'Magic URL' below, and then follow the instructions to play a little game.  
 https://iex.run/1kbrl  
   
+# You can also launch it interactively in cmd.exe or powershell; try the following in a fresh cmd terminal:  
+``curl iex.run | cmd  
+iex.run 1kbrl``  
+   
 >This demo launches the 1kbrl.exe found in the iex.run repo above.  
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
 >credit to https://github.com/tapio/1kbrl
