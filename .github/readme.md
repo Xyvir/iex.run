@@ -48,13 +48,16 @@ or
 
 ## Arbitrary arguments are supported by using '?' as a delimiter.
 iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
-
-## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.
-
+  
 > Example:  
-> curl.exe iex.run/alphabet?23-30?35-50 | iex  
+``curl.exe iex.run/alphabet?23-30?35-50 | iex``  
 > is the same as:  
-> alphabet.cmd 23-30 35-50 
+``alphabet.cmd 23-30 35-50``
+
+## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.  
+Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
+
+``curl.exe iex.run/alphabet?23-30?35-50?@Debugvars | iex`` 
 
 ## Setting up your own iex.run instance is easy!
 
