@@ -11,15 +11,15 @@ iex.run can turn a Github Pages repository into an online script toolbox that yo
 It works by way of a polyglot 404.HTML page / Powershell script, alongside an optionally-downloaded helper 'stub script launcher' to reduce keystrokes even further (after the first initial invocation on an endpoint.)
 
 ## Test it now by visiting the 'Magic URL' below, and then follow the instructions to play a little game.  
-https://iex.run/1kbrl  
+https://iex.run/3kbrl  
   
 ### You can also launch it interactively in cmd.exe or powershell; try the following in a fresh cmd.exe terminal:  
 ``curl iex.run | cmd``   
-``iex.run 1kbrl``  
+``iex.run 3kbrl``  
    
 >Both methods download and launch the 1kbrl.exe found in the /scripts folder above.   
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
->credit to https://github.com/tapio/1kbrl
+>game inspired by https://github.com/tapio/1kbrl
 
 
 ## How to use:  
