@@ -19,8 +19,8 @@ https://iex.run/3kbrl
    
 >Both methods download and launch the 1kbrl.exe found in the /scripts folder above.   
 >Use the WASD to move, try to pick up gold and extra fuel before your torch goes out.  
->game inspired by https://github.com/tapio/1kbrl
-
+>game inspired by https://github.com/tapio/1kbrl  
+  
 
 ## How to use:  
 ### 1. Interactively from Powershell or cmd.exe:  
