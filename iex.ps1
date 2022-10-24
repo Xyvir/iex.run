@@ -59,7 +59,7 @@ foreach ($item in $customconfig) {
  $thing = $item.split("=") 
  $thing1 = $thing[1]
   # Below allows for in-line comments in config file
- if ($thing1 -like "*#*") {$thing1 = $thing1.substring(0, $thing1.FirstIndexOf("#"))}
+ if ($thing1 -like "*#*") {$thing1 = $thing1.substring(0, $thing1.IndexOf("#"))}
  $thing1 = $thing1.trim(" ")
  if ($thing1 -match "^\d+$") {
    $thing1 = $thing1 -as [int] 
