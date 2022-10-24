@@ -143,6 +143,10 @@ if ($exe) {
    write-host "$exe `n"  -foregroundcolor white
    curl.exe -s $DownloadUrl | write-host -foregroundcolor white
    write-host ""
+  } elseif ($_help) {
+   write-host "Help for $exe `n"  -foregroundcolor white
+   curl.exe -s $DownloadUrl | write-host -foregroundcolor white | select-string REM,:,`#
+   write-host ""
   } else {
    if ($sha -in $files.sha) {
      Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
