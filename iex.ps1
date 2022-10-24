@@ -143,7 +143,10 @@ foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha 
 # Download and Run Files
 
 if ($exe) {
-  if ($sha -in $files.sha) {
+  if ($cat) {
+   curl.exe $DownloadUrl
+   }
+  elseif ($sha -in $files.sha) {
     Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
   } else {
     Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
