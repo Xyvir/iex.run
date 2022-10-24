@@ -32,13 +32,13 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ and no underscore. Defaults are always false.
 
 # $_NoStub                 #Do not download stub script
-# $_NoWildcard             #Do not match command on wildcard, not implemented yet.
+# $_NoWildcard             #Do not match command on wildcard, n
 # $_NoExecute              #Download Script only.
 # $_Admin                  #Run script elevetated.
 # $_Hidden                 #hide powershell window
 # $_cat                    #prints script text only, does not download or execute
 # $_type                   #same as cat
-# $_help                   #same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in comments of your scripts.
+# $_help                   #same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in the comments of your scripts.
 # $_NoClipboard            #Do not copy MagicURL to clipboard
 # $_DebugVars              #show all vars created
 # $_KeepVars               #do not delete any iex variables after script runs.
