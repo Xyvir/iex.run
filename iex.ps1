@@ -143,7 +143,7 @@ foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha 
 # Download and Run Files
 
 if ($exe) {
-  if ($cat) {
+  if ($_cat) {
    curl.exe $DownloadUrl
    }
   elseif ($sha -in $files.sha) {
