@@ -39,7 +39,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $_NoExecute              Download Script only.
 # $_HiddenWindow           hide powershell window, not implemented yet.
 # $_DebugVars              show all vars created
-# $_KeepVars 
+# $_KeepVars               do not delete any iex variables after script runs.
 # $_cat                    prints script text only, does not download or execute
 # $_help                   same as cat except filters to line comments starting with #, : or REM
 # $_Uninstall              Run uninstall script after, 
@@ -81,6 +81,9 @@ foreach ($item in $arguments) {
        } 
       } 
      } 
+
+# Apply Implicit meta-parameters
+if ($_cat) {$_NoExecute=$true}
 
 # Expand DownloadFolder
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
