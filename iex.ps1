@@ -208,10 +208,11 @@ popd
 
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green; Write-Host ""} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
-if ( ($exe -or $internal) -and (!($_NoClipboard)) ) {
+if (!($_NoClipboard))  {
+if ($exe -or $internal){
  Set-Clipboard ("https://" + $invoc)
  write-host "The following 'Magic URL' has been copied to your keyboard: https://$invoc" 
- }
+ }}
 
 if ($_DebugVars) {write-host ""; get-variable | where-object {(@("FormatEnumerationLimit", "MaximumAliasCount", "MaximumDriveCount", "MaximumErrorCount", "MaximumFunctionCount", "MaximumVariableCount", "PGHome", "PGSE", "PGUICulture", "PGVersionTable", "PROFILE", "PSSessionOption") -notcontains $_.name) -and (([psobject].Assembly.GetType('System.Management.Automation.SpecialVariables').GetFields('NonPublic,Static') | Where-Object FieldType -eq ([string]) | ForEach-Object GetValue $null)) -notcontains $_.name}}
 
