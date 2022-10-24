@@ -157,6 +157,7 @@ if ($exe) {
    }
  } else {
  Write-Host "Skipping execution." -ForegroundColor Yellow 
+ }
 }
 
 # If no command build and display index
