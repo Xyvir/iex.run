@@ -87,11 +87,11 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 ## For providing magicURLs, Internal commands are supported, and exotic commands and/or parameters can be URL-encoded
 ``ipconfig /all``  
 encodes to:  
-``curl.exe/ipconfig?/all``  
+https://iex.run/ipconfig?/all  
   
 ``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview; pause``   
 enocdes to:   
-`` curl iex.run/%20Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview%3B%20pause ``  
+https://iex.run/%20Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview%3B%20pause  
   
 ## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.  
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
