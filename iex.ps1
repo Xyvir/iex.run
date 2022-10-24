@@ -159,7 +159,7 @@ if ($exe) {
     start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
    }
  } else {
- Write-Host "Skipping execution." -ForegroundColor Yellow 
+ Write-Host "Skipping execution.`n" -ForegroundColor Yellow;
  }
 }
 
