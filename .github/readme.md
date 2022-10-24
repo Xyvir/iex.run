@@ -25,17 +25,28 @@ https://iex.run/3kbrl
 
 ## How to use:  
 ### 1. Interactively from Powershell or cmd.exe:  
-  
- 
+#### Syntax Chart
+powershell:
+```
+curl.exe iex.run/command?parameter1?parameter2?@Metaparameter1@Metaparameter1 | iex
+curl.exe -L xgumby.github.io/command?parameter1?parameter2?@Metaparameter1@Metaparameter1 | iex
+```
+cmd:
+```
+curl iex.run/command?parameter1?parameter2?@Metaparameter1@Metaparameter1 | cmd
+curl -L xgumby.github.io/command?parameter1?parameter2?@Metaparameter1@Metaparameter1 | cmd
+```
+>Note that the middle portion of the command is identical to it's magic URL, we suggest prepending https:// so most things will automtaically convert it to a hyperlink.
+#### Examples 
 **Vanity Domain Basic Invocation:**  
-powershell syntax:  
+powershell:  
 ``curl.exe iex.run/alphabet | iex``
   
-cmd.exe syntax:  
+cmd.exe:  
 ``curl iex.run/alphabet | cmd ``  
 
   
-**Non-Vanity Domain Basic Invocation: ('https://' mandatory)**  
+**Non-Vanity Domain Basic Invocation: ('https://' or -L mandatory)**  
 powershell syntax:  
 ``curl.exe -L xgumby.github.io/alphabet | iex ``  
 or  
@@ -47,9 +58,21 @@ or
 ``curl https://xgumby.github.io/alphabet | iex``  
      
 ### 2. Using the stub script launcher (Only after step 1 has been run once previously on an endpoint)
+``` iex.run alphabet ```
 ### 3. Using the stub script launcher in your own scripts or scripting engine.
+```
+## recurse.ps1; example of how you can call iex.run-hosted scripts from other scripts.
+## in your scripting engine call 'curl.exe iex.run/recurse | iex' to also run alphabet.cmd and paramtest.cmd in order.
+$Env:testvar = "Hello World"
+iex.run alphabet
+iex.run paramtest?1
+iex.run passvar
+```
 ### 4. Providing Magic URLs to others via email, teams or other message services.
+https://iex.run/alphabet
+
 ### 5. Optional: 'Uninstall' iex.run from the endpoint when you are done. (Deletes all previously downloaded files including the stub script launcher)
+`` iex.run @uninstall``
 
 ## Arbitrary arguments are supported by using '?' as a delimiter.
 iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
