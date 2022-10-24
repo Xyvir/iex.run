@@ -16,6 +16,7 @@ $githubURL = ($search.items | where {$_.name -like "$github"} | Select -First 1)
 $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = $invocuri.Query
 $arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
+$command = [System.Web.HttpUtility]::UrlDecode($command)
 $arguments = $arguments.Split("?")
 
 # Make API calls and format.
