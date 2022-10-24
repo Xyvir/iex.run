@@ -33,12 +33,12 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
  
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $. Defaults are always false.
 
-# $_AdminRun script elevetated.
-# $_NoClipboard
+# $_Admin                  Run script elevetated.
+# $_NoClipboard            Do not copy MagicURL to clipboard
 # $_NoStub                 Do not download stub script
 # $_NoWildcard             Do not match command on wildcard, not implemented yet.
 # $_NoExecute              Download Script only.
-# $_HiddenWindow           hide powershell window, not implemented yet.
+# $_Hidden                 hide powershell window, not implemented yet.
 # $_DebugVars              show all vars created
 # $_KeepVars               do not delete any iex variables after script runs.
 # $_cat                    prints script text only, does not download or execute
@@ -160,10 +160,14 @@ if ($exe) {
   if (!($_NoExecute)) {   
     Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
     write-host ""
-    if (!($_Admin)) {
-     start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
-    } else {
+    if ($_Admin -and $_Hidden) {
+     start-process -verb RunAs -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
+    } elseif ($_Admin) {
      start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
+    } elseif ($_Hidden) {
+    start-process -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
+    } else {
+    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
     }
   } else {
   Write-Host "Skipping execution.`n" -ForegroundColor Yellow;
