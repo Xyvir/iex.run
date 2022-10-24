@@ -63,7 +63,18 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
 
 ``curl.exe iex.run/alphabet?23-30?35-50?@Debugvars | iex``  
-> (For a full list of metaparameters reference the comments in the middle of iex.ps1)
+> NoStub                 #Do not download stub script
+> NoWildcard             #Do not match command on wildcard, n
+> NoExecute              #Download Script only.
+> Admin                  #Run script elevetated.
+> Hidden                 #hide powershell window
+> cat                    #prints script text only, does not download or execute
+> type                   #same as cat
+> help                   #same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in the comments of your scripts.
+> NoClipboard            #Do not copy MagicURL to clipboard
+> DebugVars              #show all vars created
+> KeepVars               #do not delete any iex variables after script runs.
+> Uninstall              #Run uninstall script after 
 
 ## Setting up your own iex.run instance is easy!
 
