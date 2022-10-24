@@ -1,27 +1,13 @@
 DownloadFolder = $Env:Public\$github\
 
-# Note all the following are 0 by default:
-
-# Do not download stub script; not implemented yet. 
-NoStub = 0         #Test in-line comments
-
-# Do not match command on wildcard, not implemented yet.
-NoWildcard = 0     
-
-# Download Script only, not implemented yet.        
-NoExecute = 0          
-
-# hide powershell window, not implemented yet.    
-HiddenWindow = 0         
-
-# show all vars created
-DebugVars = 0         
-
-# prints script text only, does not download or execute     
-cat = 0      
-
-# same as cat except filters to line comments starting with    #, : or REM          
-help = 0                    
-
-# Run uninstall script after
-Uninstall = 0           
+NoStub=0                 # Do not download stub script
+NoWildcard=0             # Do not match command on wildcard, n
+NoExecute=0              # Download Script only.
+Admin=0                  # Run script elevetated.
+Hidden=0                 # hide powershell window
+cat=0                    # prints script text only, does not download or execute
+help=0                   # same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in the comments of your scripts.
+NoClipboard=0            # Do not copy MagicURL to clipboard
+DebugVars=0              # show all vars created
+KeepVars=0               # do not delete any iex variables after script runs.
+Uninstall=0              # Run uninstall script after 
