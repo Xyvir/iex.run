@@ -28,8 +28,8 @@ https://iex.run/3kbrl
 #### Syntax Chart
 powershell:
 ```
-curl.exe iex.run/command?parameter1?parameter2?@Metaparameter1@Metaparameter1 | iex
-curl.exe -L xgumby.github.io/command?parameter1?parameter2?@Metaparameter1@Metaparameter1 | iex
+curl.exe iex.run/command?param1?param2?@Metaparam1@Metaparam2 | iex
+curl.exe -L xgumby.github.io/command?param1?param2?@Metaparam1@Metaparam2 | iex
 ```
 cmd:
 ```
