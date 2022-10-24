@@ -99,10 +99,7 @@ $stub = @"
 set "PATH=%PATH%;$_DownloadFolder;"
 if [%~1] NEQ [] SET "PARAM=%*"  
 IF DEFINED PARAM SET "PARAM=%PARAM: =?%" 
-  powershell -c "curl.exe -L $github/%PARAM% | iex" || ^
-  powershell -c "& %PARAM%" > NUL || ^
-    (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. & ^
-    dir /b "$_DownloadFolder")
+powershell -c "curl.exe -L $github/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. & dir /b "$_DownloadFolder")
 "@ 
 $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 
