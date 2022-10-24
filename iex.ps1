@@ -110,14 +110,15 @@ write-host ""
 
 if ($command) {
  if (!($_NoWildcard)) {
- $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
- $DownloadUrlName = ($api | Where-Object {$_.name -like "*$command*"}).name
- $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
+  $DownloadUrl = ($api | Where-Object {$_.name -like "*$command*"}).download_url
+  $DownloadUrlName = ($api | Where-Object {$_.name -like "*$command*"}).name
+  $sha = ($api | Where-Object {$_.name -like "*$command*"}).sha
  } else {
- $DownloadUrl = ($api | Where-Object {$_.name -like "$command.*"}).download_url
- $DownloadUrlName = ($api | Where-Object {$_.name -like "$command.*"}).name
- $sha = ($api | Where-Object {$_.name -like "$command.*"}).sha
- }
+  $DownloadUrl = ($api | Where-Object {$_.name -like "$command.*"}).download_url
+  $DownloadUrlName = ($api | Where-Object {$_.name -like "$command.*"}).name
+  $sha = ($api | Where-Object {$_.name -like "$command.*"}).sha
+  }
+}
 
 if ($DownloadUrl) {
   if ($DownloadUrl.gettype().Name -eq "String") {
