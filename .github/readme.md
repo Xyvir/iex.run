@@ -111,7 +111,6 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
   
 ## todo:
 
-- Have stub script replace spaces with quesiton marks automatically for parameters, attepmt to run local commands when run offline.
 - finish remaining planned meta-parameters
 - add metaparameter instructions to readme.
 - add 'external download' and run option via metaparemeter OR other recursive scripts
