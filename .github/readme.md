@@ -91,7 +91,7 @@ https://iex.run/ipconfig?/all
   
 ``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview; pause``   
 enocdes to:   
-https://iex.run/%20Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview%3B%20pause  
+https://iex.run/Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview%3B%20pause
   
 ## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.  
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
