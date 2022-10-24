@@ -29,22 +29,22 @@ $configapi = invoke-restmethod $configapiurl
 $list = foreach ($item in $api) {$item | Select -Property name, size, sha}
 $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 
-### Config Examples:
+### Config Examples for reference only!:
  
-# These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $. Defaults are always false.
+# These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ and no underscore. Defaults are always false.
 
-# $_Admin                  Run script elevetated.
-# $_NoClipboard            Do not copy MagicURL to clipboard
-# $_NoStub                 Do not download stub script
-# $_NoWildcard             Do not match command on wildcard, not implemented yet.
-# $_NoExecute              Download Script only.
-# $_Hidden                 hide powershell window, not implemented yet.
-# $_DebugVars              show all vars created
-# $_KeepVars               do not delete any iex variables after script runs.
-# $_cat                    prints script text only, does not download or execute
-# $_type                   same as cat
-# $_help                   same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in comments of your scripts.
-# $_Uninstall              Run uninstall script after, 
+# $_NoStub                 #Do not download stub script
+# $_NoWildcard             #Do not match command on wildcard, not implemented yet.
+# $_NoExecute              #Download Script only.
+# $_Admin                  #Run script elevetated.
+# $_Hidden                 #hide powershell window
+# $_cat                    #prints script text only, does not download or execute
+# $_type                   #same as cat
+# $_help                   #same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in comments of your scripts.
+# $_NoClipboard            #Do not copy MagicURL to clipboard
+# $_DebugVars              #show all vars created
+# $_KeepVars               #do not delete any iex variables after script runs.
+# $_Uninstall              #Run uninstall script after 
 
 
 $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
