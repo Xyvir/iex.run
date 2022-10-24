@@ -91,12 +91,17 @@ set-executionpolicy -force -scope process bypass
 
 if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory > $null} # redirect to $null is needed as New-Item -Directory outputs dir aftewards for some reason.
 $env:Path += ";$_DownloadFolder;"
+
+# Write Stub Script to file:
+
 echo "@ECHO OFF
       set PATH=%PATH%;$_DownloadFolder;
       if [%~1] NEQ [] SET "PARAM=%*"
       IF DEFINED PARAM SET "PARAM=%PARAM: =?%"
-      powershell -c `"curl.exe -L \`"$github/%PARAM%\`" | iex`" || powershell -c `"& %PARAM%`" > NUL || (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. &  dir /b $_DownloadFolder)" 
-      | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
+      powershell -c `"curl.exe -L \`"$github/%PARAM%\`" | iex`" || `
+      powershell -c `"& %PARAM%`" > NUL `|| `
+      (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. &  dir /b $_DownloadFolder)" `
+| out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
 
 write-host ""
 
