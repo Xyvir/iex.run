@@ -43,7 +43,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $_KeepVars               do not delete any iex variables after script runs.
 # $_cat                    prints script text only, does not download or execute
 # $_type                   same as cat
-# $_help                   same as cat except filters to line comments starting with #, : or REM
+# $_help                   same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in comments of your scripts.
 # $_Uninstall              Run uninstall script after, 
 
 
