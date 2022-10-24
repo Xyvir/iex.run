@@ -73,7 +73,8 @@ Admin                  # Run script elevetated.
 Hidden                 # hide powershell window  
 cat                    # prints script text only, does not download or execute  
 type                   # same as cat  
-help                   # same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help   reminders in the comments of your scripts.  
+help                   # same as cat except filters to line comments starting with ##, or :: 
+                       # so you can add custom iex.run help reminders in the comments of your scripts.  
 NoClipboard            # Do not copy MagicURL to clipboard  
 DebugVars              # show all vars created  
 KeepVars               # do not delete any iex variables after script runs.  
