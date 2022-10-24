@@ -84,10 +84,6 @@ foreach ($item in $arguments) {
       } 
      } 
 
-# Apply Implicit meta-parameters
-if ($_type) {$_cat=$true}
-if ($_cat) {$_NoExecute=$true}
-
 
 # Expand DownloadFolder
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
@@ -143,29 +139,30 @@ foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha 
 # Download and Run Files
 
 if ($exe) {
-  if ($_cat) {
+  if ($_cat -or $_type) {
    write-host "$exe `n"  -foregroundcolor white
    curl.exe -s $DownloadUrl | write-host -foregroundcolor white
    write-host ""
-   }
-  elseif ($sha -in $files.sha) {
-    Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
   } else {
-    Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
-    curl.exe -# -O $DownloadUrl
-    write-host "" 
-    if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
-    }
- if (!($_NoExecute)) {   
-   Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
-   write-host ""
-   if (!($_Admin)) {
-    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+   if ($sha -in $files.sha) {
+     Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
    } else {
-    start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
-   }
- } else {
- Write-Host "Skipping execution.`n" -ForegroundColor Yellow;
+     Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
+     curl.exe -# -O $DownloadUrl
+     write-host "" 
+     if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
+     }
+  if (!($_NoExecute)) {   
+    Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
+    write-host ""
+    if (!($_Admin)) {
+     start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+    } else {
+     start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
+    }
+  } else {
+  Write-Host "Skipping execution.`n" -ForegroundColor Yellow;
+  }
  }
 }
 
