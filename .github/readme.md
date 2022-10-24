@@ -85,7 +85,7 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 ``alphabet.cmd 23-30 35-50``
 
 ## For providing magicURLs, Internal commands are supported, and exotic commands and/or parameters can be URL-encoded
-``ipconfig /all`` 
+``ipconfig /all``  
 encodes to:  
 ``curl.exe/ipconfig?/all``  
   
