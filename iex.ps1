@@ -33,7 +33,8 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
  
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $. Defaults are always false.
 
-# $_Admin                  Run script elevetated.
+# $_AdminRun script elevetated.
+# $_NoClipboard
 # $_NoStub                 Do not download stub script
 # $_NoWildcard             Do not match command on wildcard, not implemented yet.
 # $_NoExecute              Download Script only.
@@ -200,7 +201,7 @@ popd
 
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green; Write-Host ""} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
-if ($exe -or $internal) {
+if ( ($exe -or $internal) -and (!($_NoClipboard)) ) {
  Set-Clipboard ("https://" + $invoc)
  write-host "The following 'Magic URL' has been copied to your keyboard: https://$invoc" 
  }
