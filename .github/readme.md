@@ -64,7 +64,7 @@ Use '@' signs to specify metaparemeters which will not be passed to the command,
 
 ``curl.exe iex.run/alphabet?23-30?35-50?@Debugvars | iex``  
 `` ``  
->Metaparmeters:
+### Metaparmeters:
 ```
 NoStub                 # Do not download stub script  
 NoWildcard             # Do not match command on wildcard  
