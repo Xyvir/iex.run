@@ -115,7 +115,8 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - add metaparameter instructions to readme.
 - add 'external download' and run option via metaparemeter OR other recursive scripts
 - extra trailing spaces after domain name breaks things for some reason  
-- review / refactor cumbersome string manipulation  
+- review / refactor cumbersome string manipulation
+- Allow for multi-match downloads if @Noexecute is true
 - have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
 - Add builtin 'rpau' meta-parameter?
 - Add 'UninstallAll' parameter since iex.runs can live side-by-side (look up stubs by \*.\*.cmd, look up folders by \*.\*)
