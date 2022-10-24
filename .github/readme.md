@@ -74,6 +74,8 @@ https://iex.run/alphabet
 ### 5. Optional: 'Uninstall' iex.run from the endpoint when you are done. (Deletes all previously downloaded files including the stub script launcher)
 `` iex.run @uninstall``
 
+# Additional Features:
+
 ## Arbitrary arguments are supported by using '?' as a delimiter.
 iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
   
@@ -82,6 +84,15 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 > is the same as:  
 ``alphabet.cmd 23-30 35-50``
 
+## For providing magicURLs, Internal commands are supported, and exotic commands and/or parameters can be URL-encoded
+``ipconfig /all`` 
+encodes to:  
+``curl.exe/ipconfig?/all``  
+  
+``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview; pause``   
+enocdes to:   
+`` curl iex.run/%20Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview%3B%20pause ``  
+  
 ## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.  
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
 
