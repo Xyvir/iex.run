@@ -34,15 +34,15 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # These configs can be toggled via 'meta-parameters' in the URL query string, by prefacing with an @ instead of $. Defaults are always false.
 
 # $_Admin                  Run script elevetated.
-# $_NoStub                 Do not download stub script; not implemented yet. 
-# $_NoWildcard              Do not match command on wildcard, not implemented yet.
-# $_NoExecute               Download Script only, not implemented yet.
-# $_HiddenWindow            hide powershell window, not implemented yet.
-# $_DebugVars             show all vars created
+# $_NoStub                 Do not download stub script
+# $_NoWildcard             Do not match command on wildcard, not implemented yet.
+# $_NoExecute              Download Script only.
+# $_HiddenWindow           hide powershell window, not implemented yet.
+# $_DebugVars              show all vars created
 # $_KeepVars 
 # $_cat                    prints script text only, does not download or execute
-# $_help                  same as cat except filters to line comments starting with #, : or REM
-# $_Uninstall              Run uninstall script after, not implemented yet.
+# $_help                   same as cat except filters to line comments starting with #, : or REM
+# $_Uninstall              Run uninstall script after, 
 
 
 $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
@@ -94,6 +94,7 @@ $env:Path += ";$_DownloadFolder;"
 
 # Write Stub Script to file:
 
+if (!($_NoStub)) {
 $stub = @"
 @ECHO OFF
 set "PATH=%PATH%;$_DownloadFolder;"
@@ -102,6 +103,7 @@ IF DEFINED PARAM SET "PARAM=%PARAM: =?%"
 powershell -c "curl.exe -L $github/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. & dir /b "$_DownloadFolder")
 "@ 
 $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
+}
 
 write-host ""
 
@@ -131,6 +133,8 @@ $files = @(Get-ChildItem *)
 $files | Add-Member -MemberType NoteProperty -Name 'sha' -value '' 
 foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}
 
+# Download and Run Files
+
 if ($exe) {
   if ($sha -in $files.sha) {
     Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
@@ -140,13 +144,16 @@ if ($exe) {
     write-host "" 
     if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
     }
- Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
- write-host ""
- if (!($_Admin)) {
-  start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+ if (!($_NoExecute)) {   
+   Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
+   write-host ""
+   if (!($_Admin)) {
+    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+   } else {
+    start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
+   }
  } else {
-  start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
- }
+ Write-Host "Skipping execution." -ForegroundColor Yellow 
 }
 
 # If no command build and display index
