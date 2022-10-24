@@ -116,7 +116,6 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - add metaparameter instructions to readme.
 - add 'external download' and run option via metaparemeter OR other recursive scripts
 - extra trailing spaces after domain name breaks things for some reason  
-- write sha to stub script AFS and skip download if current.
 - review / refactor cumbersome string manipulation  
 - have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
 - Add builtin 'rpau' meta-parameter?
