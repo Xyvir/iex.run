@@ -161,6 +161,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
   
 ## todo:
 
+- fix URL encoded internal commands getting truncated by URI format for some reason.
 - add 'external download' and run option via metaparemeter OR other recursive scripts
 - extra trailing spaces after domain name breaks things for some reason  
 - review / refactor cumbersome string manipulation
