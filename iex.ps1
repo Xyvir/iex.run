@@ -44,7 +44,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $_NoClipboard            #Do not copy MagicURL to clipboard
 # $_DebugVars              #show all vars created
 # $_KeepVars               #do not delete any iex variables after script runs.
-# $_Uninstall              #Run uninstall script after 
+# $_Uninstall              #Run uninstall script after everything else
 
 
 $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).download_url
