@@ -167,4 +167,3 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - Allow for multi-match downloads if @Noexecute is true
 - have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
 - Add builtin 'rpau' meta-parameter?
-- Add 'UninstallAll' metaparameter since iex.runs can live side-by-side (look up stubs by \*.\*.cmd, look up folders by \*.\*)
