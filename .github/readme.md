@@ -84,9 +84,9 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 > is the same as:  
 ``alphabet.cmd 23-30 35-50``
 
-## For providing magicURLs, Internal commands are supported, and exotic commands and/or parameters can be URL-encoded
+## For providing magicURLs, powerhsell built-in commands are supported, and 'poison characters' can be url-encoded in the command OR paraemeters as needed.
 ``ipconfig /all``  
-encodes to:  
+can be run with:  
 https://iex.run/ipconfig?/all  
   
 ``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview``   
