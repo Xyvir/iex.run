@@ -10,9 +10,8 @@ $existingVariables = Get-Variable
 #
 ### Get powershell Invocation and string manipulates out parts we care about.
 #
-$test = $myinvocation
-$test = $test.MyCommand.ToString()
-$invoc = $myinvocation | Select MyCommand | Format-Table -hidetableheaders | Out-String
+$invoc = $myinvocation
+$invoc = $invoc.MyCommand.ToString()
 $invoc = $invoc.split("`"")                               # Remove double quotes so you can include semicolons and such in the URL
 $invoc = [string]::join("",($invoc.Split("`n")))          # ^
 $invoc = $invoc -ireplace [regex]::Escape(" | iex"), ""   # Remove ' | iex', case insensitive
