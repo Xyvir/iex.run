@@ -102,7 +102,8 @@ Use '@' signs to specify metaparemeters which will not be passed to the command,
 ```
 NoStub                 # Do not download stub script  
 NoWildcard             # Do not match command on wildcard  
-NoExecute              # Download Script only.  
+NoExecute              # Download Script only. 
+NewWindow              # opens script in a new window
 Admin                  # Run script elevetated.  
 Hidden                 # hide powershell window  
 cat                    # prints script text only, does not download or execute  
@@ -113,6 +114,7 @@ NoClipboard            # Do not copy MagicURL to clipboard
 DebugVars              # show all vars created  
 KeepVars               # do not delete any iex variables after script runs.  
 Uninstall              # Run uninstall script after  
+UninstallAll           # Run uninstall script after on all
 ```
 
 ## Setting up your own iex.run instance is easy!
