@@ -89,7 +89,7 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 encodes to:  
 https://iex.run/ipconfig?/all  
   
-``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview; pause``   
+``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview``   
 enocdes to:   
 https://iex.run/Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview
   
