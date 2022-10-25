@@ -35,8 +35,9 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $_NoStub                 #Do not download stub script
 # $_NoWildcard             #Do not match command on wildcard, n
 # $_NoExecute              #Download Script only.
-# $_Admin                  #Run script elevetated.
-# $_Hidden                 #hide powershell window
+# $_NewWindow              #Runs in a new window.
+# $_Admin                  #Run script elevetated; implies NewWindow
+# $_Hidden                 #hide powershell window; also implies NewWindow
 # $_cat                    #prints script text only, does not download or execute
 # $_type                   #same as cat
 # $_help                   #same as cat except filters to line comments starting with ##, or ::, so you can add custom iex.run help reminders in the comments of your scripts.
