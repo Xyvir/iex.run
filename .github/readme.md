@@ -120,11 +120,12 @@ UninstallAll           # Run uninstall script after on all
 ## Setting up your own iex.run instance is easy!
 
 1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'.
- - Make sure it is unique for a github repo name. (search repos including forks:true to check) 
+ - Make sure it is unique for a github repo name. Search like the following to check:
+ > "foo.bar" in:name fork:true
  - Get a .run ending if you wanna be cool like me.
  - 3 letter names are about as short as you can go w/o paying ridiculous pricing ie: 'foo.run'  
 2. Fork this repository and name it accordingly:
- - If you purchased a vanity domain, name the forked repo the same as the apex vanity name.
+ - If you purchased a vanity domain, name the forked repo exactly the same as the apex vanity name.
  - OTHERWISE, name the forked repo '<your-github-username>.github.io' ie: 'xgumby.github.io'
 3. Set up the forked repo as a Github Page, deploy from a branch, main / root
 4. Optional: Verify your vanity domain with Github, then configure within Github pages, then disable 'enforce HTTPS'.
