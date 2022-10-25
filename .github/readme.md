@@ -157,7 +157,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - stub helper script can only be used programatically inside .ps1 files and not batch files  
 - HTTPS is enforced on non-vanity domains, so https:// or -L must be supplied to those curl invocations
 - cmd invocations seems to block user input (due to how far down the matrix it goes)  
-   >Workaround: Use powershell invocation instead for user input scripts  
+   >Workaround: Use powershell invocation instead for user input scripts, or @NewWindow meta-parameter
   
 ## todo:
 
