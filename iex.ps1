@@ -172,7 +172,7 @@ if ($exe) {
      start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_Hidden) {
     start-process -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
-    } elseif ($_NewWindow)
+    } elseif ($_NewWindow) {
     start-process -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
     } else {
     start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
@@ -204,7 +204,7 @@ If (!($DownloadUrl)) {
      start-process -verb RunAs -wait powershell -ArgumentList "-executionpolicy Bypass -command `"$command $arguments`" "
     } elseif ($_Hidden) {
     start-process -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"$command $arguments`" "
-    } elseif ($_NewWindow)
+    } elseif ($_NewWindow) {
     start-process -wait powershell -ArgumentList "-command `"$command $arguments`" "
     } else {
     start-process -nonewwindow -wait powershell -ArgumentList "-command `"$command $arguments`" "
