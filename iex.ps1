@@ -151,8 +151,8 @@ if ($exe) {
    write-host ""
   } elseif ($_help) {
    write-host "Help for $exe `n"  -foregroundcolor white
-   curl.exe -s $DownloadUrl | select-string -pattern "^##" -trim "##" | write-host -foregroundcolor white 
-   curl.exe -s $DownloadUrl | select-string -pattern "^::" -trim "::" | write-host -foregroundcolor white 
+   (curl.exe -s $DownloadUrl | select-string -pattern "^##" | out-string).trim("##") | write-host -foregroundcolor white 
+   (curl.exe -s $DownloadUrl | select-string -pattern "^::" | out-string).trim("::") | write-host -foregroundcolor white 
    write-host ""
   } else {
    if ($sha -in $files.sha) {
