@@ -242,6 +242,13 @@ if ($_Uninstall) {
   Write-Host "Uninstall Complete. $error" -ForegroundColor Red
   }
 
+#NOTE: UninstallAll assumes default download location.
+if ($_UninstallAll) {
+  foreach ($name in ((dir -Directory $ENV:Public\*.*).name )) {
+    $name += "?@uninstall" 
+    (powershell -c "curl.exe -L $name | iex")
+  }
+}
 ### Cleanup:
 
 $ProgressPreference = $OldProgress
