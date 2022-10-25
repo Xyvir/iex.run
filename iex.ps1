@@ -35,7 +35,7 @@ $list | Add-Member -MemberType NoteProperty -Name '?' -Value ''
 # $_NoStub                 #Do not download stub script
 # $_NoWildcard             #Do not match command on wildcard, n
 # $_NoExecute              #Download Script only.
-# $_NewWindow              #Runs in a new window.
+# $_NewWindow              #Runs in a new window. (not implemented yet)
 # $_Admin                  #Run script elevetated; implies NewWindow
 # $_Hidden                 #hide powershell window; also implies NewWindow
 # $_cat                    #prints script text only, does not download or execute
