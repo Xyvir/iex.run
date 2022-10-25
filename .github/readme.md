@@ -89,9 +89,9 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 can be run with:  
 https://iex.run/ipconfig?/all  
   
-``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview``   
+``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview; pause``   
 enocdes to:   
-https://iex.run/Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview
+https://iex.run/Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%22InterfaceDescription%22%20%7C%20out-gridview%3Bpause
   
 ## 'Metaparameters' can modify the default behaviors of iex.run on an as-needed basis.  
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
