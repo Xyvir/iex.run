@@ -109,7 +109,8 @@ Hidden                 # hide powershell window
 cat                    # prints script text only, does not download or execute  
 type                   # same as cat  
 help                   # same as cat except filters to line comments starting with ##, or :: 
-                       # so you can add custom iex.run help reminders in the comments of your scripts.  
+                       # so you can add custom iex.run help reminders in the comments of your scripts.
+DLRemote               # Download remote file as specified via URL-encoded main command OR recursive script pre-set variable $DLRemote
 NoClipboard            # Do not copy MagicURL to clipboard  
 DebugVars              # show all vars created  
 KeepVars               # do not delete any iex variables after script runs.  
