@@ -151,8 +151,8 @@ if ($exe) {
    write-host ""
   } elseif ($_help) {
    write-host "Help for $exe `n"  -foregroundcolor white
-   (curl.exe -s $DownloadUrl | select-string -pattern "^##" ) -replace '## ?' | write-host -foregroundcolor white 
-   (curl.exe -s $DownloadUrl | select-string -pattern "^::" ) -replace ':: ?' | write-host -foregroundcolor white 
+   curl.exe -s $DownloadUrl | select-string -pattern "^##" | write-host -foregroundcolor white 
+   curl.exe -s $DownloadUrl | select-string -pattern "^::" | write-host -foregroundcolor white 
    write-host ""
   } else {
    if ($sha -in $files.sha) {
@@ -161,9 +161,13 @@ if ($exe) {
      Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
      curl.exe -# -O $DownloadUrl
      write-host "" 
-     if (Test-Path -Path $exe -PathType Leaf) {Set-Content -Path $exe -Stream sha -value $sha} 
+     if (Test-Path -Path $exe -PathType Leaf) {
+      Set-Content -Path $exe -Stream sha -value $sha
+      if ($exe -like "*!*") { mv $exe ($exe.replace("!","")) }
+      } 
      }
-  if (!($_NoExecute)) {   
+  if (!($_NoExecute)) {
+    $exe = $exe.replace("!","")
     Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
     write-host ""
     if ($_Admin -and $_Hidden) {
@@ -187,6 +191,7 @@ if ($exe) {
 
 If (!($DownloadUrl)) {
  $shamatch = $orphans = $index = @()
+ foreach ($name in $list) {$name.name = $name.name.replace("!","")}
  $names = ($list.name + $files.name) | Select-Object -unique
  if ($names) {foreach ($name in $names) {$index += [PSCustomObject]@{Name = $name; '?' = [char]18 } } }
  $shamatch += Compare-Object -ReferenceObject $list -DifferenceObject $files -Property name,sha -ExcludeDifferent -IncludeEqual
@@ -242,14 +247,7 @@ if ($_Uninstall) {
   Write-Host "Uninstall Complete. $error" -ForegroundColor Red
   }
 
-#NOTE: UninstallAll assumes default download location.
-if ($_UninstallAll) {
-  foreach ($name in ((dir -Directory $ENV:Public\*.*).name )) {
-    $name += "?@uninstall" 
-    (powershell -c "curl.exe -L $name | iex")
-  }
-}
 ### Cleanup:
 
 $ProgressPreference = $OldProgress
-# if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
+if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
