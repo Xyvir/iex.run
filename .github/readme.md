@@ -167,9 +167,8 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
   
 ## todo:
 
-- add 'external download' and run option via metaparemeter OR other recursive scripts
-- extra trailing spaces after domain name breaks things for some reason  
+- add 'external download' and run option via metaparemeter AND/OR by pre-setting a var in recursive scripts
 - review / refactor cumbersome string manipulation
 - Allow for multi-match downloads if @Noexecute is true
-- have iex.run respect working directory when script runs (in case script does something in the current directory and cares about this)
+- have iex.run respect working directory when script runs? (in case script does something in the current directory and cares about this)
 - Add builtin 'rpau' meta-parameter?
