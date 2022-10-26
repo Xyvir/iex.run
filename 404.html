@@ -20,7 +20,6 @@ $curl = $invoc.SubString(0, $invoc.LastIndexOf(' '))      # Assuming the URL wil
 $invoc = $invoc.Replace($curl + " ","")                   # removes the curl.exe and it's parameters
 $invoc = $invoc -ireplace [regex]::Escape("http://"), ""  # gets rid of https:// if exists, case insensitive
 $invoc = $invoc -ireplace [regex]::Escape("https://"), "" # gets rid of http:// if exists, case insensitive
-
 $invocuri = [uri]("https://" + $invoc)                    # Adds back in https:// and casts to uri so we can manipulate out the queries (?) easily
 $github = $invocuri.host                                  # get the main part
 #
