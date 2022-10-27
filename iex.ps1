@@ -164,7 +164,7 @@ if ($exe) {
    curl.exe -s $DownloadUrl | select-string -pattern "^::" | write-host -foregroundcolor white 
    write-host ""
   } else {
-   if ($sha -in $files.sha) {
+   if ($sha -and $sha -in $files.sha) {
      Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
    } else {
      Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
