@@ -166,6 +166,10 @@ if ($exe) {
       if ($exe -like "*!*") { mv $exe ($exe.replace("!","")) }
       } 
      }
+  if ($exe -like "*.zip") {
+  expand-archive $exe
+  
+  }
   if (!($_NoExecute)) {
     $exe = $exe.replace("!","")
     Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
