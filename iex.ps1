@@ -184,7 +184,7 @@ if ($exe) {
    pushd $noext
    try {$tempexe = ((dir).Name | Select-String  "$noext.*\.(exe|ps1|cmd|bat)" | select -first 1).tostring()}
    catch {$tempexe = ((dir).Name | Select-String  "\.(exe|ps1|cmd|bat)" | select -first 1).tostring()}
-   finally {$exe = $_DownloadFolder$noext\$tempexe}
+   finally {$exe = "$_DownloadFolder$noext\$tempexe"}
    }
    
   # Execute the file 
