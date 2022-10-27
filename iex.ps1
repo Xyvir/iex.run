@@ -126,6 +126,9 @@ if ($command) {
   }
 }
 
+if ($_DLRemote) {$DownloadURL = $command}
+if ($DLRemote) {DownloadURL = $DLRemote}
+
 if ($DownloadUrl) {
   if ($DownloadUrl.gettype().Name -eq "String") {
     $exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) 
