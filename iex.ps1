@@ -181,7 +181,7 @@ if ($exe) {
    pushd $noext
    try {$tempexe = ((dir).Name | Select-String  "$noext.*\.(exe|ps1|cmd|bat)" | select -first 1).tostring()}
    catch {$tempexe = ((dir).Name | Select-String  "\.(exe|ps1|cmd|bat)" | select -first 1).tostring()}
-   finally {$exe = $tempexe}
+   finally {$exe = $_DownloadFolder$noext\$tempexe}
    }
    
   # Execute the file 
@@ -196,9 +196,9 @@ if ($exe) {
     } elseif ($_Hidden) {
     start-process -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_NewWindow) {
-    start-process -wait powershell -ArgumentList "-command `"& .\$exe $arguments`" "
+    start-process -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
     } else {
-    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& .\$exe $arguments`" "
+    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
     }
   } else {
   Write-Host "Skipping execution.`n" -ForegroundColor Yellow;
