@@ -85,7 +85,7 @@ foreach ($item in $arguments) {
        } 
     } else {$newargs = $newargs + $item }
   } 
-if ($newargs) {$arguments = $newargs}
+$arguments = $newargs
 
 # Expand DownloadFolder variable
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
