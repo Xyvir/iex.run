@@ -176,6 +176,8 @@ if ($exe) {
   if ($exe -like "*.zip") {
    expand-archive $exe -erroraction silentlycontinue
    $noext = (Get-Item $exe).BaseName
+   Set-Content -Path $noext -Stream sha -value $sha
+   del $exe
    pushd $noext
    try {$tempexe = ((dir).Name | Select-String  "$noext.*\.(exe|ps1|cmd|bat)" | select -first 1).tostring()}
    catch {$tempexe = ((dir).Name | Select-String  "\.(exe|ps1|cmd|bat)" | select -first 1).tostring()}
