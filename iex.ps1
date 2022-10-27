@@ -129,6 +129,7 @@ if ($command) {
 
 if ($_DLRemote) {$DownloadURL = $command}
 if ($Env:DLRemote) {$DownloadURL = $Env:DLRemote}
+if ($_DLRemote -or $Env:DLRemote) {$DLsize = curl.exe -sI $DownloadURL | findstr "Content-Length:" }
 
 if ($DownloadUrl) {
   if ($DownloadUrl.gettype().Name -eq "String") {
