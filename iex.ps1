@@ -73,6 +73,7 @@ foreach ($item in $customconfig) {
  }
 
 #Process any Meta-paramenters (Prepend Underscore, Remove @, toggle if the variable exists or else create a new variable.)
+$newargs = @()
 foreach ($item in $arguments) {
   if ($item -like '`@*') {
     $trimitem = "_" + $item.trim('@') 
@@ -82,9 +83,10 @@ foreach ($item in $arguments) {
       else {
         Set-Variable -Name $trimitem -Value $true
        } 
-      } 
+      } else {
+      $newargs = $newargs + $item
      } 
-
+if ($newargs) {$arguments = $newargs}
 
 # Expand DownloadFolder variable
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
