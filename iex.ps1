@@ -177,8 +177,8 @@ if ($exe) {
    expand-archive $exe -erroraction silentlycontinue
    $noext = (Get-Item $exe).BaseName
    pushd $noext
-   $tempexe = ((dir).Name | Select-String  "$noext.*\.(exe|ps1|cmd|bat)").tostring()
-   if (!($tempexe)) { ((dir).Name | Select-String  "\.(exe|ps1|cmd|bat)").tostring()}
+   $tempexe = ((dir).Name | Select-String -first 1 "$noext.*\.(exe|ps1|cmd|bat)").tostring()
+   if (!($tempexe)) {$tempexe = ((dir).Name | Select-String -first 1 "\.(exe|ps1|cmd|bat)").tostring()}
    $exe = $tempexe
    }
    
