@@ -168,6 +168,7 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
   
 ## todo:
 
+- Add a step to automatically unzip archives after downloading.
 - add 'external download' and run option via metaparemeter AND/OR by pre-setting a var in recursive scripts
 - review / refactor cumbersome string manipulation
 - Allow for multi-match downloads if @Noexecute is true
