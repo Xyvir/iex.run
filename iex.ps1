@@ -10,7 +10,7 @@ $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 # Set Default Download Folder Default location (Will be overwritten later if config exists)
 $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 
-# Get full github URLs
+# Get this repo's full github URLs using api search based on github pages url
 $search = irm  https://api.github.com/search/repositories?q=%22$github%22%20in%3Aname%20fork%3Atrue
 $githubURL = ($search.items | where {$_.name -like "$github"} | Select -First 1).html_url
 $command = ($invocuri.Absolutepath).Trim("/")
@@ -19,7 +19,7 @@ $arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
 $command = [System.Web.HttpUtility]::UrlDecode($command)
 $arguments = $arguments.Split("?")
 
-# Make API calls and format.
+# Make github API calls and format.
 $rootapiurl ="https://api.github.com/repos" + ([uri]$githubURL).AbsolutePath + "/contents"
 $apiurl = $rootapiurl + "/scripts"
 $configapiurl = $rootapiurl + "/customizations"
@@ -53,6 +53,7 @@ $ConfigUrl = ($configapi | Where-Object {$_.name -like "*config.html*"}).downloa
 $customconfig = ((curl -UseBasicParsing $ConfigURL).content).split("`n")
 # -useBasicParsing is deprecated but can allow for additional compatability on versions of powershell.
 
+#match on only lines with = signs
 $customconfig = $customconfig | Where {$_ -like "*=*" }  
 
 #Process $Customconfig variables from config.html
@@ -85,13 +86,14 @@ foreach ($item in $arguments) {
      } 
 
 
-# Expand DownloadFolder
+# Expand DownloadFolder variable
 $_DownloadFolder = $ExecutionContext.InvokeCommand.ExpandString($_DownloadFolder)
 
-### Execute:
 
+# change execution policy to allow running ps1
 set-executionpolicy -force -scope process bypass
 
+# create download folder it doesn't exist.
 if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory > $null} # redirect to $null is needed as New-Item -Directory outputs dir aftewards for some reason.
 $env:Path += ";$_DownloadFolder;"
 
@@ -109,6 +111,8 @@ $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding a
 }
 
 write-host ""
+
+### parse required info from github API results and check for multiple matches
 
 if ($command) {
  if (!($_NoWildcard)) {
@@ -137,14 +141,15 @@ if ($exe -like "*!*") {$_Admin = $true}
 
 pushd $_DownloadFolder
 
-# Take inventory of previously downloaded files and their original github SHA
+# Take inventory of previously downloaded files and their original github SHA written to their alternate data stream
 $files = @(Get-ChildItem *) 
 $files | Add-Member -MemberType NoteProperty -Name 'sha' -value '' 
 foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}
 
-# Download and Run Files
+### Main operation if a command was provided
 
 if ($exe) {
+  # Display contents or Download the file
   if ($_cat -or $_type) {
    write-host "$exe `n"  -foregroundcolor white
    curl.exe -s $DownloadUrl | write-host -foregroundcolor white
@@ -166,10 +171,17 @@ if ($exe) {
       if ($exe -like "*!*") { mv $exe ($exe.replace("!","")) }
       } 
      }
+     
+  # Expand Zip if Zip and find new $exe
   if ($exe -like "*.zip") {
-  expand-archive $exe
-  
-  }
+   expand-archive $exe
+   pushd (Get-Item $exe).BaseName
+   $tempexe = ((dir)  -match "$exe.*\.(exe|ps1|cmd|bat)" | select -first 1).name
+   if (!($tempexe)){ $tempexe = ((dir)  -match "\.(exe|ps1|cmd|bat)" | select -first 1).name}
+   $exe = $tempexe
+   }
+   
+  # Execute the file 
   if (!($_NoExecute)) {
     $exe = $exe.replace("!","")
     Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
@@ -191,7 +203,7 @@ if ($exe) {
  }
 }
 
-# If no command build and display index
+### If no command build and display index
 
 If (!($DownloadUrl)) {
  $shamatch = $orphans = $index = @()
@@ -231,6 +243,9 @@ If (!($DownloadUrl)) {
  }
 
 popd
+if ($exe -like "*.zip") {popd}
+
+### Display Results:
 
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green; Write-Host ""} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
