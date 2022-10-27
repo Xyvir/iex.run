@@ -174,7 +174,7 @@ if ($exe) {
      
   # Expand Zip if Zip and find new $exe
   if ($exe -like "*.zip") {
-   expand-archive $exe -erroraction silentlycontinue
+   expand-archive $exe -erroraction ignore
    $noext = (Get-Item $exe).BaseName
    Set-Content -Path $noext -Stream sha -value $sha
    del $exe
