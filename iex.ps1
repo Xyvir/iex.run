@@ -175,9 +175,10 @@ if ($exe) {
   # Expand Zip if Zip and find new $exe
   if ($exe -like "*.zip") {
    expand-archive $exe -erroraction silentlycontinue
-   pushd (Get-Item $exe).BaseName
-   $tempexe = ((dir)  -match "$exe.*\.(exe|ps1|cmd|bat)" | select -first 1).name
-   if (!($tempexe)){ $tempexe = ((dir)  -match "\.(exe|ps1|cmd|bat)" | select -first 1).name}
+   $noext = (Get-Item $exe).BaseName
+   pushd $noext
+   $tempexe = ((dir).Name | Select-String  "$noext.*\.(exe|ps1|cmd|bat)").tostring()
+   if (!($tempexe)) { ((dir).Name | Select-String  "\.(exe|ps1|cmd|bat)").tostring()}
    $exe = $tempexe
    }
    
