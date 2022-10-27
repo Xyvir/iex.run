@@ -194,9 +194,9 @@ if ($exe) {
     } elseif ($_Hidden) {
     start-process -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_NewWindow) {
-    start-process -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+    start-process -wait powershell -ArgumentList "-command `"& .\$exe $arguments`" "
     } else {
-    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& $exe $arguments`" "
+    start-process -nonewwindow -wait powershell -ArgumentList "-command `"& .\$exe $arguments`" "
     }
   } else {
   Write-Host "Skipping execution.`n" -ForegroundColor Yellow;
