@@ -148,7 +148,7 @@ pushd $_DownloadFolder
 # Take inventory of previously downloaded files and their original github SHA written to their alternate data stream
 $files = @(Get-ChildItem *) 
 $files | Add-Member -MemberType NoteProperty -Name 'sha' -value '' 
-foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction SilentlyContinue}
+foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction Ignore}
 
 ### Main operation if a command was provided
 
