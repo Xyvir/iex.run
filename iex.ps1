@@ -83,9 +83,8 @@ foreach ($item in $arguments) {
       else {
         Set-Variable -Name $trimitem -Value $true
        } 
-      } else {
-      $newargs = $newargs + $item
-     } 
+    } else {$newargs = $newargs + $item }
+  } 
 if ($newargs) {$arguments = $newargs}
 
 # Expand DownloadFolder variable
