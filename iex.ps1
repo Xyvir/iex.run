@@ -127,7 +127,7 @@ if ($command) {
 }
 
 if ($_DLRemote) {$DownloadURL = $command}
-if ($DLRemote) {DownloadURL = $DLRemote}
+if ($DLRemote) {$DownloadURL = $DLRemote}
 
 if ($DownloadUrl) {
   if ($DownloadUrl.gettype().Name -eq "String") {
