@@ -174,7 +174,7 @@ if ($exe) {
      
   # Expand Zip if Zip and find new $exe
   if ($exe -like "*.zip") {
-   expand-archive $exe
+   expand-archive $exe -erroraction silentlycontinue
    pushd (Get-Item $exe).BaseName
    $tempexe = ((dir)  -match "$exe.*\.(exe|ps1|cmd|bat)" | select -first 1).name
    if (!($tempexe)){ $tempexe = ((dir)  -match "\.(exe|ps1|cmd|bat)" | select -first 1).name}
