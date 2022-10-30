@@ -177,8 +177,6 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - cmd invocations seems to block user input (due to how far down the matrix it goes)  
    >Workaround: Use powershell invocation instead for user input scripts, or @NewWindow meta-parameter
 
-[Buy me a coffee!](https://www.paypal.com/donate/?hosted_button_id=RCQNK9RFDYQEG)
-
 At this point iex.run does basically everything I would want it to, there are a few other improvements I can think of but I may not get to these for awhile:
   
 ## possible todo:
@@ -189,3 +187,5 @@ At this point iex.run does basically everything I would want it to, there are a 
 - Add builtin 'rpau' meta-parameter? (either by piggy-backing off RPAU.exe or figuring out how to do this myself natively in powershell.)
 - Add admin/global install and uninstall options.
 - Add support for programatically adding public/iex.golf to %PATH% permanently. 
+
+[Buy me a coffee!](https://www.paypal.com/donate/?hosted_button_id=RCQNK9RFDYQEG)
