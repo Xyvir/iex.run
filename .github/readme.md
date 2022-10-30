@@ -76,6 +76,13 @@ https://iex.run/alphabet
 
 # Additional Features:
 
+## built-in commands are supported, and 'poison characters' can be url-encoded in the command OR paraemeters as needed. This allows you to
+## provide magic URLs for built-in commands.  
+  
+``ipconfig /all``  
+can be run with:  
+https://iex.run/ipconfig?/all  
+
 ## Arbitrary arguments are supported by using '?' as a delimiter.
 iex.run will replace all '?' with spaces when the command is launched. All forward-slashes '/' past the first quesiton mark are preserved and passed as an argument.
   
@@ -84,10 +91,7 @@ iex.run will replace all '?' with spaces when the command is launched. All forwa
 > is the same as:  
 ``alphabet.cmd 23-30 35-50``
 
-## For providing magicURLs, powerhsell built-in commands are supported, and 'poison characters' can be url-encoded in the command OR paraemeters as needed.
-``ipconfig /all``  
-can be run with:  
-https://iex.run/ipconfig?/all  
+
   
 ``Get-NetIPConfiguration | select "InterfaceAlias","InterfaceDescription" | out-gridview; pause``   
 enocdes to:   
@@ -118,7 +122,13 @@ Uninstall              # Run uninstall script after
 UninstallAll           # Run uninstall script after on all
 ```
 
-## Setting up your own iex.run instance is easy!
+## 'Remote Download' feature support via enviromental variable or meta-parameter:
+
+This will tell iex.run to install Opera by using ninte:
+
+``curl.exe iex.run/https%3A%2F%2Fninite.com%2Fopera%2Fninite.exe?@DLRemote | iex``
+
+# Setting up your own iex.run instance is easy!
 
 1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'.
  - Make sure it is unique for a github repo name. Search like the following to check:
@@ -165,12 +175,14 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 - HTTPS is enforced on non-vanity domains, so https:// or -L must be supplied to those curl invocations
 - cmd invocations seems to block user input (due to how far down the matrix it goes)  
    >Workaround: Use powershell invocation instead for user input scripts, or @NewWindow meta-parameter
-  
-## todo:
 
-- Add a step to automatically unzip archives after downloading.
-- add 'external download' and run option via metaparemeter AND/OR by pre-setting a var in recursive scripts
+At this point iex.run does basically everything I would want it to, there are a few other improvements I can think of but I may not get to these for awhile:
+  
+## possible todo:
+
 - review / refactor cumbersome string manipulation
 - Allow for multi-match downloads if @Noexecute is true
 - have iex.run respect working directory when script runs? (in case script does something in the current directory and cares about this)
-- Add builtin 'rpau' meta-parameter?
+- Add builtin 'rpau' meta-parameter? (either by piggy-backing off RPAU.exe or figuring out how to do this myself natively in powershell.)
+- Add admin/global install and uninstall options.
+- Add support for programatically adding public/iex.golf to %PATH% permanently. 
