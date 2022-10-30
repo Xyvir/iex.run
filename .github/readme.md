@@ -132,18 +132,19 @@ This will tell iex.run to install Opera by using ninte:
 
 1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'.
  - Make sure it is unique for a github repo name. Search like the following to check:
- > "foo.bar" in:name fork:true
- - Get a .run ending if you wanna be cool like me.
- - 3 letter names are about as short as you can go w/o paying ridiculous pricing ie: 'foo.run'  
+ > "foo.run" in:name fork:true
+  (Get a .run ending if you wanna be cool like me.)
+  (3 letter names are about as short as you can go w/o paying ridiculous pricing ie: 'foo.run')  
 2. Fork this repository and name it accordingly:
- - If you purchased a vanity domain, name the forked repo exactly the same as the apex vanity name.
+ - If you purchased a vanity domain, name the forked repo exactly the same as the apex vanity name. 'foo.run'
  - OTHERWISE, name the forked repo '<your-github-username>.github.io' ie: 'xgumby.github.io'
 3. Set up the forked repo as a Github Page, deploy from a branch, main / root
 4. Optional: Verify your vanity domain with Github, then configure within Github pages, then disable 'enforce HTTPS'.
 5. Optional: Set Custom iex.run default runtime options and/or webpage banner within /customization folder.
-6. Optional: If using a non-vanity github.io domain, delete the CNAME file. 
-7. Upload powershell scripts, batch files, or small binaries to the /scripts folder
-8. Launch those scripts uploaded in step 5 from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
+6. Optional: If using a non-vanity github.io domain, delete the CNAME file.
+7. Optional: IF you want to repurpose any of the existing example scripts, please replace iex.run with your own domain name. 
+8. Upload powershell scripts, batch files, or small binaries to the /scripts folder
+9. Launch those scripts uploaded in step 5 from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
 
 ## FAQ
 
