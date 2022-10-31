@@ -281,4 +281,7 @@ if ($_Uninstall) {
 ### Cleanup:
 
 $ProgressPreference = $OldProgress
-if (!($_KeepVars)) {Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
+
+if (!($_KeepVars)) {
+if ($Env:DLRemote) {$Env:DLRemote = $null}
+Get-Variable | Where-Object Name -notin $existingVariables.Name | Remove-Variable}
