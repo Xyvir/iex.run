@@ -150,7 +150,7 @@ if ($exe -like "*!*") {$_Admin = $true}
 pushd $_DownloadFolder
 
 # Take inventory of previously downloaded files and their original github SHA written to their alternate data stream
-$files = @(Get-ChildItem *) 
+$files = @(Get-ChildItem * -file) 
 $files | Add-Member -MemberType NoteProperty -Name 'sha' -value '' 
 foreach ($file in $files) {$file.sha = Get-Content -Path $file.name -Stream sha -ErrorAction Ignore}
 
