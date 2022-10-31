@@ -226,7 +226,7 @@ If (!($DownloadUrl)) {
  foreach ($thing in $shamatch) {$thing.SideIndicator = $thing.SideIndicator -replace("==",[char]25) } 
  foreach ($thing in $orphans) {$thing.SideIndicator = $thing.SideIndicator -replace("<="," ") -replace("=>",[char]19) } 
  $full = $shamatch + $orphans
- foreach ($thing in $file) {if ($thing.sha -like "*Content-Length:*" {($full | Where-Object {$_.Name -like $thing.name}).SideIndicator = "R"} }
+ foreach ($thing in $file) {if ($thing.sha -like "*Content-Length:*" {($full | Where-Object {$_.Name -like $thing.name}).SideIndicator = "R"} )}
  foreach ($item in $full) {($index | Where-Object {$_.Name -like $item.name})."?" = $item.SideIndicator} 
  IF ($command) {
   Write-Host "No scripts matching '$command' found in $github, trying a built-in command`n" -ForegroundColor Yellow
