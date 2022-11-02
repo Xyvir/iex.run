@@ -96,7 +96,9 @@ set-executionpolicy -force -scope process bypass
 
 # create download folder it doesn't exist.
 if (!(Test-Path $_DownloadFolder)) {New-Item -Path $_DownloadFolder -ItemType Directory > $null} # redirect to $null is needed as New-Item -Directory outputs dir aftewards for some reason.
+if (!(Test-Path "$Env:localappdata\Microsoft\WindowsApps\")) {New-Item -Path "$Env:localappdata\Microsoft\WindowsApps\" -ItemType Directory > $null}
 $env:Path += ";$_DownloadFolder;"
+
 
 # Write Stub Script to file:
 
