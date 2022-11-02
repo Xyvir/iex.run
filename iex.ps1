@@ -263,7 +263,7 @@ if ($exe -like "*.zip") {popd}
 
 if (!($error)) {Write-Host ("$exe $github Complete!").trim(" ") -ForegroundColor Green; Write-Host ""} else {Write-Host ("$github completed with errors. `n`n $error").trim(" ") -ForegroundColor Red}
 
-if (!($_NoClipboard))  {
+if ( (!($_NoClipboard)) -and (!($Env:DLRemote)) )  {
 if ($exe -or $internal){
  Set-Clipboard ("https://" + $invoc)
  write-host "The following 'Magic URL' has been copied to your keyboard: https://$invoc `n" 
