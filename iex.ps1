@@ -175,7 +175,7 @@ if ($exe) {
      Write-Host "Downloaded '$exe' up-to-date, skipping download." -ForegroundColor Yellow; write-host "" 
    } else {
      Write-Host "Downloading '$exe' to '$_DownloadFolder'" -ForegroundColor Yellow; write-host ""
-     curl.exe -# -O $DownloadUrl
+     curl.exe -# -o $exe $DownloadUrl
      write-host "" 
      if (Test-Path -Path $exe -PathType Leaf) {
       Set-Content -Path $exe -Stream sha -value $sha
