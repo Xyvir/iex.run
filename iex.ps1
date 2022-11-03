@@ -138,7 +138,8 @@ if ($_DLRemote -or $Env:DLRemote) {
 
 if ($DownloadUrl) {
   if ($DownloadUrl.gettype().Name -eq "String") {
-    $exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 ) 
+    $exe = $DownloadUrl.substring($DownloadUrl.LastIndexOf('/') + 1, $DownloadUrl.length - $DownloadUrl.LastIndexOf('/') - 1 )
+    if ($exe -like "*?*") {$exe = $exe.substring(0, $exe.indexof("?"))}
   }
   else {
    Write-host "Multiple matches found! Cancelling execution. Please use a more specfic search and try again: `n" -ForegroundColor Red
