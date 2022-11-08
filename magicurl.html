@@ -11,7 +11,7 @@
 <div style = "margin-left:16%">
 <p>1. Click the 'Copy' button below.</p>
 <button onclick="myFunction()">Copy</button>
-<input type="text" value="powershell -noexit -c curl.exe" id="myInput" size="50" readonly="">
+<input type="text" value="temp value" id="myInput" size="50" readonly="">
 <p>2. Press Winkey and 'R' together. ( &#x229E  + R ) NOTE: Windows key is bottom-left between CTRL and ALT. </p>
 <p>3. Paste. (CTRL +V)</p>
 <p>4. Press Enter.</p>
@@ -29,7 +29,7 @@ function myFunction() {
   document.execCommand("copy");
 }
 document.getElementById("myInput").value = 
-"powershell -noexit -c \"curl.exe -L " + window.parent.location.hostname + window.parent.location.pathname + window.parent.location.search + " | iex\"";
+"powershell -noexit -c \"curl.exe -s -L " + window.parent.location.hostname + window.parent.location.pathname + window.parent.location.search + " | iex\"";
 </script>
 <footer style="position: fixed; bottom: 0; right: 0; text-align: right"><a target="_parent" href="https://github.com/Xyvir/iex.run">What is this?</a></footer>
 </body></html>
