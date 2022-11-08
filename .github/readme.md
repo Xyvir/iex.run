@@ -131,7 +131,7 @@ This will tell iex.run to install Opera by using ninte:
 # Setting up your own iex.run instance is easy!
 
 1. Optional, but Recommended: Purchase a short, pithy, vanity domain name like 'iex.run'.
- - Make sure it is unique for a github repo name. Search like the following to check:
+ - Make sure it is unique for a github repo name. Search like the following to check:  
  ```"foo.run" in:name fork:true  ```  
   > (Get a .run ending if you wanna be cool like me.)  
   > (3 letter names are about as short as you can go w/o paying ridiculous pricing ie: 'foo.run')  
