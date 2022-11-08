@@ -7,6 +7,9 @@ Add-Type -AssemblyName System.Web
 # Get OldProgress: 
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 
+#Display Banner
+(((iwr "$github/customizations/banner.html").parsedhtml).body).innertext
+
 # Set Default Download Folder Default location (Will be overwritten later if config exists)
 $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
 
