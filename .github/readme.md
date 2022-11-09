@@ -184,6 +184,7 @@ only write alternate-file stream info if file succesfully downloads (if (downloa
   
 ## possible todo:
 
+- add ability for explicit meta-paremeters instead of toggle from default only (?@HideBanner=1)
 - review / refactor cumbersome string manipulation
 - Allow for multi-match downloads if @Noexecute is true
 - have iex.run respect working directory when script runs? (in case script does something in the current directory and cares about this)
