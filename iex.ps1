@@ -114,6 +114,15 @@ IF DEFINED PARAM SET "PARAM=%PARAM: =?%"
 powershell -c "curl.exe -L $github/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. & dir /b "$_DownloadFolder")
 "@ 
 $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
+
+$stub2 = @"
+@ECHO OFF
+if [%1] EQU [] set /p "p="
+if [%1] EQU [] call %p%
+
+"@ 
+$stub2 = $stub2 + $stub
+$stub2 | out-file $Env:localappdata\Microsoft\WindowsApps\iex.cmd -encoding ascii
 }
 
 write-host ""
