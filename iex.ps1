@@ -110,7 +110,7 @@ $stub = @"
 @ECHO OFF
 FOR /F "USEBACKQ" %%A IN (`ECHO %CMDCMDLINE% ^| findstr /i /v WindowsApps ^| findstr /i %~n0`) do (set "pipe=1")
 if defined pipe set /p "p="
-if defined pipe call %p%
+if defined p call %p%
 set "PATH=%PATH%;C:\Users\Public\$github\;"
 if [%~1] NEQ [] SET "PARAM=%*"  
 IF DEFINED PARAM SET "PARAM=%PARAM: =?%" 
