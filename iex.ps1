@@ -117,6 +117,7 @@ $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding a
 
 $stub2 = @"
 @ECHO OFF
+ECHO %CMDCMDLINE%
 if [%1] EQU [] set /p "p="
 if [%1] EQU [] call %p%
 
