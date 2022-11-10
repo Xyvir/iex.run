@@ -110,7 +110,7 @@ $stub = @"
 @ECHO OFF
 ECHO 1 %CMDCMDLINE%
 ECHO 2 %CMDCMDLINE% ^| findstr /i %~n0
-FOR /F "USEBACKQ" %%A IN (``ECHO %CMDCMDLINE% ^| findstr /i %~n0``) do (set "pipe=1")
+FOR /F "USEBACKQ" %%A IN (``ECHO %CMDCMDLINE% ^| findstr /i %~n0"``) do (set "pipe=1")
 if defined pipe set /p "p="
 if defined pipe call %p%
 set "PATH=%PATH%;C:\Users\Public\$github\;"
