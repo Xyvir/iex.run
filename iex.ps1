@@ -108,22 +108,17 @@ $env:Path += ";$_DownloadFolder;"
 if (!($_NoStub)) {
 $stub = @"
 @ECHO OFF
-set "PATH=%PATH%;$_DownloadFolder;"
+ECHO %CMDCMDLINE% | findstr iex
+FOR /F "USEBACKQ" %%A IN (`ECHO %CMDCMDLINE% ^| findstr /i iex`) do (set "pipe=1")
+if defined pipe set /p "p="
+if defined pipe call %p%
+set "PATH=%PATH%;C:\Users\Public\iex.run\;"
 if [%~1] NEQ [] SET "PARAM=%*"  
 IF DEFINED PARAM SET "PARAM=%PARAM: =?%" 
-powershell -c "curl.exe -L $github/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. & dir /b "$_DownloadFolder")
+powershell -c "curl.exe -L iex.run/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded %~n0 files below: & ECHO. & dir /b "C:\Users\Public\iex.run\")
 "@ 
 $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii
-
-$stub2 = @"
-@ECHO OFF
-ECHO %CMDCMDLINE%
-if [%1] EQU [] set /p "p="
-if [%1] EQU [] call %p%
-
-"@ 
-$stub2 = $stub2 + $stub
-$stub2 | out-file $Env:localappdata\Microsoft\WindowsApps\iex.cmd -encoding ascii
+$stub | out-file $Env:localappdata\Microsoft\WindowsApps\iex.cmd -encoding ascii
 }
 
 write-host ""
