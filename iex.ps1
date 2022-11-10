@@ -108,8 +108,8 @@ $env:Path += ";$_DownloadFolder;"
 if (!($_NoStub)) {
 $stub = @"
 @ECHO OFF
-ECHO %CMDCMDLINE% | findstr iex
-FOR /F "USEBACKQ" %%A IN (``ECHO %CMDCMDLINE% ^| findstr /i iex``) do (set "pipe=1")
+ECHO %~n0
+FOR /F "USEBACKQ" %%A IN (``ECHO %CMDCMDLINE% ^| findstr /i %~n0``) do (set "pipe=1")
 if defined pipe set /p "p="
 if defined pipe call %p%
 set "PATH=%PATH%;C:\Users\Public\iex.run\;"
