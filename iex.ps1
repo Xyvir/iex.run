@@ -119,8 +119,8 @@ $stub2 = Get-Content -erroraction silentlycontinue -raw $Env:localappdata\Micros
 $stub3 = Get-Content -erroraction silentlycontinue -raw $Env:localappdata\Microsoft\WindowsApps\iex.cmd
 if ($stub2) {$stub2 = $stub2.trim("`n`r")}
 if ($stub3) {$stub3 = $stub3.trim("`n`r")}
-if ($stub -ne $stub2) {echo good2; $stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii}
-if ($stub -ne $stub3) {echo good3; $stub | out-file $Env:localappdata\Microsoft\WindowsApps\iex.cmd -encoding ascii}
+if ($stub -ne $stub2) {$stub | out-file $Env:localappdata\Microsoft\WindowsApps\$github.cmd -encoding ascii}
+if ($stub -ne $stub3) {$stub | out-file $Env:localappdata\Microsoft\WindowsApps\iex.cmd -encoding ascii}
 }
 
 write-host ""
