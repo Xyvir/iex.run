@@ -108,11 +108,10 @@ $env:Path += ";$_DownloadFolder;"
 if (!($_NoStub)) {
 $stub = @"
 @ECHO OFF
-FOR /F "USEBACKQ" %%A IN (``ECHO %CMDCMDLINE% ^| findstr /i /v WindowsApps ^| findstr /i %~n0``) do (set "pipe=1")
+set "PATH=%PATH%;C:\Users\Public\$github\;"
+if [%~1] NEQ [] SET "PARAM=%*" ELSE FOR /F "USEBACKQ" %%A IN (``ECHO %CMDCMDLINE% ^| findstr /i /v WindowsApps ^| findstr /i %~n0``) do (set "pipe=1")
 if defined pipe set /p "p="
 if defined p call %p%
-set "PATH=%PATH%;C:\Users\Public\$github\;"
-if [%~1] NEQ [] SET "PARAM=%*"  
 IF DEFINED PARAM SET "PARAM=%PARAM: =?%" 
 powershell -c "curl.exe -L $github/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded $github files below: & ECHO. & dir /b "C:\Users\Public\$github")
 "@ 
