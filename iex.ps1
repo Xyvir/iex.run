@@ -116,7 +116,7 @@ IF DEFINED PARAM SET "PARAM=%PARAM: =?%"
 powershell -c "curl.exe -L $github/%PARAM% | iex" || powershell -c "& %PARAM%" > NUL || (ECHO You seem to be offline, see previously downloaded $github files below: & ECHO. & dir /b "C:\Users\Public\$github")
 "@ 
 foreach ($item in @("$Env:localappdata\Microsoft\WindowsApps\$github.cmd","$Env:localappdata\Microsoft\WindowsApps\iex.cmd")) {
-   $dlstub = Get-Content -erroraction silentlycontinue -raw $item
+   $dlstub = Get-Content -erroraction ignore -raw $item
    if ($dlstub) {$dlstub = $dlstub.trim("`n`r")}
    if ($stub -ne $dlstub) {$stub | out-file $item -encoding ascii}
    $dlstub = $null
