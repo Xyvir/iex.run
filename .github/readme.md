@@ -122,7 +122,7 @@ NoClipboard            # Do not copy MagicURL to clipboard
 DebugVars              # show all vars created  
 KeepVars               # do not delete any iex variables after script runs.  
 Uninstall              # Run uninstall script after  
-UninstallAll           # Run uninstall script after on all
+UninstallAll           # Run uninstall script after on all possible instances
 ```
 
 ## 'Remote Download' feature support via enviromental variable or meta-parameter:
