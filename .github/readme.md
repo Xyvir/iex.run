@@ -113,11 +113,9 @@ NoExecute              # Download Script only.
 NewWindow              # opens script in a new window
 Admin                  # Run script elevetated.  
 Hidden                 # hide powershell window  
-cat                    # prints script text only, does not download or execute  
-type                   # same as cat  
-help                   # same as cat except filters to line comments starting with ##, or :: 
-                       # so you can add custom iex.run help reminders in the comments of your scripts.
-DLRemote               # Download remote file as specified via URL-encoded main command OR recursive script pre-set variable $DLRemote
+cat <or> type          # prints script text only, does not download or execute  
+help                   # same as cat except filters to line comments starting with '##' or '::' allows adding iex.run-viewable help reminders in your scripts.
+DLRemote               # Download remote file as specified via URL-encoded main command OR recursive script pre-set variable $Env:DLRemote
 NoClipboard            # Do not copy MagicURL to clipboard  
 DebugVars              # show all vars created  
 KeepVars               # do not delete any iex variables after script runs.  
