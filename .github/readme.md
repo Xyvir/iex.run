@@ -104,9 +104,9 @@ https://iex.run/Get-NetIPConfiguration%20%7C%20select%20%22InterfaceAlias%22%2C%
 Use '@' signs to specify metaparemeters which will not be passed to the command, but rather will toggle the default settings by the same name in the config.html.
 
 ``curl.exe iex.run/alphabet?23-30?35-50?@Debugvars | iex``  
-`` ``  
-### Metaparmeters:
-```
+  
+### Metaparmeters:  
+```  
 NoStub                 # Do not download stub script  
 NoWildcard             # Do not match command on wildcard  
 NoExecute              # Download Script only. 
