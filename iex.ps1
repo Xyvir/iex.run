@@ -217,7 +217,7 @@ if ($exe) {
      import-module RunAsUser
      $scriptblock = { cmd /c $github $exe $arguments  }
      write-host "cmd /c $github $exe $arguments"
-     invoke-ascurrentuser -scriptblock $scriptblock 
+     invoke-ascurrentuser -NonElevatedSession -scriptblock $scriptblock 
     } elseif ($_Admin -and $_Hidden) {
      start-process -verb RunAs -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_Admin) {
