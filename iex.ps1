@@ -211,6 +211,7 @@ if ($exe) {
     Write-Host "Launching '$exe' ..." -ForegroundColor Yellow 
     write-host ""
     
+    # If run as non-interactive system user, run as logged in user instead. Otherwise run in normal user context according to provided meta-parameneters
     if ( ((whoami) -like "nt authority\system") -and (([Environment]::UserInteractive) -eq $false) )  {
      if (!(Get-Module -ListAvailable -Name "RunAsUser")) {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force; Install-Module -Force -Name RunAsUser}
      import-module RunAsUser
