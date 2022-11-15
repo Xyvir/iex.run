@@ -163,7 +163,7 @@ It can also be used to customize setup and install scripts for those full-featur
 If you are an MSP, iex.run is not meant to be a replacement for a script engine or RMM but a quick bootstrapper to help quickly get unmanaged PCs managed, or to otherwise allow end-users to easily run quick ad-hoc scripts themselves.
 
 
-## Current Limitations:
+### 3. What are the Current Limitations?
 
 - Relies on github unauthenticated API which is rate-limited (PLEASE Use it sparingly per unique public IP!) 
 - Stub App cannot set the path variable when invoked from powershell;  
