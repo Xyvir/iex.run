@@ -184,12 +184,11 @@ only write alternate-file stream info if file succesfully downloads (if (downloa
   
 ## possible todo:
 
-- add ability for explicit meta-paremeters instead of toggle from default only (?@HideBanner=1)
+- add ability for explicit meta-paremeters instead of toggle from default only (?@HideBanner=1?@Admin=9)
 - review / refactor cumbersome string manipulation
 - Allow for multi-match downloads if @Noexecute is true
 - have iex.run respect working directory when script runs? (in case script does something in the current directory and cares about this)
-- Add builtin 'rpau' meta-parameter? (either by piggy-backing off RPAU.exe or figuring out how to do this myself natively in powershell.)
 - Add admin/global install and uninstall options.
-- Add support for programatically adding public/iex.golf to %PATH% permanently. 
+- Add support for programatically adding /public/$github to %PATH% permanently. 
 
 [Buy me a coffee!](https://www.paypal.com/donate/?hosted_button_id=RCQNK9RFDYQEG)
