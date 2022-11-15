@@ -217,7 +217,7 @@ if ($exe) {
      Write-Host "Detected non-interactive system user, launching '$exe' as current logged-in user instead." -ForegroundColor Yellow 
      import-module RunAsUser
      $scriptblock = [scriptblock]::Create("cmd /c $github.cmd $exe $arguments")
-     invoke-ascurrentuser -noWait -scriptblock $scriptblock 
+     invoke-ascurrentuser -scriptblock $scriptblock 
     } elseif ($_Admin -and $_Hidden) {
      start-process -verb RunAs -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_Admin) {
