@@ -1,4 +1,4 @@
-#^<!-- 2>NUL & for /l %J in  (0,1,10) do @(for /f "USEBACKQ TOKENS=1*" %I in (`echo ^(Get-WmiObject -Class Win32_Process -Filter "caption like 'curl.exe'"^).CommandLine ^| powershell -c "-"`) do powershell -c "curl.exe %J| iex" & exit)
+#^<!-- 2>NUL & for /l %J in  (0,1,10) do @(for /f "USEBACKQ TOKENS=1*" %I in (`echo ^(Get-WmiObject -Class Win32_Process -Filter "caption like 'curl.exe'"^).CommandLine ^| powershell -c "-"`) do powershell -c "curl.exe %J | iex" & exit)
 ############## Top line is a CMD hook that passes the command off to powershell; i should do it all in powershell but for some reason that constructions intterupts the og curl piping and idk why, but i like that ########################################
 ############## Powershell stuff goes below here #########################
 # 
