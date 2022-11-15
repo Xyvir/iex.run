@@ -13,6 +13,8 @@ iex.run turns a Github Pages repository into an online script toolbox that you c
 
 It works by way of a polyglot 404.HTML page / Powershell script, alongside an optionally-downloaded helper 'stub script launcher' to reduce keystrokes even further (after the first initial invocation on an endpoint.)
 
+To keep keystrokes down it, uses simple matching so you don't need to provide the full script name as it appears in Github.
+
 ## Test it now by visiting the 'Magic URL' below, and then follow the instructions to play a little game.  
 https://iex.run/3kbrl  
   
