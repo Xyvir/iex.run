@@ -143,9 +143,8 @@ This will tell iex.run to install Opera by using ninte:
 4. Optional: Verify your vanity domain with Github, then configure within Github pages, then disable 'enforce HTTPS'.
 5. Optional: Set Custom iex.run default runtime options and/or webpage banner within /customization folder.
 6. Optional: If using a non-vanity github.io domain, delete the CNAME file.
-7. Optional: IF you want to repurpose any of the existing example scripts, please replace iex.run with your own domain name. 
 8. Upload powershell scripts, batch files, or small binaries to the /scripts folder
-9. Launch those scripts uploaded in step 5 from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
+9. Launch those scripts from most any Windows endpoint using the interactive console syntax, the stub script launcher, or Magic URLs as explained above.
 
 ## FAQ
 
