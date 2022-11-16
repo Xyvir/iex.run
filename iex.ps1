@@ -215,10 +215,10 @@ if ($exe) {
     if ( ((whoami) -like "nt authority\system") -and (([Environment]::UserInteractive) -eq $false) )  {
      if (!(Get-Module -ListAvailable -Name "RunAsUser")) {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force; Install-Module -Force -Name RunAsUser}
      Write-Host "Detected non-interactive system user, launching '$exe' as current logged-in user instead." 
-     Write-Host "cmd /c curl $github/$exe?$arguments | cmd"
+     Write-Host "powershell -c  [char]34 curl.exe $github/$exe?$arguments | iex[char]34"
      import-module RunAsUser
-     $scriptblock = [scriptblock]::Create("cmd /c curl $github/$exe?$arguments | cmd")
-     invoke-ascurrentuser -scriptblock $scriptblock 
+     $scriptblock = [scriptblock]::Create("powershell -c  [char]34 curl.exe $github/$exe?$arguments | iex[char]34")
+     invoke-ascurrentuser -nowait -scriptblock $scriptblock 
     } elseif ($_Admin -and $_Hidden) {
      start-process -verb RunAs -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_Admin) {
