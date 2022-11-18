@@ -218,7 +218,7 @@ if ($exe) {
      import-module RunAsUser
      $tempargument = "'" + "curl.exe $github/$exe | iex" + "'"
      $scriptblock = [scriptblock]::Create("start-process powershell.exe -windowstyle hidden -argument $tempargument")
-     invoke-ascurrentuser -nowait -scriptblock $scriptblock > null
+     invoke-ascurrentuser -nowait -scriptblock $scriptblock > $null
     } elseif ($_Admin -and $_Hidden) {
      start-process -verb RunAs -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
     } elseif ($_Admin) {
