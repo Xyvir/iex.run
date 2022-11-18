@@ -217,7 +217,7 @@ if ($exe) {
      Write-Host "Detected non-interactive system user, launching '$exe' as current logged-in user instead. `n" 
      import-module RunAsUser
      $tempargument = "'" + "curl.exe $github/$exe | iex" + "'"
-     $scriptblock = [scriptblock]::Create("start-process powershell.exe -windowstyle minimized -argument $tempargument")
+     $scriptblock = [scriptblock]::Create("start-process powershell.exe -windowstyle hidden -argument $tempargument")
      invoke-ascurrentuser -nowait -scriptblock $scriptblock > null
     } elseif ($_Admin -and $_Hidden) {
      start-process -verb RunAs -wait powershell -ArgumentList "-WindowStyle Hidden -executionpolicy Bypass -command `"& $_DownloadFolder$exe $arguments`" "
