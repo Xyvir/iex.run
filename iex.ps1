@@ -8,7 +8,7 @@ Add-Type -AssemblyName System.Web
 $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 
 #Display Banner
-if (!(Get-ItemProperty -erroraction silentlycontinue -Path "HKCU:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize")) {
+if (!(Get-ItemProperty -erroraction ignore -Path "HKCU:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize")) {
  Set-ItemProperty -Path "HKCU:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 2}
 if (!($_HideBanner)) {(((iwr "$github/customizations/banner.html").parsedhtml).body).innertext}
 
