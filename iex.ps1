@@ -10,7 +10,7 @@ $OldProgress = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
 #Display Banner
 if (!(Get-ItemProperty -erroraction ignore -Path "HKCU:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize")) {
  Set-ItemProperty -Path "HKCU:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 2}
-if (!($_HideBanner)) {(((iwr "$github/customizations/banner.html").parsedhtml).body).innertext}
+if (!($_HideBanner)) {(((iwr -erroraction ignore "$github/customizations/banner.html").parsedhtml).body).innertext}
 
 # Set Default Download Folder Default location (Will be overwritten later if config exists)
 $_DownloadFolder = '$Env:Public\$github\' # Default '$Env:Public\$github\'
