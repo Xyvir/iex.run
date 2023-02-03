@@ -218,7 +218,8 @@ if ($exe) {
      if (!(Get-Module -ListAvailable -Name "RunAsUser")) {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force > $null; Install-Module -Force -Name RunAsUser}
      Write-Host "Detected non-interactive system user, launching '$exe' as current logged-in user instead. `n" 
      import-module RunAsUser
-     $tempargument = "'" + "curl.exe $github/$exe | iex" + "'"
+     if ($arguments) {$arguments = "?" + $arguments}
+     $tempargument = "'" + "curl.exe $github/$exe" + $arguments + " | iex" + "'"
      $scriptblock = [scriptblock]::Create("start-process powershell.exe -windowstyle hidden -argument $tempargument")
      invoke-ascurrentuser -nowait -scriptblock $scriptblock > $null
     } elseif ($_Admin -and $_Hidden) {
