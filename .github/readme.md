@@ -182,11 +182,12 @@ If you are an MSP, iex.run is not meant to be a replacement for a script engine 
 At this point iex.run does basically everything I would want it to, there are a few other improvements I can think of but I may not get to these for awhile:
 
 ## todo:  
+ - fix delete / re-write when using ! in filename and newer version is downloaded.
  - only write alternate-file stream info if file succesfully downloads (if (download command) {write sha}
  - Fix seeming bug with multiple parameters.
  - Fix RunAsUser to work with Parameters 
   
-## possible todo:
+## later todo:
 
 - add ability for explicit meta-paremeters instead of toggle from default only (?@HideBanner=1?@Admin=9)
 - review / refactor cumbersome string manipulation
