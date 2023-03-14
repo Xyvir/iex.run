@@ -1,9 +1,5 @@
 echo "$($args)"
-echo "0 $($args[0])"
 echo "1 $($args[1])"
 echo "2 $($args[2])"
-echo ""
-echo $arguments
-echo $arguments[0]
-echo $arguments[1]
+echo "3 $($args[2])"
 pause
