@@ -22,6 +22,7 @@ $command = ($invocuri.Absolutepath).Trim("/")
 $arguments = $invocuri.Query
 $arguments = [System.Web.HttpUtility]::UrlDecode($arguments)
 $command = [System.Web.HttpUtility]::UrlDecode($command)
+#Add 2x escape characters to preserve the double quotes when used as parameters
 $arguments = $arguments.Split("?")
 
 # Make github API calls and format.
@@ -160,7 +161,11 @@ if ($DownloadUrl) {
   }
 }
 
+# Now that we have .exe name, process stuff
 if ($exe -like "*!*") {$_Admin = $true}
+
+# Add a bunch of escape characters so parameters are passed thru to powershell scripts correctly.
+if ($exe -like "*.ps1") {$arguments = $arguments.replace('"', '```"')}
 
 pushd $_DownloadFolder
 
