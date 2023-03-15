@@ -165,7 +165,7 @@ if ($DownloadUrl) {
 if ($exe -like "*!*") {$_Admin = $true}
 
 # Add a bunch of escape characters so parameters are passed thru to powershell scripts correctly.
-if ($exe -like "*.ps1*") {$arguments = $arguments.replace('"', '```"')}
+if ($exe -like "*.ps1*") {$arguments = $arguments.replace('"', '``"')}
 
 pushd $_DownloadFolder
 
