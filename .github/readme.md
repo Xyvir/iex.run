@@ -195,5 +195,3 @@ At this point iex.run does basically everything I would want it to, there are a 
 - have iex.run respect working directory when script runs? (in case script does something in the current directory and cares about this)
 - Add admin/global install and uninstall options.
 - Add support for programatically adding /public/$github to %PATH% permanently. 
-
-[Buy me a coffee!](https://www.paypal.com/donate/?hosted_button_id=RCQNK9RFDYQEG)
